@@ -5,7 +5,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: [
-		'./index.jsx' // Your appʼs entry point
+		'./index.js' // Your appʼs entry point
 	],
 	output: {
 		path: path.join(__dirname, 'public'),
@@ -21,5 +21,8 @@ module.exports = {
 		new CopyWebpackPlugin([
 			{from: './index.html'}
 		]),
+		new CopyWebpackPlugin([
+			{ from: './assets/fonts' }
+		])
 	]
 };
