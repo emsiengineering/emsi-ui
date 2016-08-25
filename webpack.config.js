@@ -29,9 +29,7 @@ module.exports = {
 	plugins: [
 		new webpack.NoErrorsPlugin(),
 		new CopyWebpackPlugin([
-			{from: './index.html'}
-		]),
-		new CopyWebpackPlugin([
+			{ from: './index.html' },
 			{ from: './assets/fonts' }
 		])
 	]

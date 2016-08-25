@@ -19,6 +19,8 @@ import jss from './src/jss';
 import fonts from './assets/jss/fonts';
 import body from './assets/jss/body';
 
+import 'reset-css/reset.css';
+
 jss.createStyleSheet(fonts, { named: false }).attach();
 jss.createStyleSheet(body, { named: false }).attach();
 
@@ -28,14 +30,14 @@ export class App extends React.Component {
       <ThemeProvider theme={theme}>
 			<div>
         <Select>
-          <Option value='option1'>Option 1</Option>
-          <Option value='option1'>Option 2</Option>
-          <Option value='option1'>Option 3</Option>
-          <Option value='option1'>Option 4</Option>
-          <Option value='option1'>Option 5</Option>
+          <Option>This is the first Option</Option>
+          <Option>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option>Option 4</Option>
+          <Option>Option 5</Option>
+          <Option>Option 6</Option>
         </Select>
         <br/>
-        <Select disabled />
       </div>
       </ThemeProvider>
 		);

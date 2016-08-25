@@ -2,14 +2,20 @@ import cx from 'classnames';
 import useSheet from 'react-jss';
 import React from 'react';
 
+import Option from '../Option/component';
 import jss from '../../jss';
 import useTheme from '../../hocs/Theme/hoc';
-import clickOutside from 'react-onclickoutside';
-import Transition from 'react-motion-ui-pack';
+import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
+import { IoAndroidArrowDropdown } from 'react-icons/io';
 
 const styles = {
   container: {
-    position: 'relative'
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+    outline: 'none',
+    paddingTop: '1.5rem',
+    paddingBottom: '1.5rem'
   },
 
   select: {
@@ -17,19 +23,17 @@ const styles = {
     boxShadow: 'inset 0 2px 0 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.1)',
     padding: '.75em 2rem .75em 2rem',
     fontSize: '1em',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    width: '100%',
+    outline: 'none'
   },
 
   options: {
     position: 'absolute',
     zIndex: '10',
     backgroundColor: 'white',
-    top: '4rem',
-    width: '100%'
-  },
-
-  option: {
-    padding: '.75em 2rem .75em 2rem'
+    top: '4.75rem',
+    outline: 'none'
   },
 
   disabled: {
@@ -39,88 +43,91 @@ const styles = {
 };
 
 class Select extends React.Component {
+
   static propTypes = {
-    theme: React.PropTypes.object,
+    theme: React.PropTypes.shape({
+      grays: React.PropTypes.shape({
+        gray5: React.PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired,
+    children: React.PropTypes.arrayOf(
+      React.PropTypes.object.isRequired
+    ).isRequired,
+    onSelect: React.PropTypes.func,
     disabled: React.PropTypes.bool
+  }
+
+  static defaultProps = {
+    onSelect: function noop() {}
   }
 
   constructor(...props) {
     super(...props);
 
     this.state = {
-      active: false,
       activeOption: null
     };
   }
 
-  renderOptions() {
+  renderChildren() {
     return this.props.children.map((option, index) => {
       return React.cloneElement(
         option,
         {
-          active: option === this.state.activeOption,
-          index: index,
-          key: `option${index}`,
-          onClick: this.handleSelect.bind(this, option)
+          active: option.props.children === this.state.activeOption,
+          key: `option${index}`
         }
       );
     });
   }
 
-  renderOptionsContainer() {
-    const { classes } = this.props.sheet;
-    const optionsStyles = {
-      borderLeft: `1px solid ${this.props.theme.grays.gray4}`,
-      borderRight: `1px solid ${this.props.theme.grays.gray4}`,
-      borderTop: `1px solid ${this.props.theme.grays.gray4}`
-    };
-
-    return (
-      <div className={classes.options} style={optionsStyles} key='selectbox'>
-        {this.renderOptions()}
-      </div>
-    );
-  }
-
   render() {
     const { classes } = this.props.sheet;
+    const { theme } = this.props;
+
+    const buttonStyle = {
+      backgroundColor: theme.grays.gray5
+    };
+
     const classNames = cx({
       [classes.select]: true,
       [classes.disabled]: this.props.disabled
     });
-    const style = {
-      backgroundColor: this.props.theme.grays.gray5
+
+    const ulStyles = {
+      position: 'relative',
+      zIndex: 1,
+      border: `1px solid ${theme.grays.gray4}`,
+      borderRadius: '3px',
+      overflow: 'hidden'
     };
 
     return (
-      <div className={classes.container}>
-        <div className={classNames} style={style} onClick={this.handleActivate} role='listbox'>
-          {this.state.activeOption === null ? 'Select Option' : this.state.activeOption.props.children}
-        </div>
-        {this.state.active && this.renderOptionsContainer()}
-      </div>
+      <Wrapper
+        onSelection={this.handleSelection}
+        className={classes.container}
+      >
+        <Button disabled={this.props.disabled} className={classNames} style={buttonStyle}>
+          {this.state.activeOption === null ? 'Select Option' : this.state.activeOption}
+          <IoAndroidArrowDropdown style={{ marginLeft: '1rem' }}/>
+        </Button>
+          {
+            !this.props.disabled &&
+            <Menu className={classes.options}>
+              <ul style={ulStyles}>{this.renderChildren()}</ul>
+            </Menu>
+          }
+      </Wrapper>
     );
   }
 
-  handleClickOutside() {
+  handleSelection = (option, event) => {
+    this.props.onSelect(option.props.children);
     this.setState({
-      active: false
-    });
-  }
-
-  handleSelect(option, e) {
-    this.setState({
-      activeOption: option,
-      active: false
-    });
-  }
-
-  handleActivate = () => {
-    this.setState({
-      active: !this.state.active
+      activeOption: option.props.children
     });
   }
 }
 
 
-export default useTheme(useSheet(clickOutside(Select), styles));
+export default useTheme(useSheet(Select, styles));

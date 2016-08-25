@@ -1,13 +1,26 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import Header from '../src/components/Header/component';
+import { Grid, Row, Col } from 'react-flexgrid';
 
 storiesOf('Header', module)
   .add('display type bold', () => (
-    <div>
-      <Header type='display' bold>Display Bold</Header>
-      <Header type='display'>Display Bold</Header>
-    </div>
+    <Grid fluid>
+      <Row>
+        <Col xs={12} md={3}>
+          <Header type='display' bold>Display Bold</Header>
+          <Header type='display'>Display Bold</Header>
+        </Col>
+        <Col>
+          <Header type='display' bold>Display Bold</Header>
+          <Header type='display'>Display Bold</Header>
+        </Col>
+        <Col>
+          <Header type='display' bold>Display Bold</Header>
+          <Header type='display'>Display Bold</Header>
+        </Col>
+      </Row>
+    </Grid>
   ))
   .add('display type', () => (
     <Header type='display'>Display</Header>

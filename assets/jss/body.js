@@ -1,11 +1,11 @@
 export default {
   html: {
     height: '100%',
-    fontSize: '50%'
+    fontSize: '62.5%'
   },
 
   body: {
-    fontSize: '1.875rem',
+    fontSize: '1.5rem',
     fontWeight: 'normal',
     fontStyle: 'normal',
     '-webkit-font-smoothing': 'antialiased'
@@ -17,24 +17,5 @@ export default {
 
   '*, *:before, *:after': {
     boxSizing: 'border-box'
-  },
-
-  '@media only screen and (min-width: 800px)': {
-    html: {
-      fontSize: '62.5%'
-    },
-
-    body: {
-      fontSize: '1.5rem'
-    },
-
-    'h1.big-text': {
-      fontSize: '6rem',
-      fontWeight: 200
-    },
-
-    '.text-break': {
-      display: 'block'
-    }
   }
 };

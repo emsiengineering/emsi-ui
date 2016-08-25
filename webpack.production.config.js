@@ -19,9 +19,7 @@ module.exports = {
 	},
 	plugins: [
 		new CopyWebpackPlugin([
-			{from: './index.html'}
-		]),
-		new CopyWebpackPlugin([
+			{ from: './index.html' },
 			{ from: './assets/fonts' }
 		])
 	]

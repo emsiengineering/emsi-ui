@@ -1,12 +1,4 @@
-export { default as Alert } from './src/components/Alert/component';
-export { default as BackgroundTint } from './src/components/BackgroundTint/component';
+export { default as Select } from './src/components/Select/component';
+export { default as Option } from './src/components/Option/component';
 export { default as Button } from './src/components/Button/component';
-export { default as Card } from './src/components/Card/component';
-export { default as CardMedia } from './src/components/CardMedia/component';
-export { default as CardText } from './src/components/CardText/component';
-export { default as CollapsingList } from './src/components/CollapsingList/component';
-export { default as ExpandList } from './src/components/ExpandList/component';
 export { default as Header } from './src/components/Header/component';
-export { default as Image } from './src/components/Image/component';
-export { default as ImageText } from './src/components/ImageText/component';
-export { default as List } from './src/components/List/component';

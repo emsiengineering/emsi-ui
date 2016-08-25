@@ -1,23 +1,63 @@
 import cx from 'classnames';
-import useSheet from 'react-jss';
 import React from 'react';
 
 import jss from '../../jss';
-import BackgroundTint from '../BackgroundTint/component';
 import useTheme from '../../hocs/Theme/hoc';
 import hexToRGB from '../../utils';
+import { MenuItem } from 'react-aria-menubutton';
 
-const styles = {
-  option: {
-    width: '100%',
-    padding: '.75em 2rem .75em 2rem',
-    cursor: 'pointer'
-  }
-};
+// we have to use :hover, :focus and :active for accessibility reasons,
+// so stylesheet is created in componentWillMount for theme access
+function defaultStyleSheet(theme) {
+  return {
+    padding: '.75em 10rem .75em 2rem',
+    cursor: 'pointer',
+    border: '1px solid transparent',
+    position: 'relative',
+    outline: 'none',
+    zIndex: 2
+  };
+}
+
+function inactiveStyleSheet(theme) {
+  const rgb = hexToRGB(theme.primary.link);
+
+  return {
+    '&:hover': {
+      backgroundColor: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, .1)`,
+      color: theme.primary.link
+    },
+
+    '&:focus': {
+      borderStyle: 'dotted',
+      borderColor: theme.primary.link
+    }
+  };
+}
+
+function activeStyleSheet(theme) {
+  return {
+    borderColor: theme.primary.link,
+    extend: 'option',
+    backgroundColor: theme.primary.link,
+    color: theme.grays.white
+  };
+}
+
+// we have to create the sheet at compile time so the lifecycle functions
+// have access to it
+const sheet = jss.createStyleSheet({});
 
 class Option extends React.Component {
   static propTypes = {
-    theme: React.PropTypes.object,
+    theme: React.PropTypes.shape({
+      primary: React.PropTypes.shape({
+        link: React.PropTypes.string.isRequired
+      }).isRequired,
+      grays: React.PropTypes.shape({
+        white: React.PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired,
     hover: React.PropTypes.bool,
     select: React.PropTypes.bool,
     active: React.PropTypes.bool,
@@ -32,69 +72,36 @@ class Option extends React.Component {
     };
   }
 
+  componentWillMount() {
+    const { theme } = this.props;
+    sheet.addRule('option', defaultStyleSheet(theme));
+    sheet.addRule('inactive', inactiveStyleSheet(theme));
+    sheet.addRule('active', activeStyleSheet(theme));
+
+    sheet.attach();
+  }
+
+  componentWillUnmount() {
+    sheet.detach();
+  }
+
   render() {
-    const { classes } = this.props.sheet;
+    const { classes } = sheet;
     const { theme, active, onClick, children } = this.props;
-
-    const componentStyles = this.getColors();
-
-    const childStyles = {
-      opacity: active ? .75 : 1
-    };
+    const classNames = cx({
+      [classes.option]: true,
+      [classes.inactive]: !active,
+      [classes.active]: active
+    });
 
     return (
-      <div
-        className={classes.option}
-        style={componentStyles}
-        onClick={onClick}
-        onMouseEnter={this.handleHover}
-        onMouseLeave={this.handleHover}
-        role='option'
-      >
-        <span style={childStyles}>{children}</span>
-      </div>
+      <li>
+        <MenuItem className={classNames}>
+          <span>{this.props.children}</span>
+        </MenuItem>
+      </li>
     );
-  }
-
-  getColors() {
-    const { active, theme } = this.props;
-    let componentStyles = {
-      borderBottom: `1px solid ${theme.grays.gray4}`
-    };
-
-    const rgb = hexToRGB(theme.primary.link);
-
-    if (active)
-      return {
-        ...componentStyles,
-        ...{
-          backgroundColor: theme.primary.link,
-          color: theme.grays.white
-        }
-      };
-    else if (this.state.hover)
-      return {
-        ...componentStyles,
-        ...{
-          backgroundColor: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, .1)`,
-          color: theme.primary.link
-        }
-      };
-    else
-      return {
-        ...componentStyles,
-        ...{
-          backgroundColor: theme.grays.white,
-          color: '#000000'
-        }
-      };
-  }
-
-  handleHover = () => {
-    this.setState({
-      hover: !this.state.hover
-    });
   }
 }
 
-export default useTheme(useSheet(Option, styles));
+export default useTheme(Option);
