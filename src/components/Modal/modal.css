@@ -1,0 +1,48 @@
+.underlay {
+
+}
+
+.modal {
+  position: relative;
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+  padding: 10rem;
+  background-color: white;
+  width: 80rem;
+}
+
+.close-icon {
+  position: absolute;
+  color: blue;
+  top: -3rem;
+  right: -3.5rem;
+  color: white;
+  font-size: 3rem;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.enter {
+  opacity: 0.01;
+  transform: scale(1.5);
+}
+
+.enter.enterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 300ms ease-out;
+}
+
+.leave {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.leave.leaveActive {
+  opacity: 0.01;
+  transform: scale(2);
+  transition: all 300ms ease-in;
+}

@@ -1,0 +1,25 @@
+@import "../../../assets/css/variables.css";
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+
+  &-fluid {
+    padding-right: var(--outer-margin, 2rem);
+    padding-left: var(--outer-margin, 2rem);
+  }
+
+  &:not(&-fluid) {
+    @media (--sm-viewport) {
+      width: var(--container-sm, 46rem);
+    }
+
+    @media (--md-viewport) {
+      width: var(--container-md, 61rem);
+    }
+
+    @media (--lg-viewport) {
+      width: var(--container-lg, 71rem);
+    }
+  }
+}

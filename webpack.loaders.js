@@ -12,11 +12,22 @@ module.exports = [
     loader: 'babel',
     include: path.resolve(__dirname, './node_modules/react-icons/io'),
     query: {
-      presets: ['es2015', 'stage-0', 'react'] 
+      presets: ['es2015', 'stage-0', 'react']
     }
   }, {
     test: /\.css$/,
-    loader: 'style-loader!css-loader'
+    loaders: [
+      'style?sourceMap',
+      'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+      'postcss'
+    ]
+  }, {
+    test: /\.less$/,
+    loaders: [
+      'style?sourceMap',
+      'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+      'postcss'
+    ]
   }, {
     test: /\.png$/,
     loader: 'url-loader?limit=100000'

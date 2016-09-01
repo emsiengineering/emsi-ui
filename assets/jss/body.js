@@ -5,7 +5,7 @@ export default {
   },
 
   body: {
-    fontSize: '1.5rem',
+    fontSize: '1.6rem',
     fontWeight: 'normal',
     fontStyle: 'normal',
     '-webkit-font-smoothing': 'antialiased'

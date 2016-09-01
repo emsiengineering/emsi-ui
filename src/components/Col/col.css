@@ -1,0 +1,55 @@
+@import "../../../assets/css/variables.css";
+
+@define-mixin col {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-right: var(--half-gutter-width, 0.5rem);
+  padding-left: var(--half-gutter-width, 0.5rem);
+}
+
+@define-mixin defaultCol {
+  @mixin col;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.col-xs {
+  @mixin defaultCol $type;
+}
+
+@for $i from 1 to 12 {
+  .col-xs-$(i) {
+    @mixin col;
+    flex-basis: calc($i * 8.33333333)%;
+    max-width: calc($i * 8.33333333)%;
+  }
+
+  .col-xs-offset-$(i) {
+    @mixin col;
+    margin-left: calc($i * 8.33333333)%;
+  }
+}
+
+@each $type in sm, md, lg {
+  .col-$(type) {
+    @media (--$(type)-viewport) {
+      @mixin defaultCol $type;
+    }
+  }
+
+  @for $i from 1 to 12 {
+    @media (--$(type)-viewport) {
+      .col-$(type)-$(i) {
+        @mixin col;
+        flex-basis: calc($i * 8.33333333)%;
+        max-width: calc($i * 8.33333333)%;
+      }
+
+      .col-$(type)-offset-$i {
+        @mixin col;
+        margin-left: calc($i * 8.33333333)%;
+      }
+    }
+  }
+}

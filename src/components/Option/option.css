@@ -1,0 +1,33 @@
+@import "../../../assets/css/variables.css";
+
+.option {
+  padding: .75em 0 .75em 2rem;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  z-index: 2;
+  border: 1px solid transparent;
+  color: color(black a(75%));
+
+  &.active {
+    border-color: var(--link-color);
+    background-color: var(--link-color);
+    color: color(var(--white) a(75%));
+    z-index: 2;
+
+    &:focus {
+      border: 1px dotted color(var(--white));
+      z-index: 3;
+    }
+  }
+
+  &:hover:not(.active) {
+    background-color: color(var(--link-color) a(10%));
+    color: var(--link-color);
+  }
+
+  &:focus:not(.active) {
+    border: 1px dotted color(var(--link-color));
+    z-index: 3;
+  }
+}

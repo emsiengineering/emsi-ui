@@ -9,9 +9,11 @@ jss.createStyleSheet(fonts, { named: false }).attach();
 jss.createStyleSheet(body, { named: false }).attach();
 
 function loadStories() {
+  require('../stories/grid');
   require('../stories/header');
   require('../stories/button');
   require('../stories/select');
+  require('../stories/tabs');
   // require as many stories as you need.
 }
 

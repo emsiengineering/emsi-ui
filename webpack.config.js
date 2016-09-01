@@ -20,14 +20,57 @@ module.exports = {
 	module: {
 		loaders: loaders
 	},
+	postcss: function(webpack) {
+		return {
+			plugins: [
+				require('postcss-easy-import')({
+					addDependencyTo: webpack
+				}),
+				require("postcss-url")(),
+				require('postcss-mixins')(),
+				require('postcss-each')(),
+				require('postcss-for')(),
+				require('postcss-simple-vars')(),
+				require('postcss-calc')(),
+				require('postcss-cssnext')({
+					features: {
+						colorFunction: true
+					}
+				}),
+				// put plugins here
+
+				// end plugins
+				require('postcss-color-function')(),
+				require("postcss-reporter")()
+			]
+		}
+	},
 	devServer: {
 		contentBase: "./public",
-			noInfo: true, //  --no-info option
-			hot: true,
-			inline: true
-		},
+		stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: false,
+      assets: false,
+      chunks: false,
+      modules: false,
+      reasons: false,
+      children: false,
+      source: false,
+      errors: true,
+      errorDetails: true,
+      warnings: true,
+      publicPath: false
+    },
+		hot: true
+	},
 	plugins: [
-		new webpack.NoErrorsPlugin(),
+		new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
 		new CopyWebpackPlugin([
 			{ from: './index.html' },
 			{ from: './assets/fonts' }

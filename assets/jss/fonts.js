@@ -30,6 +30,12 @@ export default {
       fontWeight: 200,
       fontStyle: 'italic',
       src: woffMaker('sailec_thin_italic-webfont')
+    },
+    {
+      fontFamily: 'Ionicons',
+      fontWeight: 'normal',
+      fontStyle: 'normal',
+      src: 'url("ionicons.woff") format("woff"), url("ionicons.ttf") format("truetype")'
     }
   ]
 };

@@ -1,0 +1,61 @@
+@import "../../../assets/css/variables.css";
+
+.wrapper {
+  position: relative;
+  height: 100%;
+  outline: none;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: inline-block;
+  background-color: var(--gray5);
+  border-radius: 3px;
+  border: 1px solid color(var(--black) a(10%));
+  box-shadow: inset 0 2px 0 0 color(var(--white) a(20%));
+  padding: .75em 2rem .75em 2rem;
+  font-size: 1em;
+  cursor: pointer;
+  color: color(black a(75%));
+
+  &:focus {
+    border: 1px dotted color(var(--link-color));
+  }
+
+  &:active {
+    border: 1px solid color(var(--link-color));
+  }
+}
+
+.disabled {
+  color: color(black a(33%));
+  opacity: .75;
+  cursor: not-allowed;
+}
+
+.icon {
+  margin-left: 1.2rem;
+  float: right;
+}
+
+.ul {
+  border: 1px solid var(--gray4);
+  position: relative;
+  border-radius: 3px;
+  border-top-left-radius: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 20rem;
+}
+
+.menu {
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  top: 3.5rem;
+  outline: none;
+  min-width: 30rem;
+  max-width: 100%;
+
+  &.active {
+    color: var(--link-color);
+  }
+}
