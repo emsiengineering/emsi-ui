@@ -1,0 +1,32 @@
+@import "../../../assets/css/variables.css";
+
+.checkbox {
+  outline: none;
+}
+
+.checkbox svg {
+  position: relative;
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  color: var(--gray2);
+  outline: none;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  &.selected {
+    color: var(--primary-color);
+  }
+}
+
+.checkbox span {
+  outline: none;
+  vertical-align: middle;
+  font-size: 1.5rem;
+
+  &.selected {
+    color: var(--primary-color);
+  }
+}

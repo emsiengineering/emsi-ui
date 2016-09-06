@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './src/components/Modal';
+import Checkbox from './src/components/Checkbox';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -17,7 +18,7 @@ export class App extends React.Component {
     super(...props);
 
     this.state = {
-      open: false
+      checked: false
     };
   }
 
@@ -25,23 +26,14 @@ export class App extends React.Component {
 
     return (
       <div>
-        <button onClick={this.handleOpen}>Click me</button>
-        <Modal active={this.state.open} title='Sweet' onExit={this.handleExit}>
-          Test
-        </Modal>
+				<Checkbox value='test' isChecked={this.state.checked} onClick={this.handleCheckBox}>Animal and Aquaculture Management</Checkbox>
       </div>
 		);
   }
 
-  handleOpen = () => {
+  handleCheckBox = () => {
     this.setState({
-      open: true
-    });
-  }
-
-  handleExit = () => {
-    this.setState({
-      open: false
+      checked: !this.state.checked
     });
   }
 
