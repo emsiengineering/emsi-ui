@@ -6,8 +6,6 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import styles from './modal.css';
 
-console.log(styles);
-
 class Modal extends React.Component {
   static propTypes = {
     title: React.PropTypes.string,
