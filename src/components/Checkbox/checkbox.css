@@ -4,6 +4,10 @@
   outline: none;
 }
 
+.content {
+  margin: 1rem 0;
+}
+
 .checkbox svg {
   position: relative;
   font-size: 2rem;

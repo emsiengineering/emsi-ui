@@ -14,29 +14,19 @@ jss.createStyleSheet(fonts, { named: false }).attach();
 jss.createStyleSheet(body, { named: false }).attach();
 
 export class App extends React.Component {
-  constructor(props) {
-    super(...props);
 
-    this.state = {
-      checked: false
-    };
-  }
 
   render() {
 
     return (
       <div>
-				<Checkbox value='test' isChecked={this.state.checked} onClick={this.handleCheckBox}>Animal and Aquaculture Management</Checkbox>
+				<Checkbox value='test'>Animal and Aquaculture Management</Checkbox>
+				<Checkbox value='test1'>Animal and Aquaculture Management</Checkbox>
+				<Checkbox value='test2'>Animal and Aquaculture Management</Checkbox>
+				<Checkbox value='test3'>Animal and Aquaculture Management</Checkbox>
       </div>
 		);
   }
-
-  handleCheckBox = () => {
-    this.setState({
-      checked: !this.state.checked
-    });
-  }
-
 }
 
 ReactDOM.render(<App/>, document.querySelector('#myApp'));
