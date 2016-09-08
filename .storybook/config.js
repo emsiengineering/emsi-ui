@@ -14,6 +14,7 @@ function loadStories() {
   require('../stories/button');
   require('../stories/select');
   require('../stories/tabs');
+	require('../stories/checkbox');
   // require as many stories as you need.
 }
 
