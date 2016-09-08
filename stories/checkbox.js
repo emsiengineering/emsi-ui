@@ -11,7 +11,8 @@ storiesOf('Checkbox/Radio', module)
 				<Checkbox value='test'>Animal and Aquaculture Management</Checkbox>
       </div>
     </ThemeProvider>
-  )).add('Radio', () => (
+  ))
+	.add('Radio', () => (
     <ThemeProvider theme={theme}>
       <div>
 				<Checkbox isRadio value='test'>Animal and Aquaculture Management</Checkbox>
