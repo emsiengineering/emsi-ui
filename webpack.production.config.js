@@ -19,6 +19,31 @@ module.exports = {
 	module: {
 		loaders: loaders
 	},
+	postcss: function(webpack) {
+		return {
+			plugins: [
+				require('postcss-easy-import')({
+					addDependencyTo: webpack
+				}),
+				require("postcss-url")(),
+				require('postcss-mixins')(),
+				require('postcss-each')(),
+				require('postcss-for')(),
+				require('postcss-simple-vars')(),
+				require('postcss-calc')(),
+				require('postcss-cssnext')({
+					features: {
+						colorFunction: true
+					}
+				}),
+				// put plugins here
+
+				// end plugins
+				require('postcss-color-function')(),
+				require("postcss-reporter")()
+			]
+		}
+	},
 	plugins: [
 		new CopyWebpackPlugin([
 			{ from: './index.html' },
