@@ -1,4 +1,3 @@
-export { default as Select } from './src/components/Select/component';
-export { default as Option } from './src/components/Option/component';
-export { default as Button } from './src/components/Button/component';
-export { default as Header } from './src/components/Header/component';
+export { default as Select } from './src/components/Select';
+export { default as Option } from './src/components/Option';
+export { default as Button } from './src/components/Button';
