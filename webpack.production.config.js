@@ -9,7 +9,9 @@ module.exports = {
 	],
 	output: {
 		path: path.join(__dirname, 'public'),
-		filename: 'bundle.js'
+		filename: 'bundle.js',
+		library: 'emsi-ui',
+		libraryTarget: 'umd'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']
