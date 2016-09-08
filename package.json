@@ -1,6 +1,6 @@
 {
   "name": "@emsi/emsi-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "UI components for use within Emsi",
   "main": "index.js",
   "scripts": {
