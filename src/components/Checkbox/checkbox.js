@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
-import { IoAndroidCheckboxOutlineBlank, IoAndroidCheckbox, IoIosCircleOutline, IoIosCircleFilled } from 'react-icons/io';
+import Icon from '../Icon';
 
 import styles from './checkbox.css';
 
 class Checkbox extends React.Component {
-	static propTypes = {
-		styles: PropTypes.object,
+  static propTypes = {
+    styles: PropTypes.object,
 		value: PropTypes.string,
 		isRadio: PropTypes.bool
 	}
@@ -20,10 +20,10 @@ class Checkbox extends React.Component {
 			isChecked: false
 		};
 	}
-	render() {
-		const { children, value, isRadio, styles: CSS, ...other } = this.props;
+  render() {
+    const { children, value, isRadio, styles: CSS, ...other } = this.props;
 
-		return (
+    return (
 			<label htmlFor={value}>
 				<div
 					{...other}
@@ -38,11 +38,15 @@ class Checkbox extends React.Component {
 					{
 					this.state.isChecked ?
 						<span>
-						{ isRadio ? <IoIosCircleFilled styleName='checkbox selected' /> : <IoAndroidCheckbox styleName='checkbox selected' /> }
+						{ isRadio ?
+							<Icon component='IoIosCircleFilled' styleName='checkbox selected' value={value}/>
+							: <Icon component='IoAndroidCheckbox' styleName='checkbox selected' value={value}/> }
 						<span styleName='checkbox selected'>{children}</span>
 						</span> :
 						<span>
-							{ isRadio ? <IoIosCircleOutline value={value} /> : <IoAndroidCheckboxOutlineBlank value={value} /> }
+							{ isRadio ?
+								<Icon component='IoIosCircleOutline'  />
+								: <Icon component='IoAndroidCheckboxOutlineBlank' value={value} /> }
 							<span>{children}</span>
 						</span>
 					}
@@ -50,8 +54,8 @@ class Checkbox extends React.Component {
 			</div>
 			</label>
 		);
-	}
-	handleCheckBox = () => this.setState({ isChecked: !this.state.isChecked })
+  }
+  handleCheckBox = () => this.setState({ isChecked: !this.state.isChecked })
 }
 
 export default CSSModules(Checkbox, styles, { allowMultiple: true });

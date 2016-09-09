@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from './src/components/Modal';
 import Checkbox from './src/components/Checkbox';
 import Pillbox from './src/components/Pillbox';
+import Header from './src/components/Header';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -25,16 +26,7 @@ export class App extends React.Component {
 	render() {
 		return (
       <div>
-				<Checkbox value='test'>Animal and Aquaculture Management</Checkbox>
-				<Checkbox value='test1'>Animal and Aquaculture Management</Checkbox>
-				<Checkbox value='test2'>Animal and Aquaculture Management</Checkbox>
-				<Checkbox value='test3'>Animal and Aquaculture Management</Checkbox>
-				<div onClick={this.handlePillBox} style={{ backgroundColor: this.state.active ? '#41D492' : '#fff', cursor: 'pointer' }}>
-					<Pillbox active={this.state.active}>Tile and Marble Setters</Pillbox>
-					<Pillbox active={this.state.active}>Tile and Marble Setters</Pillbox>
-					<Pillbox active={this.state.active}>Tile and Marble Setters</Pillbox>
-					<Pillbox active={this.state.active}>Tile and Marble Setters</Pillbox>
-				</div>
+
       </div>
 		);
   }

@@ -5,3 +5,5 @@ export { default as ContentWrap } from './src/components/ContentWrap';
 export { default as GlobalHeader } from './src/components/GlobalHeader';
 export { default as Icon } from './src/components/Icon';
 export { default as Logo } from './src/components/Logo';
+export { default as Header } from './src/components/Header';
+export { default as Checkbox } from './src/components/Checkbox';
