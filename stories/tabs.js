@@ -17,6 +17,10 @@ storiesOf('Tabs', module)
       <Tab title='Dark Theme' onClick={linkTo('Tabs', 'dark theme')}>
         This theme is dark. Spooky.
       </Tab>
+			<Tab type='wide' title='Darker Theme' onClick={linkTo('Tabs', 'darker theme and wide')}>
+				<br/>
+				This theme is darker. Spookyer. Wider
+			</Tab>
     </TabPanel>
   ))
   .add('second tab selected', () => (
@@ -32,6 +36,10 @@ storiesOf('Tabs', module)
       <Tab title='Dark Theme' onClick={linkTo('Tabs', 'dark theme')}>
         This theme is dark. Spooky.
       </Tab>
+			<Tab type='wide' title='Darker Theme' onClick={linkTo('Tabs', 'darker theme and wide')}>
+				<br/>
+				This theme is darker. Spookyer. Wider
+			</Tab>
     </TabPanel>
   )).add('dark theme', () => (
     <TabPanel onChange={(event) => action(event)} activeTab={2} theme='dark'>
@@ -46,6 +54,30 @@ storiesOf('Tabs', module)
       <Tab title='Dark Theme'>
         <br/>
         This theme is dark. Spooky.
+      </Tab>
+			<Tab type='wide' title='Darker Theme' onClick={linkTo('Tabs', 'darker theme and wide')}>
+				<br/>
+				This theme is darker. Spookyer. Wider
+			</Tab>
+    </TabPanel>
+  ))
+	.add('darker theme and wide', () => (
+    <TabPanel onChange={(event) => action(event)} activeTab={3} theme='darker'>
+      <Tab title='Interesting' onClick={linkTo('Tabs', 'first tab selected')}>
+        <br/>
+        This is an interesting tab.
+      </Tab>
+      <Tab title='Uninteresting' onClick={linkTo('Tabs', 'second tab selected')}>
+        <br/>
+        <img src='https://a4-images.myspacecdn.com/images03/29/1b5a14a0230b403dacad1ebe01e5492b/300x300.jpg' />
+      </Tab>
+			<Tab title='Dark Theme' onClick={linkTo('Tabs', 'dark theme')}>
+				<br/>
+				This theme is dark. Spooky.
+			</Tab>
+      <Tab type='wide' title='Darker Theme'>
+        <br/>
+        This theme is darker. Spookyer. Wider
       </Tab>
     </TabPanel>
   ));

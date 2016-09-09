@@ -7,6 +7,7 @@ import Header from './src/components/Header';
 import TabPanel from './src/components/TabPanel';
 import Tab from './src/components/Tab';
 import ContentWrap from './src/components/ContentWrap';
+import GlobalHeader from './src/components/GlobalHeader';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -47,11 +48,12 @@ export class App extends React.Component {
 		];
 		return (
       <div>
+				<GlobalHeader color='#203A45' />
 				<TabPanel theme='dark' activeTab={this.state.active}>
 					{
 						subNavLinks.map((nav, index) => {
 							return (
-								<Tab key={`tab${index}`} onClick={() => this.handleLink(index, nav)} title={nav.name}>
+								<Tab key={`tab${index}`} type='wide' onClick={() => this.handleLink(index, nav)} title={nav.name}>
 									<ContentWrap>
 										{this.props.children}
 									</ContentWrap>
@@ -63,7 +65,7 @@ export class App extends React.Component {
       </div>
 		);
   }
-	handleLink = () => this.setState({ active: index })
+	handleLink = (index) => this.setState({ active: index })
 }
 
 ReactDOM.render(<App/>, document.querySelector('#myApp'));

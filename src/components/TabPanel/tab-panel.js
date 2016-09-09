@@ -12,7 +12,7 @@ class TabPanel extends React.Component {
 
   static propTypes = {
     position: React.PropTypes.oneOf(['top', 'bottom']),
-    theme: React.PropTypes.oneOf(['', 'dark']),
+    theme: React.PropTypes.oneOf(['', 'dark', 'darker']),
     onChange: React.PropTypes.func,
     activeTab: React.PropTypes.oneOfType([
       React.PropTypes.number,
@@ -22,7 +22,8 @@ class TabPanel extends React.Component {
 
   static defaultProps = {
     position: 'bottom',
-    activeTab: 0
+    activeTab: 0,
+    theme: ''
   }
 
   componentWillMount() {
@@ -37,7 +38,7 @@ class TabPanel extends React.Component {
 
   render() {
     const { position, onChange, activeTab, theme } = this.props;
-    let styleName = theme === 'dark' ? 'tab-panel tab-panel-dark' : 'tab-panel';
+    let styleName = `${theme}` ? `tab-panel ${theme}` : 'tab-panel';
     let menuItems = this.menuItems();
 
     if (this.state.closed)
@@ -48,9 +49,7 @@ class TabPanel extends React.Component {
 					<div styleName='mobile-menu' onClick={this.handleClick} />
 					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
 						<TabList styleName={styleName}>
-              <ContentWrap>
 							{menuItems.tabs}
-              </ContentWrap>
 						</TabList>
 						{menuItems.panels}
 					</Wrapper>
