@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import Button from '../src/components/Button/component';
+import Button from '../src/components/Button';
 import ThemeProvider from '../src/components/ThemeProvider/component';
 import theme from '../src/theme';
 
