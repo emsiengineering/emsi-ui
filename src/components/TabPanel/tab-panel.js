@@ -4,6 +4,7 @@ import { MenuItem } from 'react-aria-menubutton';
 import { Wrapper, TabList, Tab, TabPanel as AriaTabPanel } from 'react-aria-tabpanel';
 import uniqueId from 'lodash.uniqueid';
 
+import ContentWrap from '../ContentWrap';
 import styles from './tab-panel.css';
 
 class TabPanel extends React.Component {
@@ -44,13 +45,15 @@ class TabPanel extends React.Component {
 
     return (
       <div styleName='container'>
-        <div styleName='mobile-menu' onClick={this.handleClick} />
-        <Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
-          <TabList styleName={styleName}>
-            {menuItems.tabs}
-          </TabList>
-          {menuItems.panels}
-        </Wrapper>
+					<div styleName='mobile-menu' onClick={this.handleClick} />
+					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
+						<TabList styleName={styleName}>
+              <ContentWrap>
+							{menuItems.tabs}
+              </ContentWrap>
+						</TabList>
+						{menuItems.panels}
+					</Wrapper>
       </div>
     );
   }
