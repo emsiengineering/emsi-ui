@@ -1,5 +1,5 @@
 import CSSModules from 'react-css-modules';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { MenuItem } from 'react-aria-menubutton';
 import { Wrapper, TabList, Tab, TabPanel as AriaTabPanel } from 'react-aria-tabpanel';
 import uniqueId from 'lodash.uniqueid';
@@ -11,19 +11,21 @@ class TabPanel extends React.Component {
   static displayName = 'emsiUI-TabPanel';
 
   static propTypes = {
-    position: React.PropTypes.oneOf(['top', 'bottom']),
-    theme: React.PropTypes.oneOf(['', 'dark', 'darker']),
-    onChange: React.PropTypes.func,
-    activeTab: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.string
-    ])
+    position: PropTypes.oneOf(['top', 'bottom']),
+    theme: PropTypes.oneOf(['', 'dark', 'darker']),
+    onChange: PropTypes.func,
+    activeTab: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ]),
+		isWrapped: PropTypes.bool
   }
 
   static defaultProps = {
     position: 'bottom',
     activeTab: 0,
-    theme: ''
+    theme: '',
+		isWrapped: false
   }
 
   componentWillMount() {
@@ -37,7 +39,7 @@ class TabPanel extends React.Component {
   }
 
   render() {
-    const { position, onChange, activeTab, theme } = this.props;
+    const { position, onChange, activeTab, theme, isWrapped } = this.props;
     let styleName = `${theme}` ? `tab-panel ${theme}` : 'tab-panel';
     let menuItems = this.menuItems();
 
@@ -49,7 +51,14 @@ class TabPanel extends React.Component {
 					<div styleName='mobile-menu' onClick={this.handleClick} />
 					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
 						<TabList styleName={styleName}>
-							{menuItems.tabs}
+							{
+								isWrapped ?
+								<ContentWrap>
+									{menuItems.tabs}
+								</ContentWrap>
+								:
+									<div>{menuItems.tabs}</div>
+							}
 						</TabList>
 						{menuItems.panels}
 					</Wrapper>
