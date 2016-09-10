@@ -19,10 +19,6 @@
     color: #2ad587;
   }
 
-  &.wide {
-    padding: 3rem 9rem;
-  }
-
   @media (--medium-viewport) {
     box-shadow: none;
     display: block;

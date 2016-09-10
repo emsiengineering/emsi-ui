@@ -4,8 +4,8 @@ import { Tab as AriaTab } from 'react-aria-tabpanel';
 
 import styles from './tab.css';
 
-const Tab = ({ children, active, id, position, type, styles: CSS, ...other }) => {
-  let styleName = active ? `tab ${type} tab-active-${position}` : `tab ${type}`;
+const Tab = ({ children, active, id, position, styles: CSS, ...other }) => {
+  let styleName = active ? `tab tab-active-${position}` : 'tab';
 
   return (
     <AriaTab {...other} id={id} styleName={styleName} active={active}>
@@ -18,12 +18,7 @@ Tab.propTypes = {
   active: PropTypes.bool,
   position: PropTypes.string,
   id: PropTypes.string,
-  styles: PropTypes.func,
-	type: PropTypes.string
-};
-
-Tab.defaultProps = {
-  type: ''
+  styles: PropTypes.func
 };
 
 Tab.displayName = 'emsiUI-Tab';
