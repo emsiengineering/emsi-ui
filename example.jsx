@@ -48,8 +48,10 @@ export class App extends React.Component {
 		];
 		return (
       <div>
-				<GlobalHeader color='#203A45' />
-				<TabPanel theme='dark' activeTab={this.state.active}>
+				<GlobalHeader color='#203A45'>
+					<Header bold type='subtitle'>DoD Impact: Oklahoma</Header>
+				</GlobalHeader>
+				<TabPanel isWrapped theme='dark' activeTab={this.state.active}>
 					{
 						subNavLinks.map((nav, index) => {
 							return (
