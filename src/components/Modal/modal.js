@@ -4,9 +4,9 @@ import React from 'react';
 import { IoAndroidArrowDropdown, IoAndroidClose } from 'react-icons/io';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
-import styles from './modal.css';
+import Button from '../Button';
 
-console.log(styles);
+import styles from './modal.css';
 
 class Modal extends React.Component {
   static propTypes = {
@@ -27,16 +27,9 @@ class Modal extends React.Component {
     super(...props);
 
     this.state = {
-      unmount: false
+      active: false,
+      entered: true
     };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.active && !nextProps.active) {
-      this.setState({
-        unmount: true
-      });
-    }
   }
 
   render() {
@@ -45,6 +38,11 @@ class Modal extends React.Component {
     const extras = {
       focusDialog: !focusElementId
     };
+
+    let underlayClass = styles.underlay;
+
+    if (this.state.entered)
+      underlayClass += ` ${styles.underlayEnter}`;
 
     const transitionNames = {
       enter: styles.enter,
@@ -56,29 +54,60 @@ class Modal extends React.Component {
     };
 
     return (
+      <div>
+        <Button type='primary' onClick={this.handleActive} active={this.state.active}>Text</Button>
         <AriaModal
           {...extras}
           underlayClickExits={underlayClickExits}
-          mounted={active}
+          mounted={this.state.active}
           titleText={title}
-          onExit={onExit}
+          onEnter={this.handleEnter}
+          onExit={this.handleExit}
           applicationNode={document.getElementById(rootElementId)}
-          underlayClass={styles.underlay}
+          underlayClass={underlayClass}
+          underlayColor={false}
           className={styles.modal}
         >
-          <CSSTransitionGroup transitionName={transitionNames}
+          <CSSTransitionGroup
+            transitionName={transitionNames}
             transitionAppear
             transitionEnterTimeout={300}
             transitionAppearTimeout={300}
             transitionLeaveTimeout={300}
           >
-            {!this.state.unmount && <div styleName='modal' key='animationItem'>
-              <IoAndroidClose styleName='close-icon'/>
+           { this.state.entered &&
+             <div styleName='modal' key='animationItem'>
+              <IoAndroidClose styleName='close-icon' onClick={this.handleExit}/>
               {children}
-            </div>}
+            </div> }
           </CSSTransitionGroup>
         </AriaModal>
+      </div>
     );
+  }
+
+  handleEnter = () => {
+    this.setState({
+      entered: true
+    });
+  }
+
+  handleActive = () => {
+    this.setState({
+      active: true
+    });
+  }
+
+  handleExit = () => {
+    this.setState({
+      entered: false
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          active: false
+        });
+      }, 300);
+    });
   }
 }
 

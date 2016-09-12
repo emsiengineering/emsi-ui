@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './src/components/Modal';
+import Select from './src/components/Select';
+import Option from './src/components/Option';
+import Tab from './src/components/Tab';
+import TabPanel from './src/components/TabPanel';
+import Button from './src/components/Button';
+import Grid from './src/components/Grid';
+import Row from './src/components/Row';
+import Col from './src/components/Col';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -25,8 +33,7 @@ export class App extends React.Component {
 
     return (
       <div>
-        <button onClick={this.handleOpen}>Click me</button>
-        <Modal active={this.state.open} title='Sweet' onExit={this.handleExit}>
+        <Modal active={this.state.open} title='Sweet'>
           Test
         </Modal>
       </div>

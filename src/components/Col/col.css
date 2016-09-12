@@ -2,16 +2,16 @@
 
 @define-mixin col {
   box-sizing: border-box;
-  flex: 0 0 auto;
   padding-right: var(--half-gutter-width, 0.5rem);
   padding-left: var(--half-gutter-width, 0.5rem);
+  flex: 0 0 auto;
 }
 
 @define-mixin defaultCol {
-  @mixin col;
+  max-width: 100%;
   flex-grow: 1;
   flex-basis: 0;
-  max-width: 100%;
+  @mixin col;
 }
 
 .col-xs {
@@ -20,14 +20,14 @@
 
 @for $i from 1 to 12 {
   .col-xs-$(i) {
+    max-width: calc($i * 8.33333333) %;
+    flex-basis: calc($i * 8.33333333) %;
     @mixin col;
-    flex-basis: calc($i * 8.33333333)%;
-    max-width: calc($i * 8.33333333)%;
   }
-
   .col-xs-offset-$(i) {
+    margin-left: calc($i * 8.33333333) %;
+
     @mixin col;
-    margin-left: calc($i * 8.33333333)%;
   }
 }
 
@@ -37,18 +37,17 @@
       @mixin defaultCol $type;
     }
   }
-
   @for $i from 1 to 12 {
     @media (--$(type)-viewport) {
       .col-$(type)-$(i) {
+        max-width: calc($i * 8.33333333) %;
+        flex-basis: calc($i * 8.33333333) %;
         @mixin col;
-        flex-basis: calc($i * 8.33333333)%;
-        max-width: calc($i * 8.33333333)%;
       }
 
       .col-$(type)-offset-$i {
+        margin-left: calc($i * 8.33333333) %;
         @mixin col;
-        margin-left: calc($i * 8.33333333)%;
       }
     }
   }

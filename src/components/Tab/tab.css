@@ -1,12 +1,12 @@
 @import "../../../assets/css/variables.css";
 
 .tab {
-  padding: 2rem 2.5rem 2rem 2.5rem;
-  width: auto;
   display: inline-block;
+  padding: 2rem 2.5rem;
+  width: auto;
+  outline: none;
   font-weight: 500;
   font-size: 1.5rem;
-  outline: none;
   cursor: pointer;
 
   &-active-bottom {
@@ -18,14 +18,14 @@
     box-shadow: inset 0 3px 0 0 var(--primary-color);
     color: #2ad587;
   }
-
   @media (--medium-viewport) {
-    box-shadow: none;
     display: block;
-    padding: 1.5rem 2rem 1.5rem 0rem;
+    padding: 1.5rem 2rem 1.5rem 0;
+    box-shadow: none;
     color: white;
 
-    &-active-top, &-active-bottom {
+    &-active-top,
+    &-active-bottom {
       box-shadow: inset 0 -3px 0 0 var(--primary-color);
       color: var(--primary-color);
     }

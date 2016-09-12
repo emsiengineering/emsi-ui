@@ -23,10 +23,11 @@ module.exports = {
 	postcss: function(webpack) {
 		return {
 			plugins: [
+				require('stylelint')(require('./stylelint.config')),
 				require('postcss-easy-import')({
 					addDependencyTo: webpack
 				}),
-				require("postcss-url")(),
+				require('postcss-url')(),
 				require('postcss-mixins')(),
 				require('postcss-each')(),
 				require('postcss-for')(),
@@ -41,12 +42,12 @@ module.exports = {
 
 				// end plugins
 				require('postcss-color-function')(),
-				require("postcss-reporter")()
+				require('postcss-reporter')()
 			]
 		}
 	},
 	devServer: {
-		contentBase: "./public",
+		contentBase: './public',
 		stats: {
       colors: true,
       hash: false,

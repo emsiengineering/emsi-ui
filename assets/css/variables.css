@@ -1,25 +1,21 @@
 :root {
-  --primary-color: #41D492;
-  --slate-color: #203A45;
-  --link-color: #1964EB;
-
-  --indigo: #5C59ED;
-  --red: #F5474F;
-  --orange: #FF944A;
-  --yellow: #FCE563;
-  --teal: #33E8F0;
-  --purple: #CF94FC;
-
-  --black: #000000;
+  --primary-color: #41d492;
+  --slate-color: #203a45;
+  --link-color: #1964eb;
+  --indigo: #5c59ed;
+  --red: #f5474f;
+  --orange: #ff944a;
+  --yellow: #fce563;
+  --teal: #33e8f0;
+  --purple: #cf94fc;
+  --black: #000;
   --gray1: #404040;
-  --gray2: #7F7F7F;
-  --gray3: #BFBFBF;
-  --gray4: #E5E5E5;
-  --gray5: #F2F2F2;
-  --white: #FFFFFF;
-
+  --gray2: #7f7f7f;
+  --gray3: #bfbfbf;
+  --gray4: #e5e5e5;
+  --gray5: #f2f2f2;
+  --white: #fff;
   --border-radius: 3px;
-
   --gutter-width: 2rem;
   --outer-margin: 2rem;
   --gutter-compensation: calc((var(--gutter-width) * 0.5) * -1);
@@ -28,10 +24,11 @@
   --sm-min: 48;
   --md-min: 64;
   --lg-min: 75;
-  --screen-xs-min: var(--xs-min)em;
-  --screen-sm-min: var(--sm-min)em;
-  --screen-md-min: var(--md-min)em;
-  --screen-lg-min: var(--lg-min)em;
+  --screen-xs-min: var(--xs-min) em;
+  --screen-sm-min: var(--sm-min) em;
+  --screen-sm-min: var(--sm-min) em;
+  --screen-md-min: var(--md-min) em;
+  --screen-lg-min: var(--lg-min) em;
   --container-sm: calc(var(--sm-min) + var(--gutter-width));
   --container-md: calc(var(--md-min) + var(--gutter-width));
   --container-lg: calc(var(--lg-min) + var(--gutter-width));
@@ -40,8 +37,11 @@
 @custom-media --sm-viewport only screen and (min-width: 48em);
 @custom-media --md-viewport only screen and (min-width: 64em);
 @custom-media --lg-viewport only screen and (min-width: 75em);
-
 @custom-media --small-viewport (max-width: 24em);
 @custom-media --medium-viewport (max-width: 46.8em);
 @custom-media --large-viewport (max-width: 50em);
 @custom-media --huge-viewport (max-width: 73em);
+@custom-media --small-viewport-min (min-width: 24em);
+@custom-media --medium-viewport-min (min-width: 46.8em);
+@custom-media --large-viewport-min (min-width: 50em);
+@custom-media --huge-viewport-min (min-width: 73em);

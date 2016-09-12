@@ -2,19 +2,17 @@
 
 .wrapper {
   position: relative;
+  display: inline-block;
+  padding: 0.75em 2rem;
   height: 100%;
   outline: none;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  display: inline-block;
-  background-color: var(--gray5);
-  border-radius: 3px;
   border: 1px solid color(var(--black) a(10%));
+  border-radius: 3px;
+  background-color: var(--gray5);
   box-shadow: inset 0 2px 0 0 color(var(--white) a(20%));
-  padding: .75em 2rem .75em 2rem;
+  color: color(black a(75%));
   font-size: 1em;
   cursor: pointer;
-  color: color(black a(75%));
 
   &:focus {
     border: 1px dotted color(var(--link-color));
@@ -27,33 +25,33 @@
 
 .disabled {
   color: color(black a(33%));
-  opacity: .75;
+  opacity: 0.75;
   cursor: not-allowed;
 }
 
 .icon {
-  margin-left: 1.2rem;
   float: right;
+  margin-left: 1.2rem;
 }
 
 .ul {
-  border: 1px solid var(--gray4);
   position: relative;
-  border-radius: 3px;
-  border-top-left-radius: 0px;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: auto;
   max-height: 20rem;
+  border: 1px solid var(--gray4);
+  border-radius: 3px;
+  border-top-left-radius: 0;
 }
 
 .menu {
   position: absolute;
-  z-index: 10;
-  background-color: white;
   top: 3.5rem;
-  outline: none;
+  z-index: 10;
   min-width: 30rem;
   max-width: 100%;
+  outline: none;
+  background-color: white;
 
   &.active {
     color: var(--link-color);

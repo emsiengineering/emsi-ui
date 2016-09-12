@@ -1,48 +1,79 @@
-.underlay {
+@import "../../../assets/css/variables.css";
 
+.underlay {
+  background-color: transparent;
+  transition: all 0.3s linear;
+
+  &Enter {
+    background-color: color(black a(50%));
+  }
 }
 
 .modal {
-  position: relative;
-  margin-top: 6rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
   margin-bottom: 1rem;
-  padding: 10rem;
+  padding: 2rem;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+  width: 100%;
+  border-radius: 0;
   background-color: white;
-  width: 80rem;
+  box-shadow: color(black a(20%)) 0 1rem 1rem;
+
+  @media (--medium-viewport-min) {
+    top: 6rem;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    padding: 10rem;
+    max-width: var(--screen-md-min);
+    width: 80%;
+    border-radius: 3px;
+  }
 }
 
 .close-icon {
   position: absolute;
-  color: blue;
-  top: -3rem;
-  right: -3.5rem;
-  color: white;
-  font-size: 3rem;
-  transition: all .2s ease-in-out;
+  top: 1rem;
+  right: 1rem;
+  color: black;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.2);
+  }
+  @media (--medium-viewport-min) {
+    top: -3rem;
+    right: -3.5rem;
+    color: white;
+    font-size: 3rem;
   }
 }
 
 .enter {
   opacity: 0.01;
-  transform: scale(1.5);
+  transform: scale(0);
 }
 
 .enter.enterActive {
   opacity: 1;
-  transform: scale(1);
   transition: all 300ms ease-out;
+  transform: scale(1);
 }
 
 .leave {
   opacity: 1;
-  transform: scale(1.5);
+  transform: scale(1);
 }
 
 .leave.leaveActive {
   opacity: 0.01;
-  transform: scale(2);
-  transition: all 300ms ease-in;
+  transition: all 300ms ease-in-out;
+  transform: scale(0);
 }

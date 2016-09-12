@@ -1,70 +1,77 @@
 @import "../../../assets/css/variables.css";
 
 @define-mixin button $type, $color, $blend: 5 {
-  &_$(type) {
-    background-color: color($color);
+  &-$(type) {
     border-color: color($color blend(black 10%));
-    border-top-color: color($color blend(black $(blend)%));
+    border-top-color: color($color blend(black $(blend) %));
+    background-color: color($color);
 
     &:hover:not(:disabled) {
-      background-color: color($color blend(black $(blend)%));
+      background-color: color($color blend(black $(blend) %));
     }
 
     &:focus:not(:disabled) {
       box-shadow: inset 0 0 0 2px #fff;
     }
 
-    &:active:not(:disabled) {
-      background-color: color($color blend(black calc($blend * 3)%));
-      border-color: color($color blend(black calc($blend * 4)%));
-      box-shadow: inset 0 -1px 0 0 color(white a(25%));
-      border-bottom-color: color($color blend(black calc($blend * 3)%));
+    &:active:not(:disabled),
+    &-active:not(:disabled) {
+      border-color: color($color blend(black calc($blend * 4) %));
+      border-bottom-color: color($color blend(black calc($blend * 3) %));
+      background-color: color($color blend(black calc($blend * 3) %));
+      box-shadow: inset 0 -0.1rem 0 0 color(white a(25%));
     }
 
+    &-active:not(:disabled) {
+      &:hover {
+        background-color: color($color blend(black calc($blend * 3) %));
+      }
+
+      &:focus {
+        box-shadow: inset 0 -0.1rem 0 0 color(white a(25%));
+      }
+    }
     @mixin-content;
   }
 }
 
 .button {
-  border-style: solid;
-  border-width: 1px;
-  font-weight: 500;
-  outline: none;
-  border-radius: 3px;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-  padding: .75em 2rem .75em 2rem;
   font-size: 1em;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  font-weight: 500;
   display: inline-block;
+  padding: 1.2rem 2rem;
+  cursor: pointer;
   color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
   @mixin button primary, var(--primary-color);
   @mixin button alternate, var(--link-color);
   @mixin button danger, var(--red);
-
   @mixin button warning, var(--gray5), 3 {
     color: var(--red);
     text-shadow: 0 -1px 0 0 color(white a(50%));
 
     &:focus:not(:disabled) {
-      box-shadow: inset 0 0 0 2px var(--gray4);
       border-color: var(--gray3);
+      box-shadow: inset 0 0 0 2px var(--gray4);
     }
   }
-
   @mixin button secondary, var(--gray5), 3 {
     color: color(black a(50%));
     text-shadow: 0 -1px 0 0 color(white a(50%));
 
     &:focus:not(:disabled) {
-      box-shadow: inset 0 0 0 2px var(--gray4);
       border-color: var(--gray3);
+      box-shadow: inset 0 0 0 2px var(--gray4);
     }
-  }
-
-  &:disabled {
-    opacity: .6;
-    cursor: not-allowed;
   }
 }

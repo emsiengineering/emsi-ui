@@ -1,35 +1,32 @@
 @import "../../../assets/css/variables.css";
 
 @define-mixin modifier {
-  @mixin-content
-
   @media (--sm-viewport) {
     &-sm {
       @mixin-content;
     }
   }
-
   @media (--md-viewport) {
     &-md {
       @mixin-content;
     }
   }
-
   @media (--lg-viewport) {
     &-lg {
       @mixin-content;
     }
   }
+  @mixin-content;
 }
 
 .row {
-  box-sizing: border-box;
   display: flex;
-  flex: 0 1 auto;
   flex-direction: row;
-  flex-wrap: wrap;
+  box-sizing: border-box;
   margin-right: var(--gutter-compensation, -0.5rem);
   margin-left: var(--gutter-compensation, -0.5rem);
+  flex: 0 1 auto;
+  flex-wrap: wrap;
 
   &-reverse {
     flex-direction: row-reverse;
@@ -38,22 +35,22 @@
 
 .start {
   @mixin modifier {
-    justify-content: flex-start;
     text-align: start;
+    justify-content: flex-start;
   }
 }
 
 .center {
   @mixin modifier {
-    justify-content: center;
     text-align: center;
+    justify-content: center;
   }
 }
 
 .end {
   @mixin modifier {
-    justify-content: flex-end;
     text-align: end;
+    justify-content: flex-end;
   }
 }
 
