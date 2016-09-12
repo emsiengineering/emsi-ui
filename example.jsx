@@ -20,41 +20,41 @@ jss.createStyleSheet(fonts, { named: false }).attach();
 jss.createStyleSheet(body, { named: false }).attach();
 
 export class App extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			active: 0
-		};
-	}
-	render() {
-		const subNavLinks = [
-			{
-				name: 'Overview',
-				link: 'overview'
-			},
-			{
-				name: 'Impact Analysis',
-				link: 'impact'
-			},
-			{
-				name: 'Supply Chain',
-				link: 'supply'
-			},
-			{
-				name: 'Business Profile',
-				link: 'business'
-			}
-		];
-		return (
+    this.state = {
+      active: 0
+    };
+  }
+  render() {
+    const subNavLinks = [
+      {
+        name: 'Overview',
+        link: 'overview'
+      },
+      {
+        name: 'Impact Analysis',
+        link: 'impact'
+      },
+      {
+        name: 'Supply Chain',
+        link: 'supply'
+      },
+      {
+        name: 'Business Profile',
+        link: 'business'
+      }
+    ];
+    return (
       <div>
         <Modal active={this.state.open} title='Sweet'>
           Test
         </Modal>
       </div>
-		);
+    );
   }
-	handleLink = (index) => this.setState({ active: index })
+  handleLink = (index) => this.setState({ active: index })
 }
 
 ReactDOM.render(<App/>, document.querySelector('#myApp'));
