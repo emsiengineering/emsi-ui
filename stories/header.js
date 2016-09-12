@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import Header from '../src/components/Header/component';
+import Header from '../src/components/Header';
 import { Grid, Row, Col } from 'react-flexgrid';
 
 storiesOf('Header', module)

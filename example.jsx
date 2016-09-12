@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './src/components/Modal';
-import Select from './src/components/Select';
-import Option from './src/components/Option';
-import Tab from './src/components/Tab';
+import Checkbox from './src/components/Checkbox';
+import Pillbox from './src/components/Pillbox';
+import Header from './src/components/Header';
 import TabPanel from './src/components/TabPanel';
-import Button from './src/components/Button';
-import Grid from './src/components/Grid';
-import Row from './src/components/Row';
-import Col from './src/components/Col';
+import Tab from './src/components/Tab';
+import ContentWrap from './src/components/ContentWrap';
+import GlobalHeader from './src/components/GlobalHeader';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -21,17 +20,33 @@ jss.createStyleSheet(fonts, { named: false }).attach();
 jss.createStyleSheet(body, { named: false }).attach();
 
 export class App extends React.Component {
-  constructor(props) {
-    super(...props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      open: false
-    };
-  }
-
-  render() {
-
-    return (
+		this.state = {
+			active: 0
+		};
+	}
+	render() {
+		const subNavLinks = [
+			{
+				name: 'Overview',
+				link: 'overview'
+			},
+			{
+				name: 'Impact Analysis',
+				link: 'impact'
+			},
+			{
+				name: 'Supply Chain',
+				link: 'supply'
+			},
+			{
+				name: 'Business Profile',
+				link: 'business'
+			}
+		];
+		return (
       <div>
         <Modal active={this.state.open} title='Sweet'>
           Test
@@ -39,19 +54,7 @@ export class App extends React.Component {
       </div>
 		);
   }
-
-  handleOpen = () => {
-    this.setState({
-      open: true
-    });
-  }
-
-  handleExit = () => {
-    this.setState({
-      open: false
-    });
-  }
-
+	handleLink = (index) => this.setState({ active: index })
 }
 
 ReactDOM.render(<App/>, document.querySelector('#myApp'));

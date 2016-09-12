@@ -1,12 +1,11 @@
 import AriaModal from 'react-aria-modal';
 import CSSModules from 'react-css-modules';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import React from 'react';
 import { IoAndroidArrowDropdown, IoAndroidClose } from 'react-icons/io';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-
-import Button from '../Button';
 
 import styles from './modal.css';
+import Button from '../Button';
 
 class Modal extends React.Component {
   static propTypes = {

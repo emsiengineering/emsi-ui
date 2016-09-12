@@ -1,0 +1,18 @@
+@import "../../../assets/css/variables.css";
+
+.content-wrap {
+  margin: 0 auto;
+  padding: 0 2rem;
+  &:before {
+    content: " ";
+    display: table;
+  }
+  @media (--md-viewport) {
+    max-width: 118rem;
+    padding: 0 4rem;
+  }
+
+  @media (--lg-viewport) {
+    max-width: 120rem;
+  }
+}

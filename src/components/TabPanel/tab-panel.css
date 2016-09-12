@@ -8,9 +8,14 @@
   color: color(black a(75%));
   transition: max-height 500ms ease-in-out;
 
-  &-dark {
+  &.darker {
     background-color: var(--slate-color);
     color: white;
+  }
+
+  &.dark {
+    background-color: color(var(--slate-color) a(90%));
+    color: #fff;
   }
 
   &-closed {
