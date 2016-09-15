@@ -30,44 +30,9 @@ export class App extends React.Component {
     };
   }
   render() {
-    const subNavLinks = [
-      {
-        name: 'Overview',
-        link: 'overview'
-      },
-      {
-        name: 'Impact Analysis',
-        link: 'impact'
-      },
-      {
-        name: 'Supply Chain',
-        link: 'supply'
-      },
-      {
-        name: 'Business Profile',
-        link: 'business'
-      }
-    ];
     return (
 			<GlobalHeader color='#203A45'>
 				<Header bold type='subtitle'>DoD Impact: Oklahoma</Header>
-				<Select label='Year'>
-					<Option>2016.1</Option>
-					<Option>2016.2</Option>
-					<Option>2016.3</Option>
-					<Option>2016.4</Option>
-				</Select>
-				<Select>
-					<Option>County</Option>
-					<Option>MSA</Option>
-					<Option>Zip</Option>
-					<Option>State</Option>
-				</Select>
-				<Select>
-					<Option>Oklahoma</Option>
-					<Option>California</Option>
-					<Option>Texas</Option>
-				</Select>
 			</GlobalHeader>
     );
   }
