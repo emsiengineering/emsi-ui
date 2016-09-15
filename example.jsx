@@ -8,6 +8,8 @@ import TabPanel from './src/components/TabPanel';
 import Tab from './src/components/Tab';
 import ContentWrap from './src/components/ContentWrap';
 import GlobalHeader from './src/components/GlobalHeader';
+import Select from './src/components/Select';
+import Option from './src/components/Option';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -47,11 +49,26 @@ export class App extends React.Component {
       }
     ];
     return (
-      <div>
-        <Modal active={this.state.open} title='Sweet'>
-          Test
-        </Modal>
-      </div>
+			<GlobalHeader color='#203A45'>
+				<Header bold type='subtitle'>DoD Impact: Oklahoma</Header>
+				<Select label='Year'>
+					<Option>2016.1</Option>
+					<Option>2016.2</Option>
+					<Option>2016.3</Option>
+					<Option>2016.4</Option>
+				</Select>
+				<Select>
+					<Option>County</Option>
+					<Option>MSA</Option>
+					<Option>Zip</Option>
+					<Option>State</Option>
+				</Select>
+				<Select>
+					<Option>Oklahoma</Option>
+					<Option>California</Option>
+					<Option>Texas</Option>
+				</Select>
+			</GlobalHeader>
     );
   }
   handleLink = (index) => this.setState({ active: index })

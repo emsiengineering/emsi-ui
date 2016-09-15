@@ -8,6 +8,6 @@
   float: left;
 
   &:focus {
-    outline: 1px dotted rgba(0,0,0,0.1);
+    outline: 1px dotted rgba(0, 0, 0, 0.1);
   }
 }

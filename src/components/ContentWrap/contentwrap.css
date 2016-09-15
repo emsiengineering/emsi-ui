@@ -3,7 +3,8 @@
 .content-wrap {
   margin: 0 auto;
   padding: 0 2rem;
-  &:before {
+
+  &::before {
     content: " ";
     display: table;
   }
