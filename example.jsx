@@ -33,6 +33,11 @@ export class App extends React.Component {
     return (
 			<GlobalHeader color='#203A45'>
 				<Header bold type='subtitle'>DoD Impact: Oklahoma</Header>
+				<Select>
+					<Option>test</Option>
+					<Option>test</Option>
+					<Option>test</Option>
+				</Select>
 			</GlobalHeader>
     );
   }
