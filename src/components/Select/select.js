@@ -1,18 +1,20 @@
-import { IoAndroidArrowDropdown } from 'react-icons/io';
+import React, { PropTypes } from 'react';
 import { Wrapper, Button, Menu, openMenu, closeMenu } from 'react-aria-menubutton';
-import React from 'react';
 
 import CSSModules from 'react-css-modules';
 import styles from './select.css';
 import uniqueId from 'lodash.uniqueid';
+import Icon from '../Icon';
 
 class Select extends React.Component {
   static propTypes = {
-    children: React.PropTypes.arrayOf(
-      React.PropTypes.object.isRequired
+    children: PropTypes.arrayOf(
+      PropTypes.object.isRequired
     ).isRequired,
-    onSelect: React.PropTypes.func,
-    disabled: React.PropTypes.bool
+    onSelect: PropTypes.func,
+    disabled: PropTypes.bool,
+		label: PropTypes.string,
+    styles: PropTypes.object
   }
 
   static defaultProps = {
@@ -24,7 +26,6 @@ class Select extends React.Component {
 
     this.state = {
       activeOption: null,
-      open: false,
       id: uniqueId('wrapper')
     };
   }
@@ -40,42 +41,29 @@ class Select extends React.Component {
       );
     });
   }
-
-  renderMenu = (menu) => {
-    if (menu.isOpen && this.state.open)
-      return <ul styleName='ul'>{this.renderChildren()}</ul>;
-    else if (menu.isOpen && !this.state.open)
-      closeMenu(this.state.id);
-    else if (!menu.isOpen && this.state.open)
-      openMenu(this.state.id);
-    else
-      return null;
-  }
-
   render() {
+    const { styles: CSSStyles, ...other } = this.props;
     return (
-      <Wrapper
-        onSelection={this.handleSelection}
-        id={this.state.id}
-      >
-        <Button disabled={this.props.disabled} styleName={this.props.disabled ? 'wrapper disabled' : 'wrapper '} onClick={this.handleClick}>
-          {this.state.activeOption === null ? 'Select Option' : this.state.activeOption}
-          <IoAndroidArrowDropdown styleName='icon'/>
-        </Button>
-          {
-            !this.props.disabled &&
-            <Menu styleName='menu'>
-              {this.renderMenu}
-            </Menu>
-          }
-      </Wrapper>
+			<div>
+				<label htmlFor={this.state.id}>{this.props.label}</label>
+				<Wrapper
+          {...other}
+					onSelection={this.handleSelection}
+					id={this.state.id}
+				>
+					<Button disabled={this.props.disabled} styleName={this.props.disabled ? 'wrapper disabled' : 'wrapper'}>
+						{this.state.activeOption === null ? 'Select Option' : this.state.activeOption}
+						<Icon component='IoAndroidArrowDropdown' styleName='icon'/>
+					</Button>
+						{
+							!this.props.disabled &&
+							<Menu styleName='menu'>
+								<ul styleName='ul'>{this.renderChildren()}</ul>
+							</Menu>
+						}
+				</Wrapper>
+			</div>
     );
-  }
-
-  handleClick = () => {
-    this.setState({
-      open: !this.state.open
-    });
   }
 
   handleSelection = (option, event) => {

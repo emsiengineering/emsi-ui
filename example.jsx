@@ -11,15 +11,8 @@ import TabPanel from './src/components/TabPanel';
 import Tab from './src/components/Tab';
 import ContentWrap from './src/components/ContentWrap';
 import GlobalHeader from './src/components/GlobalHeader';
-import Row from './src/components/Row';
-import Grid from './src/components/Grid';
-import Col from './src/components/Col';
-import Input from './src/components/Input';
-import Textarea from './src/components/Textarea';
-import Button from './src/components/Button';
-import DataTable from './src/components/DataTable';
-import Tr from './src/components/Tr';
-import Td from './src/components/Td';
+import Select from './src/components/Select';
+import Option from './src/components/Option';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -43,59 +36,20 @@ export class App extends React.Component {
   }
 
   render() {
-
-    const columns = [
-      {
-        property: 'animal',
-        name: 'Animals',
-        sortable: true
-      },
-      {
-        property: 'number',
-        name: 'Numbers',
-        align: 'right'
-      },
-      {
-        property: 'alpha',
-        name: 'Alphanumeric',
-        align: 'right'
-      }
-    ];
-
-    const data = [
-      {
-        animal: 'Zebra',
-        number: 5,
-        alpha: 'test1'
-      },
-      {
-        animal: 'Aardvark',
-        number: 9,
-        alpha: 'test2'
-      }
-    ];
-
     return (
-      <div style={{ margin: '5rem' }}>
-        <DataTable
-          selectable
-          onSelect={this.handleCheck}
-          columns={columns}
-          data={data} />
-        <br />
-        <Button>Test</Button><br /><br />
-        <Button active>Test</Button><br /><br />
-        <Button disabled>Test</Button><br /><br />
-        <Button type='secondary'> Test</Button><br /><br />
-        <Button type='alternate'> Test</Button><br /><br />
-        <Button type='warning'> Test</Button><br /><br />
-        <Button type='danger'> Test</Button><br /><br />
-      </div>
+			<GlobalHeader color='#203A45'>
+				<Header bold type='subtitle'>DoD Impact: Oklahoma</Header>
+				<Select>
+					<Option>test</Option>
+					<Option>test</Option>
+					<Option>test</Option>
+				</Select>
+			</GlobalHeader>
     );
   }
 
   handleCheck = (selected, e) => {
-    console.log(selected);
+    // console.log(selected);
   }
 
   handleLink = (index) => this.setState({ active: index })
