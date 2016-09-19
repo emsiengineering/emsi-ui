@@ -15,7 +15,7 @@
 
   &.dark {
     background-color: color(var(--slate-color) a(90%));
-    color: #fff;
+    color: white;
   }
 
   &-closed {

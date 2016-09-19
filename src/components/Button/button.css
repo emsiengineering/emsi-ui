@@ -1,38 +1,31 @@
 @import "../../../assets/css/variables.css";
 
-@define-mixin button $type, $color, $blend: 5 {
-  &-$(type) {
-    border-color: color($color blend(black 10%));
-    border-top-color: color($color blend(black $(blend) %));
-    background-color: color($color);
+@define-mixin active $color, $blend: 5 {
+  border-color: color($color blend(black calc($blend * 4) %));
+  border-bottom-color: color($color blend(black calc($blend * 3) %));
+  background-color: color($color blend(black calc($blend * 3) %));
+  box-shadow: inset 0 -0.1rem 0 0 color(white a(25%));
 
-    &:hover:not(:disabled) {
-      background-color: color($color blend(black $(blend) %));
-    }
-
-    &:focus:not(:disabled) {
-      box-shadow: inset 0 0 0 2px #fff;
-    }
-
-    &:active:not(:disabled),
-    &-active:not(:disabled) {
-      border-color: color($color blend(black calc($blend * 4) %));
-      border-bottom-color: color($color blend(black calc($blend * 3) %));
-      background-color: color($color blend(black calc($blend * 3) %));
-      box-shadow: inset 0 -0.1rem 0 0 color(white a(25%));
-    }
-
-    &-active:not(:disabled) {
-      &:hover {
-        background-color: color($color blend(black calc($blend * 3) %));
-      }
-
-      &:focus {
-        box-shadow: inset 0 -0.1rem 0 0 color(white a(25%));
-      }
-    }
-    @mixin-content;
+  &:hover {
+    background-color: color($color blend(black calc($blend * 3) %));
   }
+}
+
+@define-mixin button $color, $blend: 5 {
+  border-color: color($color blend(black 10%));
+  border-top-color: color($color blend(black $(blend) %));
+  background-color: color($color);
+  outline-color: color($color);
+
+  &:hover:not(:disabled) {
+    background-color: color($color blend(black $(blend) %));
+  }
+
+  &:active:not(:disabled) {
+    @mixin active $color, $blend);
+  }
+
+  @mixin-content;
 }
 
 .button {
@@ -45,33 +38,69 @@
   border-width: 1px;
   border-style: solid;
   border-radius: 3px;
-  outline: none;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 
   &:disabled {
     cursor: not-allowed;
     opacity: 0.6;
   }
-  @mixin button primary, var(--primary-color);
-  @mixin button alternate, var(--link-color);
-  @mixin button danger, var(--red);
-  @mixin button warning, var(--gray5), 3 {
-    color: var(--red);
-    text-shadow: 0 -1px 0 0 color(white a(50%));
+}
 
-    &:focus:not(:disabled) {
-      border-color: var(--gray3);
-      box-shadow: inset 0 0 0 2px var(--gray4);
-    }
-  }
-  @mixin button secondary, var(--gray5), 3 {
-    color: color(black a(50%));
-    text-shadow: 0 -1px 0 0 color(white a(50%));
+.primary {
+  composes: button;
+  @mixin button var(--primary-color);
+}
 
-    &:focus:not(:disabled) {
-      border-color: var(--gray3);
-      box-shadow: inset 0 0 0 2px var(--gray4);
-    }
+.primary-active {
+  composes: primary;
+  @mixin active var(--primary-color);
+}
+
+.alternate {
+  composes: button;
+  @mixin button var(--link-color);
+}
+
+.alternate-active {
+  composes: alternate;
+  @mixin active var(--link-color);
+}
+
+.danger {
+  composes: button;
+  @mixin button var(--red);
+}
+
+.danger-active {
+  composes: danger;
+  @mixin active var(--red);
+}
+
+.secondary {
+  composes: button;
+  color: color(black a(50%));
+  text-shadow: 0 -1px 0 0 color(white a(50%));
+  @mixin button var(--gray5), 3 {
+    outline-color: color(var(--gray5) b(50%));
   }
+}
+
+.secondary-active {
+  composes: secondary;
+  @mixin active var(--gray5), 3);
+}
+
+.warning {
+  composes: button;
+  color: var(--red);
+  text-shadow: 0 -1px 0 0 color(white a(50%));
+  outline-color: var(--red);
+  @mixin button var(--gray5), 3 {
+    outline-color: color(var(--red) w(50%));
+  }
+}
+
+.warning-active {
+  composes: warning;
+  @mixin active var(--gray5), 3);
 }

@@ -8,6 +8,7 @@
   font-size: 1.3rem;
   color: #fff;
   margin: 1rem;
+  margin-left: 0;
 
   &.active {
     background-color: color(#fff a(30%));

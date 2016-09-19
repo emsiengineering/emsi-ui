@@ -18,14 +18,13 @@ class TabPanel extends React.Component {
       PropTypes.number,
       PropTypes.string
     ]),
-		isWrapped: PropTypes.bool
+    padded: PropTypes.bool
   }
 
   static defaultProps = {
     position: 'bottom',
     activeTab: 0,
-    theme: '',
-		isWrapped: false
+    theme: ''
   }
 
   componentWillMount() {
@@ -39,7 +38,7 @@ class TabPanel extends React.Component {
   }
 
   render() {
-    const { position, onChange, activeTab, theme, isWrapped } = this.props;
+    const { position, onChange, activeTab, theme, padded } = this.props;
     let styleName = `${theme}` ? `tab-panel ${theme}` : 'tab-panel';
     let menuItems = this.menuItems();
 
@@ -52,12 +51,13 @@ class TabPanel extends React.Component {
 					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
 						<TabList styleName={styleName}>
 							{
-								isWrapped ?
+								padded
+                ?
 								<ContentWrap>
 									{menuItems.tabs}
 								</ContentWrap>
 								:
-									<div>{menuItems.tabs}</div>
+								<div>{menuItems.tabs}</div>
 							}
 						</TabList>
 						{menuItems.panels}

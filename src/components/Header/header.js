@@ -3,19 +3,30 @@ import CSSModules from 'react-css-modules';
 
 import styles from './header.css';
 
-const Header = ({ component: Component, children, type, bold, styles: CSSStyles, ...other }) => {
+const Header = ({ component: Component, color, children, type, bold, styles: CSSStyles, ...other }) => {
 
-	const StyleNames = bold ? `bold ${type}` : `${type}`;
+  let styleNames = bold ? `bold ${type}` : `${type}`;
+
+  switch (color) {
+  case 'primary':
+    styleNames += ' primary';
+    break;
+
+  case 'alternate':
+    styleNames += ' alternate';
+    break;
+  }
 
   return (
-    <Component {...other} styleName={StyleNames}>{children}</Component>
+    <Component {...other} styleName={styleNames}>{children}</Component>
   );
 };
 
 Header.propTypes = {
   type: React.PropTypes.oneOf(['display', 'headline', 'title', 'subtitle', 'body', 'caption', 'footnote']),
+  color: React.PropTypes.oneOf(['primary', 'alternate']),
   bold: React.PropTypes.bool,
-	styles: PropTypes.object
+  styles: PropTypes.object
 };
 
 Header.defaultProps = {

@@ -1,22 +1,52 @@
 @import "../../../assets/css/variables.css";
 
-.checkbox {
-  outline: none;
+.inline {
+  display: inline-block;
+  margin-right: 3rem;
+  margin-left: -0.35rem;
+}
+
+.block {
+  margin-left: -0.35rem;
+}
+
+.cell {
+  margin: 0;
+  padding: 0;
+
+  & > .content {
+    margin: 0;
+
+    & > svg {
+      margin-top: 0;
+      margin-right: 0;
+    }
+  }
 }
 
 .content {
   margin: 1rem 0;
-}
-
-.checkbox svg {
-  position: relative;
-  font-size: 2rem;
-  margin-right: 1.5rem;
+  display: inline-block;
+  width: auto;
+  border: 1px solid transparent;
   cursor: pointer;
-  color: var(--gray2);
-  outline: none;
 
-  &:hover {
+  & > svg {
+    position: relative;
+    font-size: 2.4rem;
+    margin-right: 1rem;
+    margin-top: -0.35rem;
+    cursor: pointer;
+    color: var(--gray2);
+  }
+
+  & > span {
+    margin-top: 0.5rem;
+    padding-right: 0.5rem;
+    display: inline-block;
+  }
+
+  &:hover svg {
     color: var(--link-color);
   }
 
@@ -25,12 +55,7 @@
   }
 }
 
-.checkbox span {
-  outline: none;
-  vertical-align: middle;
-  font-size: 1.5rem;
-
-  &.selected {
-    color: var(--link-color);
-  }
+.selected,
+svg.selected {
+  color: var(--link-color);
 }

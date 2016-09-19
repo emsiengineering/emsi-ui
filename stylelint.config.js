@@ -16,6 +16,9 @@ module.exports = {
       except: [
         'first-nested'
       ]
+    }],
+    'property-no-unknown': [ true, {
+      ignoreProperties: ['composes']
     }]
   }
 };

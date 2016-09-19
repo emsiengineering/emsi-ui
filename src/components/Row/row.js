@@ -28,7 +28,7 @@ const Row = ({ children, component: Component, styles: CSSSTyles, ...other }) =>
   const styleName = getClassNames(other);
 
   return (
-    <div styleName={styleName}>
+    <div {...other} styleName={styleName}>
       {children}
     </div>
   );

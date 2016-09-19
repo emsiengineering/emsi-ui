@@ -1,61 +1,99 @@
-import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
-import Icon from '../Icon';
+import React, { PropTypes } from 'react';
 
 import styles from './checkbox.css';
+import Icon from '../Icon';
 
 class Checkbox extends React.Component {
   static propTypes = {
     styles: PropTypes.object,
-		value: PropTypes.string,
-		isRadio: PropTypes.bool
-	}
-	static defaultProps = {
-    isRadio: false
-	}
-	constructor(props) {
-		super(props);
+    value: PropTypes.string,
+    radio: PropTypes.bool,
+    checked: PropTypes.bool,
+    inline: PropTypes.bool,
+    onChange: PropTypes.func,
+    type: PropTypes.oneOf(['inline', 'block', 'cell'])
+  }
 
-		this.state = {
-			isChecked: false
-		};
-	}
+  static defaultProps = {
+    radio: false,
+    onChange: function noop() {}
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      focused: false
+    };
+  }
+
+  renderRadio() {
+    const { value, checked } = this.props;
+    return checked ?
+      <Icon component='IoAndroidRadioButtonOn' styleName='selected' /> :
+      <Icon component='IoAndroidRadioButtonOff'  />;
+  }
+
+  renderCheckbox() {
+    const { value, checked } = this.props;
+
+    return checked ?
+      <Icon component='IoAndroidCheckbox' styleName='selected' /> :
+      <Icon component='IoAndroidCheckboxOutlineBlank'  />;
+  }
+
   render() {
-    const { children, value, isRadio, styles: CSS, ...other } = this.props;
+    const { children, checked, type, value, radio, styles: CSS, ...other } = this.props;
+    const role = radio ? 'radio' : 'checkbox';
+
+    // tabIndex, onKeyPress and onClick come before ...other so that the user can override the behavior
 
     return (
-			<label htmlFor={value}>
-				<div
-					{...other}
-					role={isRadio ? 'radio' : 'checkbox'}
-					tabIndex='0'
-					aria-checked={this.state.isChecked}
-					id={value}
-					onClick={this.handleCheckBox}
-					styleName='checkbox'
-				>
-				<div styleName='content'>
-					{
-					this.state.isChecked ?
-						<span>
-						{ isRadio ?
-							<Icon component='IoIosCircleFilled' styleName='checkbox selected' value={value}/>
-							: <Icon component='IoAndroidCheckbox' styleName='checkbox selected' value={value}/> }
-						<span styleName='checkbox selected'>{children}</span>
-						</span> :
-						<span>
-							{ isRadio ?
-								<Icon component='IoIosCircleOutline'  />
-								: <Icon component='IoAndroidCheckboxOutlineBlank' value={value} /> }
-							<span>{children}</span>
-						</span>
-					}
-				</div>
-			</div>
-			</label>
-		);
+      <label htmlFor={value}>
+        <div styleName={type}>
+          <div
+            tabIndex='0'
+            {...other}
+            role={role}
+            aria-checked={checked}
+            id={value}
+            onClick={this.handleChange}
+            onKeyPress={this.handleKeyPress}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            styleName='content'
+          >
+            {radio ? this.renderRadio() : this.renderCheckbox()}
+            {type !== 'cell' && <span styleName={checked ? 'selected' : null}>{children}</span>}
+          </div>
+        </div>
+      </label>
+    );
   }
-  handleCheckBox = () => this.setState({ isChecked: !this.state.isChecked })
+
+  handleKeyPress = (e) => {
+    e.preventDefault();
+    // spacebar
+    if (e.which === 32 && this.state.focused)
+      this.handleChange(e);
+  }
+
+  handleChange = (e) => {
+    this.props.onChange(e, this.props.value);
+  }
+
+  handleFocus = () => {
+    this.setState({
+      focused: true
+    });
+  }
+
+  handleBlur = () => {
+    this.setState({
+      focused: false
+    });
+  }
 }
 
 export default CSSModules(Checkbox, styles, { allowMultiple: true });

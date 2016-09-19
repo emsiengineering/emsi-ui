@@ -13,8 +13,8 @@ const Pillbox = ({ children, active, styles: CSSSTyles, ...other }) => {
 };
 
 Pillbox.propTypes = {
-	styles: React.PropTypes.object,
-  active: PropTypes.bool.isRequired
+  styles: React.PropTypes.object,
+  active: PropTypes.bool
 };
 
 export default CSSModules(Pillbox, styles, { allowMultiple: true });

@@ -7,12 +7,12 @@ import styles from './button.css';
 import { hexToRGB } from '../../helpers';
 
 const Button = ({ component: Component, disabled, children, type, styles: CSSStyles, active, ...other }) => {
-  let styleName = `button button-${type}`;
+  let styleName = type;
 
-  styleName += active ? ` button-${type}-active` : '';
+  styleName += active && !disabled ? '-active' : '';
 
   return (
-    <Component {...other} disabled={Component === 'button' && disabled} styleName={styleName}>{children}</Component>
+    <Component tabIndex='0' {...other} disabled={Component === 'button' && disabled} styleName={styleName}>{children}</Component>
   );
 };
 
@@ -34,4 +34,4 @@ Button.defaultProps = {
   type: 'primary'
 };
 
-export default CSSModules(Button, styles, { allowMultiple: true });
+export default CSSModules(Button, styles);
