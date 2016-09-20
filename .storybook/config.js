@@ -16,9 +16,7 @@ function loadStories() {
   require('../stories/tabs');
 	require('../stories/checkbox');
 	require('../stories/pillbox');
-	require('../stories/globalheader');
 	require('../stories/icon');
-	require('../stories/logo');
   // require as many stories as you need.
 }
 

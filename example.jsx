@@ -10,9 +10,9 @@ import Header from './src/components/Header';
 import TabPanel from './src/components/TabPanel';
 import Tab from './src/components/Tab';
 import ContentWrap from './src/components/ContentWrap';
-import GlobalHeader from './src/components/GlobalHeader';
 import Select from './src/components/Select';
 import Option from './src/components/Option';
+import Icon from './src/components/Icon';
 
 import theme from './src/theme';
 import jss from './src/jss';
@@ -37,14 +37,13 @@ export class App extends React.Component {
 
   render() {
     return (
-			<GlobalHeader color='#203A45'>
-				<Header bold type='subtitle'>DoD Impact: Oklahoma</Header>
-				<Select>
-					<Option>test</Option>
-					<Option>test</Option>
-					<Option>test</Option>
-				</Select>
-			</GlobalHeader>
+			<div>
+        <Checkbox>Test</Checkbox>
+        <Checkbox checked />
+        <Icon name='checkbox' />
+        <Icon name='checkbox' color='primary' />
+        <Icon name='checkbox' color='alternate' />
+      </div>
     );
   }
 

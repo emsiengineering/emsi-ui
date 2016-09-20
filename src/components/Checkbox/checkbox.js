@@ -31,16 +31,16 @@ class Checkbox extends React.Component {
   renderRadio() {
     const { value, checked } = this.props;
     return checked ?
-      <Icon component='IoAndroidRadioButtonOn' styleName='selected' /> :
-      <Icon component='IoAndroidRadioButtonOff'  />;
+      <Icon name='radioChecked' styleName='selected' /> :
+      <Icon name='radio' />;
   }
 
   renderCheckbox() {
     const { value, checked } = this.props;
 
     return checked ?
-      <Icon component='IoAndroidCheckbox' styleName='selected' /> :
-      <Icon component='IoAndroidCheckboxOutlineBlank'  />;
+      <Icon name='checkboxChecked' styleName='selected' /> :
+      <Icon name='checkbox'  />;
   }
 
   render() {

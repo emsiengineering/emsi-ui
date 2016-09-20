@@ -2,7 +2,7 @@ import AriaModal from 'react-aria-modal';
 import CSSModules from 'react-css-modules';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import React from 'react';
-import { IoAndroidArrowDropdown, IoAndroidClose } from 'react-icons/io';
+import Icon from '../Icon';
 
 import styles from './modal.css';
 import Button from '../Button';
@@ -76,7 +76,7 @@ class Modal extends React.Component {
           >
            { this.state.entered &&
              <div styleName='modal' key='animationItem'>
-              <IoAndroidClose styleName='close-icon' onClick={this.handleExit}/>
+              <Icon name='close' styleName='close-icon' onClick={this.handleExit}/>
               {children}
             </div> }
           </CSSTransitionGroup>

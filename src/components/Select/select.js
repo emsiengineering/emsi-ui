@@ -53,7 +53,7 @@ class Select extends React.Component {
 				>
 					<Button disabled={this.props.disabled} styleName={this.props.disabled ? 'wrapper disabled' : 'wrapper'}>
 						{this.state.activeOption === null ? 'Select Option' : this.state.activeOption}
-						<Icon component='IoAndroidArrowDropdown' styleName='icon'/>
+						<Icon name='dropdown' styleName='icon'/>
 					</Button>
 						{
 							!this.props.disabled &&
