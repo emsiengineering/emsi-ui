@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 import styles from './grid.css';
 
 const Grid = ({ fluid, children, component: Component, styles: CSSStyles, ...other }) => {
-  const styleName = fluid ? 'container container-fluid' : 'container';
+  const styleName = fluid ? 'fluid' : 'grid';
 
   return (
     <div {...other} styleName={styleName}>

@@ -3,21 +3,31 @@
 .option {
   position: relative;
   z-index: 2;
-  padding: 0.75em 0 0.75em 2rem;
+  padding: 0.75em 2rem;
   outline: none;
   border: 1px solid transparent;
   color: color(black a(75%));
   cursor: pointer;
 
-  &.active {
-    z-index: 2;
-    border-color: var(--link-color);
-    background-color: var(--link-color);
-    color: color(var(--white) a(75%));
+  &:focus {
+    z-index: 3;
 
-    &:focus {
-      z-index: 3;
-      border: 1px dotted color(var(--white));
+    &::before {
+      color: color(var(--white) a(75%));
+      opacity: 1;
+      content: '\f125';
+      margin-top: -0.5rem;
+      font-size: 0.5rem;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+      display: inline-block;
+      font-family: Ionicons;
+    }
+  }
+
+  &:focus:not(.active) {
+    &::before {
+      color: black;
     }
   }
 
@@ -25,9 +35,11 @@
     background-color: color(var(--link-color) a(10%));
     color: var(--link-color);
   }
+}
 
-  &:focus:not(.active) {
-    z-index: 3;
-    border: 1px dotted color(var(--link-color));
-  }
+.active {
+  composes: option;
+  border-color: var(--link-color);
+  background-color: var(--link-color);
+  color: color(var(--white) a(75%));
 }

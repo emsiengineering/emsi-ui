@@ -17,7 +17,7 @@
   --white: #fff;
   --border-radius: 3px;
   --gutter-width: 2rem;
-  --outer-margin: 2rem;
+  --outer-margin: 0;
   --gutter-compensation: calc((var(--gutter-width) * 0.5) * -1);
   --half-gutter-width: calc((var(--gutter-width) * 0.5));
   --xs-min: 30;

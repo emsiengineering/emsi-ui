@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
+import Checkbox from '../Checkbox';
+import Radio from '../Radio';
 
 class CheckboxGroup extends React.Component {
   static propTypes = {
     allowMultiple: React.PropTypes.bool,
     required: React.PropTypes.bool,
-    inline: React.PropTypes.bool,
-    onChange: React.PropTypes.func
+    onChange: React.PropTypes.func,
+    children: React.PropTypes.array.isRequired
   }
 
   static defaultProps = {
@@ -26,7 +28,7 @@ class CheckboxGroup extends React.Component {
     let firstChild = '';
 
     // loop through children looking for default checked
-    this.props.children.forEach((child, index) => {
+    React.Children.toArray(this.props.children).forEach((child, index) => {
       if (child.props.checked)
         selected.push(child.props.value);
 
@@ -57,7 +59,6 @@ class CheckboxGroup extends React.Component {
         child,
         {
           ...child.props,
-          inline: this.props.inline,
           checked: this.state.selected.includes(child.props.value),
           onChange: this.handleClick,
           key: `checkbox-${index}`
@@ -77,7 +78,8 @@ class CheckboxGroup extends React.Component {
   handleClick = (e, value) => {
     let selected = this.state.selected;
     let changeCallback = () => {
-      this.props.onChange(e, this.state.selected);
+      const state = this.state.selected.length == 1 ? this.state.selected[0] : this.state.selected;
+      this.props.onChange(e, state);
     };
 
     // if the value is in the array and this doesn't force a selection

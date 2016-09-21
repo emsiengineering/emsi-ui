@@ -14,11 +14,11 @@ function loadStories() {
   require('../stories/button');
   require('../stories/select');
   require('../stories/tabs');
-	require('../stories/checkbox');
-	require('../stories/pillbox');
-	require('../stories/globalheader');
-	require('../stories/icon');
-	require('../stories/logo');
+  require('../stories/checkbox');
+  require('../stories/pillbox');
+  require('../stories/icon');
+  require('../stories/label');
+  require('../stories/card');
   // require as many stories as you need.
 }
 

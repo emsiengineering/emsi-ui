@@ -1,10 +1,7 @@
-import cx from 'classnames';
 import CSSModules from 'react-css-modules';
 import React from 'react';
-import { elementType } from 'react-prop-types';
 
 import styles from './button.css';
-import { hexToRGB } from '../../helpers';
 
 const Button = ({ component: Component, disabled, children, type, styles: CSSStyles, active, ...other }) => {
   let styleName = type;
