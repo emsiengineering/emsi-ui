@@ -82,7 +82,6 @@
         //
         "jsx-quotes": [2, "prefer-single"],
         "react/jsx-curly-spacing": [1, "never"],
-        "react/jsx-max-props-per-line": [1, {"maximum": 3}],
         "react/jsx-boolean-value": 1,
         "react/jsx-no-undef": 2,
         "react/jsx-no-duplicate-props": 1,
@@ -98,7 +97,6 @@
         "react/no-multi-comp": [1, { "ignoreStateless": true }],
         "react/no-danger": 1,
         "react/no-unknown-property": 2,
-        "react/prop-types": [2, { "ignore": ["onClick", "children", "state", "component", "defaultClasses", "className", "sheet", "router"]}],
         "react/react-in-jsx-scope": 2,
         "react/self-closing-comp": 2,
         "react/sort-comp": [2, {

@@ -7,6 +7,8 @@ import jss from './src/jss';
 import fonts from './assets/jss/fonts';
 import body from './assets/jss/body';
 
+import Button from './src/components/Button';
+
 import 'reset-css/reset.css';
 
 jss.createStyleSheet(fonts, { named: false }).attach();
@@ -21,7 +23,9 @@ export class App extends React.Component {
 
   render() {
     return (
-			<div/>
+			<div>
+				<Button>test</Button>
+			</div>
     );
   }
 }
