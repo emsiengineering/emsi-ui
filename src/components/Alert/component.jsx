@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import cx from 'classnames';
 import useSheet from 'react-jss';
