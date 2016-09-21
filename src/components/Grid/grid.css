@@ -1,15 +1,10 @@
 @import "../../../assets/css/variables.css";
 
-.container {
+.grid {
   margin-right: auto;
   margin-left: auto;
 
-  &-fluid {
-    padding-right: var(--outer-margin, 2rem);
-    padding-left: var(--outer-margin, 2rem);
-  }
-
-  &:not(&-fluid) {
+  &:not(.fluid) {
     @media (--sm-viewport) {
       width: var(--container-sm, 46rem);
     }
@@ -22,4 +17,10 @@
       width: var(--container-lg, 71rem);
     }
   }
+}
+
+.fluid {
+  composes: grid;
+  padding-right: var(--outer-margin, 2rem);
+  padding-left: var(--outer-margin, 2rem);
 }

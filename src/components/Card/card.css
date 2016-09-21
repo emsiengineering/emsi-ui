@@ -1,0 +1,10 @@
+@import "../../../assets/css/variables.css";
+
+.card {
+  background-color: white;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 5px 10px 0 color(black a(5%)), 0 0 0 1px color(black a(7.5%));
+}

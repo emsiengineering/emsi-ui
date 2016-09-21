@@ -3,7 +3,7 @@
 .wrapper {
   position: relative;
   display: inline-block;
-  padding: 0.75em 2rem;
+  padding: 1rem;
   height: 100%;
   outline: none;
   border: 1px solid color(var(--black) a(10%));
@@ -14,24 +14,31 @@
   font-size: 1em;
   cursor: pointer;
 
-  &:focus {
-    border: 1px dotted color(var(--link-color));
+  & span:first-child {
+    vertical-align: middle;
+    display: inline-block;
+    width: 12rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.5rem;
   }
 
-  &:active {
+  &:focus {
     border: 1px solid color(var(--link-color));
   }
 }
 
 .disabled {
+  composes: wrapper;
   color: color(black a(33%));
   opacity: 0.75;
   cursor: not-allowed;
-}
 
-.icon {
-  float: right;
-  margin-left: 1.2rem;
+  &:focus {
+    border: 0;
+  }
 }
 
 .ul {

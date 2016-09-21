@@ -12,18 +12,19 @@ const ioIcons = {
   close: 'm31.8 10.7l-9.3 9.3 9.3 9.3-2.4 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z'
 };
 
-const Icon = ({ component: Component, children, name, color, styles: CSSStyles, ...other }) => {
-  const colorStyle = color ? color : 'icon';
+const Icon = ({ component: Component, children, name, size, color, styles: CSSStyles, ...other }) => {
+  const colorStyle = color ? color : null;
+  const sizeStyle = size ? size : 'icon';
 
   return (
     <svg
       fill='currentColor'
       preserveAspectRatio='xMidYMid meet'
       viewBox='0 0 40 40'
-      styleName={colorStyle}
+      styleName={sizeStyle}
       {...other}
     >
-			<g>
+			<g styleName={colorStyle}>
         <path d={ioIcons[name]} />
       </g>
 		</svg>
@@ -34,7 +35,8 @@ Icon.propTypes = {
   name: PropTypes.oneOf(Object.keys(ioIcons)).isRequired,
   styles: PropTypes.object,
   component: PropTypes.string,
-  color: PropTypes.oneOf(['primary', 'alternate'])
+  color: PropTypes.oneOf(['primary', 'alternate']),
+  size: PropTypes.oneOf(['small'])
 };
 
 Icon.defaultProps = {
