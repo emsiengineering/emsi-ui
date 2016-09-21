@@ -4,13 +4,13 @@ import React from 'react';
 import style from './card-body.css';
 
 type Props = {
-  component?: string,
   styles: any,
   children: any,
+  component?: string,
   other?: Object
 }
 
-function CardText({ component: Component = 'div', children, styles: CSS, ...other }: Props) {
+function CardText({ styles, children, component: Component = 'div', ...other }: Props) {
   return (
     <Component styleName='card-body' {...other}>
       {children}
