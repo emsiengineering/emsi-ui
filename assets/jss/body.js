@@ -5,6 +5,7 @@ export default {
   },
 
   body: {
+    height: '100%',
     fontSize: '1.6rem',
     fontWeight: 'normal',
     fontStyle: 'normal',

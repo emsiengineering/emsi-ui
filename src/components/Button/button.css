@@ -17,6 +17,12 @@
   background-color: color($color);
   outline-color: color($color);
 
+  &:focus {
+    outline: none;
+    background-color: color($color blend(black calc($blend * 3) %));
+    border-color: color($color blend(black calc($blend * 10) %));
+  }
+
   &:hover:not(:disabled) {
     background-color: color($color blend(black $(blend) %));
   }
@@ -81,7 +87,8 @@
   color: color(black a(50%));
   text-shadow: 0 -1px 0 0 color(white a(50%));
   @mixin button var(--gray5), 3 {
-    outline-color: color(var(--gray5) b(30%));
+    outline: none;
+
   }
 }
 

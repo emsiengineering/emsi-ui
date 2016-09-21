@@ -2,31 +2,14 @@
 
 .tab-panel {
   position: relative;
+  display: inline-block;
+  width: 100%;
   overflow: hidden;
   max-height: 60rem;
   background-color: white;
   color: color(black a(75%));
   transition: max-height 500ms ease-in-out;
 
-  &.darker {
-    background-color: var(--slate-color);
-    color: white;
-  }
-
-  &.dark {
-    background-color: color(var(--slate-color) a(90%));
-    color: white;
-  }
-
-  &-closed {
-    @media (--medium-viewport) {
-      max-height: 6rem;
-
-      &::after {
-        transform: rotate(90deg);
-      }
-    }
-  }
   @media (--medium-viewport) {
     padding: 2rem 2.5rem;
     background-color: var(--slate-color);
@@ -53,6 +36,56 @@
       transition: all 250ms ease;
     }
   }
+}
+
+.closed {
+  composes: tab-panel;
+  @media (--medium-viewport) {
+    max-height: 6rem;
+
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.center {
+  composes: tab-panel;
+  text-align: center;
+
+  @media (--medium-viewport) {
+    text-align: left;
+  }
+}
+
+.tab-panel-center {
+  composes: tab-panel center;
+}
+
+.closed-center {
+  composes: center closed;
+}
+
+.dark {
+  composes: tab-panel;
+  background-color: var(--slate-color);
+  color: white;
+}
+
+.tab-panel-dark {
+  composes: tab-panel dark;
+}
+
+.closed-dark {
+  composes: closed dark;
+}
+
+.tab-panel-center-dark {
+  composes: tab-panel center dark;
+}
+
+.closed-center-dark {
+  composes: closed center dark;
 }
 
 .container {

@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import styles from './checkbox.css';
 import Icon from '../Icon';
 import Label from '../Label';
+import inputType from 'what-input';
 
 type Props = {
   styles: any,
@@ -16,6 +17,8 @@ type Props = {
 }
 
 class Checkbox extends React.Component {
+  static props = Props;
+
   static defaultProps = {
     radio: false,
     checked: false,

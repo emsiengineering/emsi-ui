@@ -1,7 +1,7 @@
 import CSSModules from 'react-css-modules';
 import React from 'react';
 
-import styles from './card-body.css';
+import style from './card-body.css';
 
 type Props = {
   component?: string,
@@ -18,4 +18,4 @@ function CardText({ component: Component = 'div', children, styles: CSS, ...othe
   );
 }
 
-export default CSSModules(CardText, styles);
+export default CSSModules(CardText, style);

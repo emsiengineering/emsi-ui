@@ -27,6 +27,7 @@
 
   &:focus {
     border: 1px solid color(var(--link-color));
+    outline: none;
   }
 }
 

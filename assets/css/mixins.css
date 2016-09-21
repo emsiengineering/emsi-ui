@@ -1,0 +1,11 @@
+@import "./variables.css";
+
+@define-mixin dark-theme {
+  background-color: var(--slate-color);
+  color: white;
+}
+
+@define-mixin light-theme {
+  background-color: white;
+  color: color(black a(75%));
+}
