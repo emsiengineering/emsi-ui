@@ -13,7 +13,7 @@ class Select extends React.Component {
     ).isRequired,
     onSelect: PropTypes.func,
     disabled: PropTypes.bool,
-		label: PropTypes.string,
+    label: PropTypes.string,
     styles: PropTypes.object
   }
 
@@ -51,9 +51,9 @@ class Select extends React.Component {
 					onSelection={this.handleSelection}
 					id={this.state.id}
 				>
-					<Button disabled={this.props.disabled} styleName={this.props.disabled ? 'wrapper disabled' : 'wrapper'}>
-						{this.state.activeOption === null ? 'Select Option' : this.state.activeOption}
-						<Icon component='IoAndroidArrowDropdown' styleName='icon'/>
+					<Button disabled={this.props.disabled} styleName={this.props.disabled ? 'disabled' : 'wrapper'}>
+						<span>{this.state.activeOption === null ? 'Select Option' : this.state.activeOption}</span>
+						<Icon name='dropdown' size='small' />
 					</Button>
 						{
 							!this.props.disabled &&
@@ -75,4 +75,4 @@ class Select extends React.Component {
 }
 
 
-export default CSSModules(Select, styles, { allowMultiple: true });
+export default CSSModules(Select, styles);

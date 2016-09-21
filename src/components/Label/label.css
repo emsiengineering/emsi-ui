@@ -1,21 +1,15 @@
 @import "../../../assets/css/variables.css";
 
-.icon {
-  vertical-align: middle;
-  width: 3rem;
-  height: 3rem;
-}
-
-.small {
-  composes: icon;
-  width: 1.5rem;
-  height: 1.5rem;
+.label {
+  /* hmm? */
 }
 
 .primary {
+  composes: label;
   color: var(--primary-color);
 }
 
 .alternate {
+  composes: label;
   color: var(--link-color);
 }

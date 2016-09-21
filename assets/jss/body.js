@@ -8,7 +8,8 @@ export default {
     fontSize: '1.6rem',
     fontWeight: 'normal',
     fontStyle: 'normal',
-    '-webkit-font-smoothing': 'antialiased'
+    '-webkit-font-smoothing': 'antialiased',
+    margin: '1rem' // why?
   },
 
   'body, input, textarea, select': {

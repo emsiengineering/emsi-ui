@@ -1,61 +1,59 @@
 @import "../../../assets/css/variables.css";
 
-.inline {
-  display: inline-block;
-  margin-right: 3rem;
-  margin-left: -0.35rem;
-}
-
-.block {
-  margin-left: -0.35rem;
-}
-
-.cell {
+.content {
   margin: 0;
   padding: 0;
-
-  & > .content {
-    margin: 0;
-
-    & > svg {
-      margin-top: 0;
-      margin-right: 0;
-    }
-  }
-}
-
-.content {
-  margin: 1rem 0;
   display: inline-block;
   width: auto;
   border: 1px solid transparent;
   cursor: pointer;
 
   & > svg {
+    color: black;
+    opacity: 0.5;
     position: relative;
-    font-size: 2.4rem;
-    margin-right: 1rem;
-    margin-top: -0.35rem;
     cursor: pointer;
-    color: var(--gray2);
+
+    & > g {
+      outline: 6px solid transparent;
+      transition: outline-color 0.5s;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
   }
 
   & > span {
-    margin-top: 0.5rem;
-    padding-right: 0.5rem;
+    color: color(black a(75%));
+    vertical-align: middle;
+    margin-left: 0.5rem;
     display: inline-block;
   }
 
-  &:hover svg {
-    color: var(--link-color);
-  }
-
-  &.selected {
-    color: var(--link-color);
+  &:focus {
+    &::after {
+      opacity: 1;
+      content: '\f124';
+      margin-top: 0.25rem;
+      font-size: 0.5rem;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+      display: inline-block;
+      font-family: Ionicons;
+    }
   }
 }
 
-.selected,
-svg.selected {
+.selected {
+  composes: content;
   color: var(--link-color);
+  opacity: 1;
+
+
+  & > svg {
+    opacity: 1;
+    color: var(--link-color);
+  }
+
+  & > span {
+    color: var(--link-color);
+  }
 }

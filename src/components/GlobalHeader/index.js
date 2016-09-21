@@ -1,1 +1,1 @@
-export default from './globalheader';
+export default from './global-header';

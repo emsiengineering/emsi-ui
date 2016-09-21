@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 
 import styles from './checkbox.css';
 import Icon from '../Icon';
+import Label from '../Label';
 
 class Checkbox extends React.Component {
   static propTypes = {
@@ -10,9 +11,7 @@ class Checkbox extends React.Component {
     value: PropTypes.string,
     radio: PropTypes.bool,
     checked: PropTypes.bool,
-    inline: PropTypes.bool,
-    onChange: PropTypes.func,
-    type: PropTypes.oneOf(['inline', 'block', 'cell'])
+    onChange: PropTypes.func
   }
 
   static defaultProps = {
@@ -31,44 +30,43 @@ class Checkbox extends React.Component {
   renderRadio() {
     const { value, checked } = this.props;
     return checked ?
-      <Icon component='IoAndroidRadioButtonOn' styleName='selected' /> :
-      <Icon component='IoAndroidRadioButtonOff'  />;
+      <Icon name='radioChecked' styleName='selected' /> :
+      <Icon name='radio' />;
   }
 
   renderCheckbox() {
     const { value, checked } = this.props;
 
     return checked ?
-      <Icon component='IoAndroidCheckbox' styleName='selected' /> :
-      <Icon component='IoAndroidCheckboxOutlineBlank'  />;
+      <Icon name='checkboxChecked' styleName='selected' /> :
+      <Icon name='checkbox'  />;
   }
 
   render() {
-    const { children, checked, type, value, radio, styles: CSS, ...other } = this.props;
+    const { children, checked, value, radio, styles: CSS, ...other } = this.props;
     const role = radio ? 'radio' : 'checkbox';
 
     // tabIndex, onKeyPress and onClick come before ...other so that the user can override the behavior
 
     return (
-      <label htmlFor={value}>
-        <div styleName={type}>
+      <Label>
+        <div>
           <div
             tabIndex='0'
             {...other}
             role={role}
             aria-checked={checked}
-            id={value}
             onClick={this.handleChange}
             onKeyPress={this.handleKeyPress}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            styleName='content'
+            styleName={checked ? 'selected' : 'content'}
           >
             {radio ? this.renderRadio() : this.renderCheckbox()}
-            {type !== 'cell' && <span styleName={checked ? 'selected' : null}>{children}</span>}
+            {React.Children.toArray(children).length > 0 && <span>{children}</span>}
           </div>
         </div>
-      </label>
+      </Label>
     );
   }
 
@@ -96,4 +94,4 @@ class Checkbox extends React.Component {
   }
 }
 
-export default CSSModules(Checkbox, styles, { allowMultiple: true });
+export default CSSModules(Checkbox, styles);
