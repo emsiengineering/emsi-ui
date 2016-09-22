@@ -12,9 +12,18 @@ const ioIcons = {
   close: 'm31.8 10.7l-9.3 9.3 9.3 9.3-2.4 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z'
 };
 
-const Icon = ({ component: Component, children, name, size, color, styles: CSSStyles, ...other }) => {
-  const colorStyle = color ? color : null;
-  const sizeStyle = size ? size : 'icon';
+type Props = {
+  component?: string,
+  name: 'radioChecked'|'radio'|'checkboxChecked'|'checkbox'|'dropdown'|'close',
+  size?: 'small',
+  color?: 'primary'|'alternate',
+  styles: Object,
+  other?: Object
+}
+
+function Icon({ component: Component = 'i', name, size = 'small', color = 'primary', styles: CSSStyles, ...other }: Props) {
+  const colorStyle: string = color ? color : null;
+  const sizeStyle: string = size ? size : 'icon';
 
   return (
     <svg
@@ -29,18 +38,6 @@ const Icon = ({ component: Component, children, name, size, color, styles: CSSSt
       </g>
 		</svg>
   );
-};
-
-Icon.propTypes = {
-  name: PropTypes.oneOf(Object.keys(ioIcons)).isRequired,
-  styles: PropTypes.object,
-  component: PropTypes.string,
-  color: PropTypes.oneOf(['primary', 'alternate']),
-  size: PropTypes.oneOf(['small'])
-};
-
-Icon.defaultProps = {
-  component: 'i'
-};
+}
 
 export default CSSModules(Icon, styles, { allowMultiple: true });

@@ -6,13 +6,14 @@ import styles from './button.css';
 type Props = {
   component?: string,
   disabled?: boolean,
-  type?: string,
+  type?: 'primary'|'secondary'|'alternate'|'warning'|'danger',
   active?: boolean,
-  children: any
+  children: any,
+  styles: any
 }
 
 function Button({ component: Component = 'button', disabled, children, type = 'primary', styles: CSSStyles, active, ...other }: Props) {
-  let styleName = type;
+  let styleName: string = type;
   styleName += active && !disabled ? '-active' : '';
   return (
     <Component tabIndex='0' disabled={Component === 'button' && disabled} styleName={styleName}>{children}</Component>

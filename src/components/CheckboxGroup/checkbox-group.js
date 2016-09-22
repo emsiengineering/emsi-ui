@@ -2,21 +2,22 @@ import React, { PropTypes } from 'react';
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
 
-class CheckboxGroup extends React.Component {
-  static propTypes = {
-    allowMultiple: React.PropTypes.bool,
-    required: React.PropTypes.bool,
-    onChange: React.PropTypes.func,
-    children: React.PropTypes.array.isRequired
-  }
+type Props = {
+  allowMultiple?: boolean,
+  required?: boolean,
+  other?: any,
+  children: Array<Object>,
+  onChange?: Function
+}
 
+class CheckboxGroup extends React.Component {
   static defaultProps = {
     allowMultiple: true,
     onChange: function noop() {}
   }
 
-  constructor(...props) {
-    super(...props);
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       selected: []
@@ -24,11 +25,11 @@ class CheckboxGroup extends React.Component {
   }
 
   componentWillMount() {
-    let selected = [];
-    let firstChild = '';
+    let selected: Array = [];
+    let firstChild: string = '';
 
     // loop through children looking for default checked
-    React.Children.toArray(this.props.children).forEach((child, index) => {
+    React.Children.toArray(this.props.children).forEach((child: Object, index: number) => {
       if (child.props.checked)
         selected.push(child.props.value);
 
@@ -51,10 +52,8 @@ class CheckboxGroup extends React.Component {
       });
   }
 
-  renderChildren() {
-    const { children } = this.props;
-
-    return children.map((child, index) => {
+  renderChildren(children: Array) {
+    return children.map((child: Object, index: number) => {
       return React.cloneElement(
         child,
         {
@@ -70,15 +69,15 @@ class CheckboxGroup extends React.Component {
   render() {
     return (
       <div>
-        {this.renderChildren()}
+        {this.renderChildren(this.props.children)}
       </div>
     );
   }
 
-  handleClick = (e, value) => {
-    let selected = this.state.selected;
+  handleClick = (e: Object, value: string) => {
+    let selected: Array = this.state.selected;
     let changeCallback = () => {
-      const state = this.state.selected.length == 1 ? this.state.selected[0] : this.state.selected;
+      const state: string|Array<string> = this.state.selected.length == 1 ? this.state.selected[0] : this.state.selected;
       this.props.onChange(e, state);
     };
 

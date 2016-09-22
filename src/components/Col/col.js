@@ -1,15 +1,23 @@
-import { MenuItem } from 'react-aria-menubutton';
 import React from 'react';
 import CSSModules from 'react-css-modules';
 
 import styles from './col.css';
 
-const ModificatorType = React.PropTypes.oneOfType(
-  [
-    React.PropTypes.number,
-    React.PropTypes.bool
-  ]
-);
+type Props = {
+  xs?: number|boolean,
+  sm?: number|boolean,
+  md?: number|boolean,
+  lg?: number|boolean,
+  xsOffset?: number,
+  smOffset?: number,
+  mdOffset?: number,
+  lgOffset?: number,
+  reverse?: boolean,
+  component?: string,
+  styles?: Object,
+  other?: Object,
+  children: any
+}
 
 const classMap = {
   xs: 'col-xs',
@@ -22,8 +30,8 @@ const classMap = {
   lgOffset: 'col-lg-offset'
 };
 
-function getClassNames(props) {
-  const classes = [];
+function getClassNames(props: Object): string {
+  const classes: Array<string> = [];
 
   if (props.reverse)
     classes.push('reverse');
@@ -35,32 +43,14 @@ function getClassNames(props) {
     .join(' ');
 }
 
-const Col = ({ children, component: Component, styles: stylesNames, ...other }) => {
-  const styleName = getClassNames(other);
+function Col({ children, component: Component = 'div', styles: stylesNames, ...other }: Props) {
+  const styleName: string = getClassNames(other);
 
   return (
     <div styleName={styleName}>
       {children}
     </div>
   );
-};
-
-Col.propTypes = {
-  xs: ModificatorType,
-  sm: ModificatorType,
-  md: ModificatorType,
-  lg: ModificatorType,
-  xsOffset: React.PropTypes.number,
-  smOffset: React.PropTypes.number,
-  mdOffset: React.PropTypes.number,
-  lgOffset: React.PropTypes.number,
-  reverse: React.PropTypes.bool,
-  component: React.PropTypes.string,
-  styles: React.PropTypes.object
-};
-
-Col.defaultProps = {
-  component: 'div'
-};
+}
 
 export default CSSModules(Col, styles, { allowMultiple: true });

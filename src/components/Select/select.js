@@ -1,28 +1,26 @@
 import React, { PropTypes } from 'react';
-import { Wrapper, Button, Menu, openMenu, closeMenu } from 'react-aria-menubutton';
+import { Wrapper, Button, Menu } from 'react-aria-menubutton';
 
 import CSSModules from 'react-css-modules';
 import styles from './select.css';
 import uniqueId from 'lodash.uniqueid';
 import Icon from '../Icon';
 
-class Select extends React.Component {
-  static propTypes = {
-    children: PropTypes.arrayOf(
-      PropTypes.object.isRequired
-    ).isRequired,
-    onSelect: PropTypes.func,
-    disabled: PropTypes.bool,
-    label: PropTypes.string,
-    styles: PropTypes.object
-  }
+type Props = {
+  children: Array<Object>,
+  onSelect?: Function,
+  disabled?: boolean,
+  styles: Object,
+  other?: Object
+}
 
+class Select extends React.Component {
   static defaultProps = {
     onSelect: function noop() {}
   }
 
-  constructor(...props) {
-    super(...props);
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       activeOption: null,
@@ -30,8 +28,8 @@ class Select extends React.Component {
     };
   }
 
-  renderChildren() {
-    return this.props.children.map((option, index) => {
+  renderChildren(children: Array<Object>) {
+    return children.map((option: Object, index: number) => {
       return React.cloneElement(
         option,
         {
@@ -45,7 +43,6 @@ class Select extends React.Component {
     const { styles: CSSStyles, ...other } = this.props;
     return (
 			<div>
-				<label htmlFor={this.state.id}>{this.props.label}</label>
 				<Wrapper
           {...other}
 					onSelection={this.handleSelection}
@@ -58,7 +55,7 @@ class Select extends React.Component {
 						{
 							!this.props.disabled &&
 							<Menu styleName='menu'>
-								<ul styleName='ul'>{this.renderChildren()}</ul>
+								<ul styleName='ul'>{this.renderChildren(this.props.children)}</ul>
 							</Menu>
 						}
 				</Wrapper>
@@ -66,7 +63,7 @@ class Select extends React.Component {
     );
   }
 
-  handleSelection = (option, event) => {
+  handleSelection = (option: Object, e: Object) => {
     this.props.onSelect(option);
     this.setState({
       activeOption: option

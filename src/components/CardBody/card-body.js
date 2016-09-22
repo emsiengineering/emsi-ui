@@ -3,21 +3,19 @@ import React from 'react';
 
 import styles from './card-body.css';
 
-const CardText = ({ component: Component, children, styles: CSS, ...other }) => {
+type Props = {
+  component?: string,
+  styles: any,
+  children: any,
+  other?: Object
+}
+
+function CardText({ component: Component = 'div', children, styles: CSS, ...other }: Props) {
   return (
     <Component styleName='card-body' {...other}>
       {children}
     </Component>
   );
-};
-
-CardText.propTypes = {
-  component: React.PropTypes.string,
-  styles: React.PropTypes.object
-};
-
-CardText.defaultProps = {
-  component: 'div'
-};
+}
 
 export default CSSModules(CardText, styles);
