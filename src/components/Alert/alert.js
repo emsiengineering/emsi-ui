@@ -4,7 +4,13 @@ import Card from '../Card';
 
 import styles from './alert.css';
 
-const Alert = ({ sheet, children, title, type }) => {
+type Props = {
+  children: any,
+  title: string,
+  type?: string
+}
+
+function Alert({ children, title, type = 'alert' }: Props) {
   return (
     <Card>
       <div styleName={type}>
@@ -17,15 +23,6 @@ const Alert = ({ sheet, children, title, type }) => {
       </div>
     </Card>
   );
-};
-
-Alert.propTypes = {
-  title: React.PropTypes.string,
-  type: React.PropTypes.oneOf(['alert'])
-};
-
-Alert.defaultProps = {
-  type: 'alert'
-};
+}
 
 export default CSSModules(Alert, styles);
