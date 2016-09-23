@@ -3,8 +3,8 @@ import CSSModules from 'react-css-modules';
 
 import CheckboxGroup from '../CheckboxGroup';
 
-const RadioGroup = (props) => {
+function RadioGroup(props: Object) {
   return <CheckboxGroup {...props} required allowMultiple={false}>{props.children}</CheckboxGroup>;
-};
+}
 
 export default RadioGroup;

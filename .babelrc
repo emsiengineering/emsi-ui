@@ -1,4 +1,8 @@
 {
   "presets": ["es2015", "react", "stage-0"],
-  "plugins": ["transform-export-extensions"]
+  "plugins": ["transform-export-extensions", ["typecheck", {
+      "disable": {
+        "production": true
+      }
+    }]]
 }

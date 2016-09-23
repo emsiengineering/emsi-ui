@@ -3,15 +3,16 @@ import CSSModules from 'react-css-modules';
 
 import styles from './contentwrap.css';
 
-const ContentWrap = ({ children, styles: CSSStyles, ...other }) => {
+type Props = {
+  children: Array<Object>,
+  styles: Object,
+  other?: any
+}
 
+function ContentWrap({ children, styles: CSSStyles, ...other }: Props) {
   return (
 		<div {...other} styleName='content-wrap'>{children}</div>
   );
-};
-
-ContentWrap.propTypes = {
-	styles: PropTypes.object
-};
+}
 
 export default CSSModules(ContentWrap, styles, { allowMultiple: true });

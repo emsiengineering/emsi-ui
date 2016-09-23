@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules';
 
 import Input from '../Input';
 
-const Textarea = (props) => {
+const Textarea = (props: Object) => {
   return <Input {...props} component='textarea'>{props.children}</Input>;
 };
 

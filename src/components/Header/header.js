@@ -1,11 +1,20 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
-
 import styles from './header.css';
 
-const Header = ({ component: Component, color, children, type, bold, styles: CSSStyles, ...other }) => {
+type Props = {
+  type: 'display'|'headline'|'title'|'subtitle'|'body'|'caption'|'footnote',
+  color?: 'primary'|'alternate',
+  bold?: boolean,
+  component?: string,
+  children: any,
+  styles: Object,
+  other?: Object
+}
 
-  let styleNames = bold ? `bold ${type}` : `${type}`;
+function Header({ component: Component = 'div', color = 'primary', children, type, bold, styles: CSSStyles, ...other }: Props) {
+
+  let styleNames: string = bold ? `bold ${type}` : `${type}`;
 
   switch (color) {
   case 'primary':
@@ -20,18 +29,6 @@ const Header = ({ component: Component, color, children, type, bold, styles: CSS
   return (
     <Component {...other} styleName={styleNames}>{children}</Component>
   );
-};
-
-Header.propTypes = {
-  type: React.PropTypes.oneOf(['display', 'headline', 'title', 'subtitle', 'body', 'caption', 'footnote']),
-  color: React.PropTypes.oneOf(['primary', 'alternate']),
-  bold: React.PropTypes.bool,
-  styles: PropTypes.object
-};
-
-Header.defaultProps = {
-  type: 'display',
-  component: 'div'
-};
+}
 
 export default CSSModules(Header, styles, { allowMultiple: true });

@@ -4,15 +4,33 @@ import CSSModules from 'react-css-modules';
 
 import styles from './row.css';
 
-const ModificatorType = React.PropTypes.oneOf(['xs', 'sm', 'md', 'lg']);
-const modificatorKeys = ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'first', 'last'];
+type ModificatorType = 'xs'|'sm'|'md'|'lg';
 
+type Props = {
+  reverse?: boolean,
+  start?: ModificatorType,
+  center?: ModificatorType,
+  end?: ModificatorType,
+  top?: ModificatorType,
+  middle?: ModificatorType,
+  bottom?: ModificatorType,
+  around?: ModificatorType,
+  between?: ModificatorType,
+  first?: ModificatorType,
+  last?: ModificatorType,
+  component?: string,
+  styles: Object,
+  other?: Object,
+  children: any
+}
 
-function getClassNames(props) {
-  const mods = ['row'];
+const modificatorKeys: Array = ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'first', 'last'];
 
-  modificatorKeys.forEach(key => {
-    const value = props[key];
+function getClassNames(props: Object) {
+  const mods: Array = ['row'];
+
+  modificatorKeys.forEach((key: string) => {
+    const value: ?string = props[key];
 
     if (value)
       mods.push(`${key}-${value}`);
@@ -24,34 +42,13 @@ function getClassNames(props) {
   return mods.join(' ');
 }
 
-const Row = ({ children, component: Component, styles: CSSSTyles, ...other }) => {
-  const styleName = getClassNames(other);
-
+function Row({ children, component: Component = 'div', styles: CSSSTyles, ...other }: Props) {
+  const styleName: string = getClassNames(other);
   return (
     <div {...other} styleName={styleName}>
       {children}
     </div>
   );
-};
-
-Row.propTypes = {
-  reverse: React.PropTypes.bool,
-  start: ModificatorType,
-  center: ModificatorType,
-  end: ModificatorType,
-  top: ModificatorType,
-  middle: ModificatorType,
-  bottom: ModificatorType,
-  around: ModificatorType,
-  between: ModificatorType,
-  first: ModificatorType,
-  last: ModificatorType,
-  component: React.PropTypes.string,
-  styles: React.PropTypes.string
-};
-
-Row.defaultProps = {
-  component: 'div'
-};
+}
 
 export default CSSModules(Row, styles, { allowMultiple: true });

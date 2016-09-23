@@ -3,33 +3,32 @@ import React, { PropTypes } from 'react';
 import { MenuItem } from 'react-aria-menubutton';
 import { Wrapper, TabList, Tab, TabPanel as AriaTabPanel } from 'react-aria-tabpanel';
 import uniqueId from 'lodash.uniqueid';
-
 import ContentWrap from '../ContentWrap';
 import styles from './tab-panel.css';
 
+type Props = {
+  position: 'top'|'bottom',
+  theme: ''|'dark'|'darker',
+  onChange?: Function,
+  activeTab?: number|string,
+  padded?: boolean,
+  children: Array<Object>
+}
+
 class TabPanel extends React.Component {
   static displayName = 'emsiUI-TabPanel';
-
-  static propTypes = {
-    position: PropTypes.oneOf(['top', 'bottom']),
-    theme: PropTypes.oneOf(['', 'dark', 'darker']),
-    onChange: PropTypes.func,
-    activeTab: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string
-    ]),
-    padded: PropTypes.bool
-  }
 
   static defaultProps = {
     position: 'bottom',
     activeTab: 0,
     theme: ''
   }
-
+  constructor(props: Props) {
+    super(props);
+  }
   componentWillMount() {
-    const children = React.Children.toArray(this.props.children);
-    const ids = children.map(child => uniqueId('emsi_ui_menu_'));
+    const children: Array = React.Children.toArray(this.props.children);
+    const ids: Array = children.map(child => uniqueId('emsi_ui_menu_'));
 
     this.setState({
       childIds: ids,
@@ -39,8 +38,8 @@ class TabPanel extends React.Component {
 
   render() {
     const { position, onChange, activeTab, theme, padded } = this.props;
-    let styleName = `${theme}` ? `tab-panel ${theme}` : 'tab-panel';
-    let menuItems = this.menuItems();
+    let styleName: string = `${theme}` ? `tab-panel ${theme}` : 'tab-panel';
+    let menuItems: Object = this.menuItems();
 
     if (this.state.closed)
       styleName += ' tab-panel-closed';
@@ -67,16 +66,16 @@ class TabPanel extends React.Component {
   }
 
   menuItems() {
-    const { position, children } = this.props;
-    const { activeTab } = this.state;
+    const { position, children }: { position: string, children: Array<Object> } = this.props;
+    const { activeTab }: { activeTab: number } = this.props;
 
-    let tabs = [];
-    let panels = [];
+    let tabs: Array = [];
+    let panels: Array = [];
 
-    React.Children.toArray(children).forEach((child, index) => {
+    React.Children.toArray(children).forEach((child: Object, index: number) => {
       const { title, ...other } = child.props;
 
-      const tab = React.cloneElement(
+      const tab: Object = React.cloneElement(
         child,
         {
           ...other,
@@ -103,7 +102,7 @@ class TabPanel extends React.Component {
     };
   }
 
-  handleClick = (e) => {
+  handleClick = (e: Object) => {
     this.setState({
       closed: !this.state.closed
     });

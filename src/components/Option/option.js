@@ -4,8 +4,14 @@ import CSSModules from 'react-css-modules';
 
 import styles from './option.css';
 
-const Option = ({ active, children, onClick }) => {
-  const styleName = active ? 'active' : 'option';
+type Props = {
+  active?: boolean,
+  children?: any,
+  onClick?: Function
+}
+
+function Option({ active, children, onClick }: Props) {
+  const styleName: string = active ? 'active' : 'option';
 
   return (
     <li>
@@ -14,10 +20,6 @@ const Option = ({ active, children, onClick }) => {
       </MenuItem>
     </li>
   );
-};
-
-Option.propTypes = {
-  active: React.PropTypes.bool
-};
+}
 
 export default CSSModules(Option, styles);
