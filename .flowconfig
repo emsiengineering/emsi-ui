@@ -1,9 +1,0 @@
-[ignore]
-.*/node_modules/react-motion/.*
-.*/node_modules/fbjs/.*
-.*/node_modules/systemjs-builder/.*
-[include]
-
-[libs]
-
-[options]
