@@ -8,7 +8,7 @@ type Props = {
   disabled?: boolean,
   type?: 'primary'|'secondary'|'alternate'|'warning'|'danger',
   active?: boolean,
-  children: any,
+  children: string,
   styles: any
 }
 
@@ -16,7 +16,7 @@ function Button({ component: Component = 'button', disabled, children, type = 'p
   let styleName: string = type;
   styleName += active && !disabled ? '-active' : '';
   return (
-    <Component tabIndex='0' disabled={Component === 'button' && disabled} styleName={styleName}>{children}</Component>
+    <Component {...other} tabIndex='0' disabled={Component === 'button' && disabled} styleName={styleName}>{children}</Component>
   );
 }
 
