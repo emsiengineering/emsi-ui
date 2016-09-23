@@ -21,6 +21,9 @@ import Label from './src/components/Label';
 import Pillbox from './src/components/Pillbox';
 import Select from './src/components/Select';
 import Option from './src/components/Option';
+import Row from './src/components/Row';
+import Tab from './src/components/Tab';
+import TabPanel from './src/components/TabPanel';
 
 import 'reset-css/reset.css';
 
@@ -28,10 +31,6 @@ jss.createStyleSheet(fonts, { named: false }).attach();
 jss.createStyleSheet(body, { named: false }).attach();
 
 export class App extends React.Component {
-  constructor(props: Object) {
-    super(props);
-  }
-
   render() {
     return (
 			<div>
@@ -51,10 +50,16 @@ export class App extends React.Component {
         <Input value='test'>test</Input>
         <Label>test</Label>
         <Pillbox>test</Pillbox>
-          <Select disabled>
-            <Option>Option 1</Option>
-            <Option>Option 2</Option>
-          </Select>
+        <Select>
+          <Option>Option 1</Option>
+          <Option>Option 2</Option>
+        </Select>
+        <Row>Test</Row>
+        <TabPanel activeTab={0}>
+          <Tab title='test'>test</Tab>
+          <Tab title='test2'>test</Tab>
+          <Tab title='test3'>test</Tab>
+        </TabPanel>
 			</div>
     );
   }

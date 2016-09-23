@@ -10,7 +10,7 @@ type Props = {
   children: Array<Object>,
   onSelect?: Function,
   disabled?: boolean,
-  styles: Object,
+  styles?: Object,
   other?: Object
 }
 
@@ -41,6 +41,7 @@ class Select extends React.Component {
   }
   render() {
     const { styles: CSSStyles, ...other } = this.props;
+
     return (
 			<div>
 				<Wrapper
