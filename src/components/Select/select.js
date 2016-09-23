@@ -64,7 +64,7 @@ class Select extends React.Component {
     );
   }
 
-  handleSelection = (option: Object, e: Object) => {
+  handleSelection = (option: any, e: Object) => {
     this.props.onSelect(option);
     this.setState({
       activeOption: option

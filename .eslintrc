@@ -81,7 +81,7 @@
         //
         "jsx-quotes": [2, "prefer-single"],
         "react/jsx-curly-spacing": [1, "never"],
-        "react/jsx-max-props-per-line": [1, {"maximum": 3}],
+        "react/jsx-max-props-per-line": [1, {"maximum": 6}],
         "react/jsx-boolean-value": 1,
         "react/jsx-no-undef": 2,
         "react/jsx-no-duplicate-props": 1,

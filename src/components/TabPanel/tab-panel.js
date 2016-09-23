@@ -8,11 +8,12 @@ import styles from './tab-panel.css';
 
 type Props = {
   position: 'top'|'bottom',
-  theme: ''|'dark'|'darker',
+  theme: 'dark'|'darker'|void,
   onChange?: Function,
   activeTab?: number|string,
+  center?: boolean,
   padded?: boolean,
-  children: Array<Object>
+  children: any
 }
 
 class TabPanel extends React.Component {
@@ -20,12 +21,13 @@ class TabPanel extends React.Component {
 
   static defaultProps = {
     position: 'bottom',
-    activeTab: 0,
-    theme: ''
+    activeTab: 0
   }
+
   constructor(props: Props) {
     super(props);
   }
+
   componentWillMount() {
     const children: Array = React.Children.toArray(this.props.children);
     const ids: Array = children.map(child => uniqueId('emsi_ui_menu_'));
@@ -36,28 +38,32 @@ class TabPanel extends React.Component {
     });
   }
 
-  render() {
-    const { position, onChange, activeTab, theme, padded } = this.props;
-    let styleName: string = `${theme}` ? `tab-panel ${theme}` : 'tab-panel';
-    let menuItems: Object = this.menuItems();
+  renderPadded(tabs) {
+    return (
+      <ContentWrap>
+        {tabs}
+      </ContentWrap>
+    );
+  }
 
-    if (this.state.closed)
-      styleName += ' tab-panel-closed';
+  render() {
+    const { position, onChange, activeTab, theme, center, padded } = this.props;
+    let styleName = this.state.closed ? 'closed' : 'tab-panel';
+
+    if (center)
+      styleName += '-center';
+
+    if (theme)
+      styleName += `-${theme}`;
+
+    let menuItems = this.menuItems();
 
     return (
       <div styleName='container'>
 					<div styleName='mobile-menu' onClick={this.handleClick} />
 					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
 						<TabList styleName={styleName}>
-							{
-								padded
-                ?
-								<ContentWrap>
-									{menuItems.tabs}
-								</ContentWrap>
-								:
-								<div>{menuItems.tabs}</div>
-							}
+							{ padded ? this.renderPadded(menuItems.tabs) : menuItems.tabs }
 						</TabList>
 						{menuItems.panels}
 					</Wrapper>
@@ -66,8 +72,9 @@ class TabPanel extends React.Component {
   }
 
   menuItems() {
-    const { position, children }: { position: string, children: Array<Object> } = this.props;
+    const { position, children, center } = this.props;
     const { activeTab }: { activeTab: number } = this.props;
+    const width = center ? 1 / React.Children.count(children) * 100 + '%' : 'auto';
 
     let tabs: Array = [];
     let panels: Array = [];
@@ -83,7 +90,8 @@ class TabPanel extends React.Component {
           id: this.state.childIds[index],
           active: index === this.props.activeTab || this.state.childIds[index] === this.props.activeTab,
           position: this.props.position,
-          open: this.state.open
+          open: this.state.open,
+          width: width
         },
         title
       );
@@ -109,4 +117,4 @@ class TabPanel extends React.Component {
   }
 }
 
-export default CSSModules(TabPanel, styles, { allowMultiple: true });
+export default CSSModules(TabPanel, styles);

@@ -7,12 +7,13 @@ type Props = {
   component?: string,
   children: any,
   other?: any,
-  styles: Object
+  styles: Object,
+  theme?: 'dark'|'light'
 }
 
-function GlobalHeader({ component: Component = 'div', styles: CSS, children, ...other }: Props) {
+function GlobalHeader({ component: Component = 'div', styles: CSS, theme = 'dark', children, ...other }: Props) {
   return (
-    <Component styleName='header' {...other}>
+    <Component styleName={theme} {...other}>
       {children}
     </Component>
   );
