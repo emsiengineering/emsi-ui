@@ -20,6 +20,8 @@ function loadStories() {
   require('../stories/label');
   require('../stories/card');
   require('../stories/globalheader');
+  require('../stories/alert');
+  require('../stories/modal');
   // require as many stories as you need.
 }
 

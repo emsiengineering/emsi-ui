@@ -9,10 +9,10 @@ type Props = {
   other?: any
 }
 
-function ContentWrap({ children, styles: CSSStyles, ...other }: Props) {
+function ContentWrap({ children, styles: CSS, ...other }: Props) {
   return (
 		<div {...other} styleName='content-wrap'>{children}</div>
   );
 }
 
-export default CSSModules(ContentWrap, styles, { allowMultiple: true });
+export default CSSModules(ContentWrap, styles);

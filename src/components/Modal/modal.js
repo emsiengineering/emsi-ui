@@ -9,7 +9,7 @@ import Button from '../Button';
 
 class Modal extends React.Component {
   static propTypes = {
-    title: React.PropTypes.string,
+    title: React.PropTypes.string.isRequired,
     onExit: React.PropTypes.func,
     underlayClickExits: React.PropTypes.bool,
     rootElementId: React.PropTypes.string,

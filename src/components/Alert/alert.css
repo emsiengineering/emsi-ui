@@ -1,0 +1,18 @@
+@import "../../../assets/css/variables.css";
+
+.alert {
+  padding: 2rem;
+  max-width: 100%;
+  vertical-align: top;
+  height: 100%;
+  background-color: color(var(--yellow) a(20%));
+}
+
+.alert-title {
+  composes: @import strong from '../Header/header.css';
+  color: var(--gray2);
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2rem;
+}
