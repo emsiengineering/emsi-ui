@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules';
 import styles from './contentwrap.css';
 
 type Props = {
-  children: Array<Object>,
+  children: any,
   styles: Object,
   other?: any
 }

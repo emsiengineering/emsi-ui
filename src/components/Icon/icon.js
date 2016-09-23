@@ -15,14 +15,14 @@ const ioIcons = {
 type Props = {
   component?: string,
   name: 'radioChecked'|'radio'|'checkboxChecked'|'checkbox'|'dropdown'|'close',
-  size?: 'small',
-  color?: 'primary'|'alternate',
+  size?: 'small'|void,
+  color?: 'primary'|'alternate'|void,
   styles: Object,
   other?: Object
 }
 
-function Icon({ component: Component = 'i', name, size = 'small', color = 'primary', styles: CSSStyles, ...other }: Props) {
-  const colorStyle: string = color ? color : null;
+function Icon({ component: Component = 'i', name, size, color, styles: CSSStyles, ...other }: Props) {
+  const colorStyle: string|void = color ? color : null;
   const sizeStyle: string = size ? size : 'icon';
 
   return (

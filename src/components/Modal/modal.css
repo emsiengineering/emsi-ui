@@ -4,7 +4,7 @@
   background-color: transparent;
   transition: all 0.3s linear;
 
-  &Enter {
+  &Entered {
     background-color: color(black a(50%));
   }
 }
@@ -16,9 +16,7 @@
   left: 0;
   margin: 0;
   margin-bottom: 1rem;
-  padding: 3rem;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding: 2rem;
   width: 100%;
   border-radius: 0;
   background-color: white;
@@ -40,19 +38,13 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  color: black;
+  color: var(--gray2);
   font-size: 2.5rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.2);
-  }
-  @media (--medium-viewport-min) {
-    top: -3rem;
-    right: -3.5rem;
-    color: white;
-    font-size: 3rem;
   }
 }
 

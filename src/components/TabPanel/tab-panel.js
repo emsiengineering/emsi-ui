@@ -8,12 +8,12 @@ import styles from './tab-panel.css';
 
 type Props = {
   position: 'top'|'bottom',
-  theme: ''|'dark'|'darker',
+  theme: 'dark'|'darker'|void,
   onChange?: Function,
   activeTab?: number|string,
   center?: boolean,
   padded?: boolean,
-  children: Array<Object>
+  children: any
 }
 
 class TabPanel extends React.Component {

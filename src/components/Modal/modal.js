@@ -7,41 +7,41 @@ import Icon from '../Icon';
 import styles from './modal.css';
 import Button from '../Button';
 
-class Modal extends React.Component {
-  static propTypes = {
-    title: React.PropTypes.string.isRequired,
-    onExit: React.PropTypes.func,
-    underlayClickExits: React.PropTypes.bool,
-    rootElementId: React.PropTypes.string,
-    focusElementId: React.PropTypes.string,
-    alert: React.PropTypes.bool,
-    active: React.PropTypes.bool
-  }
+type Props = {
+  title: string,
+  onExit: Function,
+  underlayClickExits?:boolean,
+  rootElementId?: string|void,
+  focusElementId?: string|void
+}
 
+class Modal extends React.Component {
   static defaultProps = {
     onExit: function noop() {}
   }
 
-  constructor(...props) {
-    super(...props);
+  constructor(props: Props) {
+    super(props);
 
-    this.state = {
+    const state: { active: boolean, entered: boolean } = {
       active: false,
       entered: true
     };
+
+    this.state = state;
   }
 
   render() {
-    const { children, rootElementId, onExit, title, focusElementId, active, underlayClickExits } = this.props;
+    const { children, rootElementId, onExit, title, focusElementId, underlayClickExits } = this.props;
 
     const extras = {
       focusDialog: !focusElementId
     };
 
-    let underlayClass = styles.underlay;
+    let underlayClass: string = styles.underlay;
 
     if (this.state.entered)
-      underlayClass += ` ${styles.underlayEnter}`;
+      underlayClass += ` ${styles.underlayEntered}`;
 
     const transitionNames = {
       enter: styles.enter,
@@ -110,4 +110,4 @@ class Modal extends React.Component {
   }
 }
 
-export default CSSModules(Modal, styles, { allowMultiple: true });
+export default CSSModules(Modal, styles);
