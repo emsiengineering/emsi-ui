@@ -33,7 +33,7 @@ export class App extends React.Component {
   render() {
     return (
 			<div>
-				<Button>test</Button>
+				<Button type='secondary'>test</Button>
         <Card>
           <CardBody>test</CardBody>
           <CardMedia>test</CardMedia>
