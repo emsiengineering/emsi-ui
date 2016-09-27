@@ -4,12 +4,39 @@ var loaders = require('./webpack.loaders');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-	entry: [
-		'./index.js' // Your appʼs entry point
-	],
+	entry: {
+		Alert: ['./src/components/Alert'],
+		Button: ['./src/components/Button'],
+		Card: ['./src/components/Card'],
+		CardBody: ['./src/components/CardBody'],
+		CardMedia: ['./src/components/CardMedia'],
+		Checkbox: ['./src/components/Checkbox'],
+		CheckboxGroup: ['./src/components/CheckboxGroup'],
+		Col: ['./src/components/Col'],
+		ContentWrap: ['./src/components/ContentWrap'],
+		GlobalHeader: ['./src/components/GlobalHeader'],
+		Grid: ['./src/components/Grid'],
+		Header: ['./src/components/Header'],
+		Icon: ['./src/components/Icon'],
+		Input: ['./src/components/Input'],
+		Label: ['./src/components/Label'],
+		Modal: ['./src/components/Modal'],
+		Option: ['./src/components/Option'],
+		Pillbox: ['./src/components/Pillbox'],
+		Radio: ['./src/components/Radio'],
+		RadioGroup: ['./src/components/RadioGroup'],
+		Row: ['./src/components/Row'],
+		Select: ['./src/components/Select'],
+		Tab: ['./src/components/Tab'],
+		Table: ['./src/components/Table'],
+		TabPanel: ['./src/components/TabPanel'],
+		Td: ['./src/components/Td'],
+		Textarea: ['./src/components/Textarea'],
+		Tr: ['./src/components/Tr']
+	},
 	output: {
-		path: path.join(__dirname, 'public'),
-		filename: 'bundle.js',
+		path: path.join(__dirname, 'lib'),
+		filename: '[name].js',
 		library: 'emsi-ui',
 		libraryTarget: 'umd'
 	},
