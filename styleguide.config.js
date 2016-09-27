@@ -23,20 +23,28 @@ module.exports = {
       }
     },
     {
+      name: 'Feedback Elements',
+      components() {
+        return [
+          component('Alert')
+        ];
+      }
+    },
+    {
       name: 'Form Elements',
       components() {
         return [
           component('Button'),
           component('Checkbox'),
           component('CheckboxGroup'),
-          component('Input'),
           component('DataHeader'),
           component('DataTable'),
+          component('Input'),
+          component('Label'),
+          component('Option'),
           component('Radio'),
           component('RadioGroup'),
-          component('Label'),
           component('Select'),
-          component('Option'),
           component('Table'),
           component('Td'),
           component('Tr')

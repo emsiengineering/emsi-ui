@@ -51,7 +51,6 @@ class Checkbox extends React.Component<void, Props, void> {
 
   render() {
     const { children, checked, value, radio, styles: CSS, ...other } = this.props;
-    console.log(value);
     const role: string = radio ? 'radio' : 'checkbox';
 
     // tabIndex, onKeyPress and onClick come before ...other so that the user can override the behavior

@@ -8,7 +8,7 @@ type Props = {
   component?: string,
   /** disable the button */
   disabled?: boolean,
-  /** type of button, Oneof: primary,secondary,alternate,warning,danger */
+  /** type of button, Oneof: primary, secondary, alternate, warning, danger */
   type?: 'primary'|'secondary'|'alternate'|'warning'|'danger',
   /** adds the active class to the button */
   active?: boolean,

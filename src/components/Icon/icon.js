@@ -13,11 +13,16 @@ const ioIcons = {
 };
 
 type Props = {
+  /** html element: div,span,button, etc */
   component?: string,
+  /** One of: radioChecked, radio, checkboxChecked, checkbox, dropdown, close*/
   name: 'radioChecked'|'radio'|'checkboxChecked'|'checkbox'|'dropdown'|'close',
+  /** One of: small*/
   size?: 'small'|void,
+  /** One of: primary, alternate*/
   color?: 'primary'|'alternate'|void,
   styles: Object,
+  /** add any other props to the component */
   other?: Object
 }
 
@@ -39,5 +44,8 @@ function Icon({ component: Component = 'i', name, size, color, styles: CSSStyles
 		</svg>
   );
 }
+Icon.defaultProps = {
+  component: 'i'
+};
 
 export default CSSModules(Icon, styles, { allowMultiple: true });
