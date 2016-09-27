@@ -5,20 +5,24 @@ import Header from '../Header';
 import styles from './input.css';
 
 type Props = {
-  children: string,
+  children?: string,
   component?: string,
   onChange?: Function,
   errorMessage?: string,
   required?: boolean,
-  value: string,
   error?: boolean,
   disabled?: boolean,
   styles: Object,
-  other?: Object
+  other?: Object,
+  placeholder?: string
 }
 
-function Input({ children, component: Component = 'input', onChange = function noop() {}, errorMessage, required, value, error, disabled, styles: CSS, ...other }: Props) {
-  const styleName: string = error ? 'input error' : 'input';
+function renderValue() {
+
+}
+
+function Input({ children, component: Component = 'input', onChange = function noop() {}, placeholder, errorMessage, required, error, disabled, styles: CSS, ...other }: Props) {
+  const styleName: string = error ? 'error' : 'input';
 
   return (
     <label styleName='label'>
@@ -30,8 +34,9 @@ function Input({ children, component: Component = 'input', onChange = function n
         aria-disabled={disabled}
         aria-required={required}
         aria-invalid={error}
-        placeholder={children}
-        value={value} />
+        placeholder={placeholder}
+        defaultValue={children}
+        {...other} />
       {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
     </label>
   );

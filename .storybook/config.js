@@ -1,12 +1,5 @@
 import { configure } from '@kadira/storybook';
-
-import body from '../assets/jss/body';
-import fonts from '../assets/jss/fonts';
-import jss from '../src/jss';
-import 'reset-css/reset.css';
-
-jss.createStyleSheet(fonts, { named: false }).attach();
-jss.createStyleSheet(body, { named: false }).attach();
+import '../assets/css/body.css';
 
 function loadStories() {
   require('../stories/grid');
@@ -22,6 +15,8 @@ function loadStories() {
   require('../stories/globalheader');
   require('../stories/alert');
   require('../stories/modal');
+  require('../stories/input');
+  require('../stories/textarea');
   // require as many stories as you need.
 }
 

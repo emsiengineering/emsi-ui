@@ -12,16 +12,14 @@ type Props = {
 
 function Alert({ children, title, type = 'alert' }: Props) {
   return (
-    <Card>
-      <div styleName={type}>
-        <div styleName={`${type}-title`}>
-          {title}:
-        </div>
-        <div>
-          {children}
-        </div>
+    <div styleName={type}>
+      <div styleName={`${type}-title`}>
+        {title}:
       </div>
-    </Card>
+      <div>
+        {children}
+      </div>
+    </div>
   );
 }
 
