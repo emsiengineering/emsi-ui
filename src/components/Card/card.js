@@ -5,6 +5,7 @@ import styles from './card.css';
 
 type Props = {
   children: any,
+  /** add any other props to the component */
   other?: any,
   styles: any
 }

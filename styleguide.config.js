@@ -79,6 +79,7 @@ module.exports = {
         ]
       };
     };
+    webpackConfig.entry.push(path.join(__dirname, './styleguide/styles.css'));
     return webpackConfig;
   }
 };

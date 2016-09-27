@@ -4,8 +4,10 @@ import React from 'react';
 import styles from './card-media.css';
 
 type Props = {
+  /** html element, div,span,button */
   component?: string,
   children: any,
+  /** add any other props to the component */
   other?: any,
   styles: any
 }
