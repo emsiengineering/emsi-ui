@@ -82,22 +82,6 @@ module.exports = {
 			}
 		}),
 		new webpack.NoErrorsPlugin(),
-		new webpack.optimize.UglifyJsPlugin({
-			mangle: {
-				screw_ie8: true
-			},
-			compress: {
-				warnings: true,
-				sequences: true,
-				dead_code: true,
-				conditionals: true,
-				booleans: true,
-				unused: true,
-				if_return: true,
-				join_vars: true,
-				drop_console: true
-			}
-		}),
 		new webpack.optimize.DedupePlugin()
 	]
 };
