@@ -12,7 +12,7 @@ type Props = {
   other?: Object
 }
 
-function Header({ component: Component = 'div', color = 'primary', children, type, bold, styles: CSSStyles, ...other }: Props) {
+function Header({ component: Component = 'div', color, children, type, bold, styles: CSSStyles, ...other }: Props) {
 
   let styleNames: string = bold ? `bold ${type}` : `${type}`;
 

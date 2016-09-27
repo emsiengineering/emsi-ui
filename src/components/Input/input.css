@@ -29,8 +29,12 @@
     box-shadow: inset 0 0 0 2px color(var(--link-color) a(20%));
     z-index: 3;
   }
+}
 
-  &.error:not(:disabled, :focus) {
+.error {
+  composes: input;
+
+  &:not(:disabled, :focus) {
     border: 1px solid color(var(--red));
     box-shadow: inset 0 0 0 2px color(var(--red) a(20%));
     z-index: 3;

@@ -1,12 +1,10 @@
 @import "../../../assets/css/variables.css";
 
 .tab {
+  composes: footnote from '../Header/header.css' strong from '../Header/header.css';
   display: inline-block;
   padding: 2rem 2.5rem;
-  width: auto;
   outline: none;
-  font-weight: 500;
-  font-size: 1.5rem;
   cursor: pointer;
 
   &-active-bottom {
@@ -23,6 +21,7 @@
     padding: 1.5rem 2rem 1.5rem 0;
     box-shadow: none;
     color: white;
+    width: auto !important;
 
     &-active-top,
     &-active-bottom {

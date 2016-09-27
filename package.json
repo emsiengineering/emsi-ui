@@ -31,14 +31,14 @@
     "react-jss": "^2.1.1",
     "react-motion-ui-pack": "^0.9.0",
     "react-onclickoutside": "^5.3.3",
-    "reset-css": "^2.0.20160720",
-    "what-input": "^3.0.0"
+    "reset-css": "^2.0.20160720"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.3.0",
     "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
+    "babel-plugin-tcomb": "^0.3.13",
     "babel-plugin-transform-export-extensions": "^6.8.0",
     "babel-plugin-typecheck": "^3.9.0",
     "babel-preset-es2015": "^6.9.0",

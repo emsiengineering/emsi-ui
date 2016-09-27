@@ -1,5 +1,18 @@
 @import "../../../assets/css/variables.css";
+@import "../../../assets/css/mixins.css";
 
 .header {
-  padding: 3rem;
+  position: relative;
+  padding: 2rem 0;
+  line-height: 1.4;
+}
+
+.dark {
+  composes: header;
+  @mixin dark-theme;
+}
+
+.light {
+  composes: header;
+  @mixin light-theme;
 }

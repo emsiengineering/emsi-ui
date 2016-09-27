@@ -7,18 +7,14 @@
   width: auto;
   border: 1px solid transparent;
   cursor: pointer;
+  outline: none;
 
   & > svg {
     color: black;
     opacity: 0.5;
     position: relative;
     cursor: pointer;
-
-    & > g {
-      outline: 6px solid transparent;
-      transition: outline-color 0.5s;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    transition: opacity 0.2s ease;
   }
 
   & > span {
@@ -29,16 +25,30 @@
   }
 
   &:focus {
+    & > svg,
+    & > span {
+      color: var(--link-color);
+      opacity: 0.75;
+    }
+
     &::after {
-      opacity: 1;
+      color: var(--link-color);
+      font-weight: 600;
+      opacity: 0.75;
       content: '\f124';
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
       font-size: 0.5rem;
       vertical-align: middle;
       margin-left: 0.5rem;
       display: inline-block;
       font-family: Ionicons;
     }
+  }
+
+  &:hover > span,
+  &:hover svg {
+    opacity: 0.5;
+    color: var(--link-color);
   }
 }
 
@@ -49,10 +59,20 @@
 
   & > svg {
     opacity: 1;
-    color: var(--link-color);
+
+    & > svg,
+    & > span {
+      opacity: 1;
+    }
+
+    &::after {
+      opacity: 1;
+    }
   }
 
+  & > svg,
   & > span {
+    opacity: 1;
     color: var(--link-color);
   }
 }
