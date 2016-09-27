@@ -15,7 +15,7 @@ type Props = {
   focusElementId?: string|void
 }
 
-class Modal extends React.Component {
+class Modal extends React.Component<void, Props, void> {
   static defaultProps = {
     onExit: function noop() {}
   }
