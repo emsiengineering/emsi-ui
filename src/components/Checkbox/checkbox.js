@@ -8,18 +8,22 @@ import inputType from 'what-input';
 
 type Props = {
   styles: any,
+  /** the value to pass into the component */
   value?: string,
+  /** sets the checkbox to radio */
   radio?: boolean,
+  /** active state of the checkbox */
   checked?: boolean,
+  /** add any other props to the component */
   other?: any,
   children: any,
+  /** function to pass in to track the change of state outside the component */
   onChange?: Function
 }
 
-class Checkbox extends React.Component {
-  static props = Props;
-
+class Checkbox extends React.Component<void, Props, void> {
   static defaultProps = {
+    value: '',
     radio: false,
     checked: false,
     onChange: function noop() {}
@@ -47,6 +51,7 @@ class Checkbox extends React.Component {
 
   render() {
     const { children, checked, value, radio, styles: CSS, ...other } = this.props;
+    console.log(value);
     const role: string = radio ? 'radio' : 'checkbox';
 
     // tabIndex, onKeyPress and onClick come before ...other so that the user can override the behavior

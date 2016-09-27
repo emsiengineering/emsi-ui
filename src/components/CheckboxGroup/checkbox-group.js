@@ -3,15 +3,20 @@ import Checkbox from '../Checkbox';
 import Radio from '../Radio';
 
 type Props = {
+  /** false will only you let you select one option */
   allowMultiple?: boolean,
+  /** selects the first option if required is true */
   required?: boolean,
+  /** add any other props to the component */
   other?: any,
   children: Array<Object>,
+  /** function to pass in to track the change of state outside the component */
   onChange?: Function
 }
 
-class CheckboxGroup extends React.Component {
+class CheckboxGroup extends React.Component<void, Props, void> {
   static defaultProps = {
+    required: false,
     allowMultiple: true,
     onChange: function noop() {}
   }

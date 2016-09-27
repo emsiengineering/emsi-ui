@@ -1,1 +1,1 @@
-export default from './contentwrap';
+export default from './content-wrap';

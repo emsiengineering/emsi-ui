@@ -1,4 +1,3 @@
-Basic Card with a box shadow and border radius
 ```
-<Card>Card</Card>
+<Card>Basic Card with a box shadow and border radius</Card>
 ```

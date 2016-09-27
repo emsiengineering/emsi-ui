@@ -1,0 +1,27 @@
+html {
+  height: 100%;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body,
+input,
+button,
+textarea,
+select {
+  font-family: 'Heebo', 'Acto', 'Avenir', Helvetica, Arial, Sans-Serif;
+}
+
+.ReactStyleguidist-Layout__content {
+  margin: 0 3rem;
+}
+
+.ReactStyleguidist-colors__link,
+.ReactStyleguidist-colors__link:link,
+.ReactStyleguidist-colors__link:visited {
+  color: #41d492;
+}
+
+.ReactStyleguidist-colors__link:hover {
+  color: #203a45;
+}

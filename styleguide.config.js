@@ -1,33 +1,103 @@
 const path = require('path');
-const glob = require('glob');
+const pkg = require('./package.json');
+const dasherize = require('dasherize');
+
+function component(name) {
+  return path.resolve(__dirname, 'src/components', name, dasherize(name));
+}
 
 module.exports = {
-  title: 'Emsi UI Components Library',
+  title: `Emsi UI Components Library v${pkg.version}`,
+  serverPort: 3001,
+  showCode: true,
+  highlightTheme: 'rubyblue',
   sections: [
     {
-      name: 'Buttons',
-      components: 'src/components/Button/*.js'
+      name: 'Cards',
+      components() {
+        return [
+          component('Card'),
+          component('CardMedia'),
+          component('CardBody')
+        ];
+      }
     },
     {
-      name: 'Cards',
-      components: 'src/components/Card**/*.js'
+      name: 'Form Elements',
+      components() {
+        return [
+          component('Button'),
+          component('Checkbox'),
+          component('CheckboxGroup'),
+          component('Input'),
+          component('DataHeader'),
+          component('DataTable'),
+          component('Radio'),
+          component('RadioGroup'),
+          component('Label'),
+          component('Select'),
+          component('Option'),
+          component('Table'),
+          component('Td'),
+          component('Tr')
+        ];
+      }
+    },
+    {
+      name: 'Icons',
+      components() {
+        return [
+          component('Icon')
+        ];
+      }
+    },
+    {
+      name: 'Layout',
+      components() {
+        return [
+          component('ContentWrap'),
+          component('Col'),
+          component('Grid'),
+          component('Row')
+        ];
+      }
+    },
+    {
+      name: 'Modals',
+      components() {
+        return [
+          component('Modal')
+        ];
+      }
+    },
+    {
+      name: 'Navigation',
+      components() {
+        return [
+          component('GlobalHeader')
+        ];
+      }
+    },
+    {
+      name: 'Typography',
+      components() {
+        return [
+          component('Header')
+        ];
+      }
     }
   ],
-  // components() {
-  //   return glob.sync(path.resolve(__dirname, 'src/components/**/*.js')).filter(function(module) {
-  //     return module;
-  //   });
-  // },
-  showCode: true,
-  serverPort: 3001,
   getComponentPathLine(componentPath) {
-    const name = path.basename(componentPath, '.js');
     const dir = path.dirname(componentPath);
-    return 'import ' + name[0].toUpperCase() + name.substring(1) + ' from \'' + dir + '\';';
+    const name = dir.replace('src/components/', '');
+    return `import ${name} from '@emsi-ui/lib/${name}';`;
   },
   resolver: require('react-docgen').resolver.findAllComponentDefinitions,
   updateWebpackConfig(webpackConfig) {
     const dir = path.resolve(__dirname, 'src');
+    const styleguideCSS = path.resolve(__dirname, 'assets/css/styleguide.css');
+
+    webpackConfig.entry.push(styleguideCSS);
     webpackConfig.module.loaders.push(
       {
         test: /\.(js|jsx)$/,
@@ -39,10 +109,15 @@ module.exports = {
         test: /\.css$/,
         include: dir,
         loaders: [
-          'style?sourceMap',
+          'style',
           'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss'
         ]
+      },
+      {
+        test: /\.css$/,
+        include: styleguideCSS,
+        loader: 'style-loader!css-loader'
       },
       {
         test: /(\.js|\.jsx)$/,
@@ -79,7 +154,6 @@ module.exports = {
         ]
       };
     };
-    webpackConfig.entry.push(path.join(__dirname, './styleguide/styles.css'));
     return webpackConfig;
   }
 };
