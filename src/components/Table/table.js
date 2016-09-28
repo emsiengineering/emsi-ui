@@ -6,6 +6,9 @@ import Icon from '../Icon';
 
 import styles from './table.css';
 
+/**
+ * TODO need documentation and examples for this component
+ */
 class Table extends React.Component {
   static propTypes = {
     styles: React.PropTypes.object,

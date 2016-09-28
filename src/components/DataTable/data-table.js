@@ -37,7 +37,9 @@ const data = [
   }
 ];
 */
-
+/**
+ * TODO need documentation and examples for this component
+ */
 class DataTable extends React.Component {
   static propTypes = {
     styles: React.PropTypes.object,

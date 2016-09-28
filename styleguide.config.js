@@ -46,6 +46,7 @@ module.exports = {
           component('RadioGroup'),
           component('Select'),
           component('Table'),
+          component('Textarea'),
           component('Td'),
           component('Tr')
         ];
@@ -82,7 +83,9 @@ module.exports = {
       name: 'Navigation',
       components() {
         return [
-          component('GlobalHeader')
+          component('GlobalHeader'),
+          component('Tab'),
+          component('TabPanel')
         ];
       }
     },

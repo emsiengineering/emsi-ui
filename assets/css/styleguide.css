@@ -22,7 +22,8 @@ select {
   color: #41d492;
 }
 
-.ReactStyleguidist-colors__link:hover {
+.ReactStyleguidist-colors__link:hover,
+.ReactStyleguidist-colors__link:active {
   color: rgba(65, 212, 146, 0.5);
   cursor: pointer;
 }

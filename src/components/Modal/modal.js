@@ -8,11 +8,19 @@ import styles from './modal.css';
 import Button from '../Button';
 
 type Props = {
+  /** A string to use as the modal's accessible title */
   title: string,
+  /** A function to handle close of the modal outside the component */
   onExit: Function,
-  underlayClickExits?:boolean,
+  /** Display the content inside the modal */
+  children: any,
+  /** Click outsid the modal to close it, default true */
+  underlayClickExits?:boolean|void,
+  /** Provide your main application node here (which the modal should render outside of) */
   rootElementId?: string|void,
-  focusElementId?: string|void
+  focusElementId?: string|void,
+  /** If true, the modal will receive a role of alertdialog, instead of its default dialog */
+  alert?: boolean|void
 }
 
 class Modal extends React.Component<void, Props, void> {
@@ -32,7 +40,7 @@ class Modal extends React.Component<void, Props, void> {
   }
 
   render() {
-    const { children, rootElementId, onExit, title, focusElementId, underlayClickExits } = this.props;
+    const { children, rootElementId, onExit, title, focusElementId, underlayClickExits, alert } = this.props;
 
     const extras = {
       focusDialog: !focusElementId
@@ -54,7 +62,7 @@ class Modal extends React.Component<void, Props, void> {
 
     return (
       <div>
-        <Button type='primary' onClick={this.handleActive} active={this.state.active}>Text</Button>
+        <Button type='primary' onClick={this.handleActive} active={this.state.active}>{title}</Button>
         <AriaModal
           {...extras}
           underlayClickExits={underlayClickExits}
@@ -65,6 +73,7 @@ class Modal extends React.Component<void, Props, void> {
           applicationNode={document.getElementById(rootElementId)}
           underlayClass={underlayClass}
           underlayColor={false}
+          alert={alert}
           className={styles.modal}
         >
           <CSSTransitionGroup

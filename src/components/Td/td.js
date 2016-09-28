@@ -5,6 +5,9 @@ import Checkbox from '../Checkbox';
 
 import styles from './td.css';
 
+/**
+ * TODO need documentation and examples for this component
+ */
 const Td = ({ children, component: Component, align, styles: CSS, ...other }) => {
   const styleName = align === 'left' ? 'column' : `column ${align}`;
 

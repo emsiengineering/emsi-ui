@@ -43,6 +43,10 @@
   font-weight: 600;
 }
 
+.inherit {
+  color: inherit;
+}
+
 .primary {
   color: var(--primary-color);
 }

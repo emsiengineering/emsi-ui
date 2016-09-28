@@ -11,7 +11,9 @@ type Props = {
   styles: Object,
   other?: Object
 }
-
+/**
+ * The Gird is composed of 12 flexable columns
+ */
 function Grid({ fluid, children, component: Component = 'div', styles: CSSStyles, ...other }: Props) {
   const styleName: string = fluid ? 'fluid' : 'grid';
 
@@ -21,5 +23,10 @@ function Grid({ fluid, children, component: Component = 'div', styles: CSSStyles
     </div>
   );
 }
+Grid.defaultProps = {
+  component: 'div',
+  fluid: false,
+
+};
 
 export default CSSModules(Grid, styles, { allowMultiple: true });
