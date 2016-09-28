@@ -39,46 +39,6 @@ export class App extends React.Component {
         <Icon name='checkbox' color='alternate' />
         <CardBody component='span'>Test</CardBody>
         <CardBody>Test</CardBody>
-          <Grid fluid>
-            <Row>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-              <Col xs={12} sm={6} md={1}>
-                <div style={styles} />
-              </Col>
-            </Row>
-          </Grid>
       </div>
     );
   }
