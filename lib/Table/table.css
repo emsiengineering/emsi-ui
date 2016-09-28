@@ -1,0 +1,24 @@
+@import "../variables.css";
+
+.table {
+  width: 100%;
+}
+
+.column {
+  text-align: left;
+  padding: 1.5rem 0 1.5rem 1rem;
+  border-bottom: 1px solid var(--gray4);
+
+  & .right {
+    text-align: right;
+  }
+
+  & .center {
+    text-align: center;
+  }
+}
+
+.icon {
+  margin-bottom: 0.3rem;
+  margin-right: 0.75rem;
+}
