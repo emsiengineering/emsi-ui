@@ -5,17 +5,25 @@ import styles from './pillbox.css';
 
 type Props = {
   children?: any,
+  /** adds the active class when true */
   active?: boolean,
+  /** html element: button, div, span etc. */
+  component?: string,
   styles: Object,
+  /** add more props to the component */
   other?: Object
 }
 
-function Pillbox({ children, active, styles: CSSSTyles, ...other }: Props) {
+function Pillbox({ component: Component, children, active, styles: CSSSTyles, ...other }: Props) {
   return (
-    <div styleName={active ? 'pillbox active' : 'pillbox'}>
+    <Component {...other} styleName={active ? 'pillbox active' : 'pillbox'}>
       {children}
-    </div>
+    </Component>
   );
 }
+Pillbox.defaultProps = {
+  component: 'div',
+  active: false
+};
 
 export default CSSModules(Pillbox, styles, { allowMultiple: true });

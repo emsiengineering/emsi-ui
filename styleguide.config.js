@@ -26,7 +26,8 @@ module.exports = {
       name: 'Feedback Elements',
       components() {
         return [
-          component('Alert')
+          component('Alert'),
+          component('Pillbox')
         ];
       }
     },
@@ -40,13 +41,13 @@ module.exports = {
           component('DataHeader'),
           component('DataTable'),
           component('Input'),
-          component('Label'),
-          component('Option'),
+          component('Textarea'),
           component('Radio'),
           component('RadioGroup'),
+          component('Label'),
           component('Select'),
+          component('Option'),
           component('Table'),
-          component('Textarea'),
           component('Td'),
           component('Tr')
         ];
@@ -65,9 +66,9 @@ module.exports = {
       components() {
         return [
           component('ContentWrap'),
-          component('Col'),
           component('Grid'),
-          component('Row')
+          component('Row'),
+          component('Col')
         ];
       }
     },
