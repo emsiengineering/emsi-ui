@@ -1,5 +1,9 @@
 @import "../../../assets/css/variables.css";
 
+.alert-container {
+  background-color: white;
+}
+
 .alert {
   composes: @import card from '../Card/card.css';
   padding: 2rem;
