@@ -7,21 +7,29 @@ import ContentWrap from '../ContentWrap';
 import styles from './tab-panel.css';
 
 type Props = {
+  /** position the active class on the bottom or top of the text */
   position: 'top'|'bottom',
-  theme: 'dark'|'darker'|void,
+  /** background color of the panel */
+  theme: 'dark'|void,
+  /** function to handle the change of panel */
   onChange?: Function,
+  /** number of the activeTab */
   activeTab?: number|string,
+  /** aligns text centered */
   center?: boolean,
+  /** wraps the panels inside the ContentWrap component */
   padded?: boolean,
   children: any
 }
 
-class TabPanel extends React.Component {
-  static displayName = 'emsiUI-TabPanel';
-
+class TabPanel extends React.Component<void, Props, void> {
   static defaultProps = {
     position: 'bottom',
-    activeTab: 0
+    onChange: function noop() {},
+    activeTab: 0,
+    center: false,
+    padded: false,
+    theme: null
   }
 
   constructor(props: Props) {

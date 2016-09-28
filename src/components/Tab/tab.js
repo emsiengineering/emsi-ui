@@ -5,21 +5,21 @@ import { Tab as AriaTab } from 'react-aria-tabpanel';
 import styles from './tab.css';
 
 type Props = {
+  /** adds the active class, when true */
   active?: boolean,
-  position?: string,
-  width?: string,
+  /** position the active class on the bottom or top of the text */
+  position?: 'top'|'bottom',
   id?: string,
   styles: Object,
+  /** any additional props to add */
   other?: Object,
   children: any
 }
-
-function Tab({ children, active, id, position, width, styles: CSS, ...other }: Props) {
+/**
+ * Tab can't be used outside the TabPanel Component context
+ */
+function Tab({ children, active, id, position, styles: CSS, ...other }: Props) {
   let styleName: string = active ? `tab tab-active-${position}` : 'tab';
-  let inlineStyles = {};
-
-  if (width)
-    inlineStyles.width = width;
 
   return (
     <AriaTab
@@ -32,7 +32,5 @@ function Tab({ children, active, id, position, width, styles: CSS, ...other }: P
     </AriaTab>
   );
 }
-
-Tab.displayName = 'emsiUI-Tab';
 
 export default CSSModules(Tab, styles, { allowMultiple: true });
