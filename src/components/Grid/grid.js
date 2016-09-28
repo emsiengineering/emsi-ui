@@ -1,4 +1,3 @@
-import { MenuItem } from 'react-aria-menubutton';
 import React from 'react';
 import CSSModules from 'react-css-modules';
 
@@ -12,9 +11,10 @@ type Props = {
   other?: Object
 }
 /**
- * The Gird is composed of 12 flexable columns
+ * The Gird is composed of 12 flexable columns, it has a gutter of 2rem between columns
+ * It breaks down at 1024px and 767px
  */
-function Grid({ fluid, children, component: Component = 'div', styles: CSSStyles, ...other }: Props) {
+function Grid({ fluid, children, component: Component, styles: CSSStyles, ...other }: Props) {
   const styleName: string = fluid ? 'fluid' : 'grid';
 
   return (
@@ -25,8 +25,7 @@ function Grid({ fluid, children, component: Component = 'div', styles: CSSStyles
 }
 Grid.defaultProps = {
   component: 'div',
-  fluid: false,
-
+  fluid: false
 };
 
 export default CSSModules(Grid, styles, { allowMultiple: true });
