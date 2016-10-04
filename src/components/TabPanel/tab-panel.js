@@ -47,7 +47,7 @@ class TabPanel extends React.Component {
   }
 
   render() {
-    const { position, onChange, activeTab, theme, center, padded } = this.props;
+    const { position, onChange, activeTab, theme, center, padded, ...other } = this.props;
     let styleName = this.state.closed ? 'closed' : 'tab-panel';
 
     if (center)
@@ -59,7 +59,7 @@ class TabPanel extends React.Component {
     let menuItems = this.menuItems();
 
     return (
-      <div styleName='container'>
+      <div styleName='container' {...other}>
 					<div styleName='mobile-menu' onClick={this.handleClick} />
 					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
 						<TabList styleName={styleName}>
