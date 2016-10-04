@@ -59,10 +59,10 @@ class TabPanel extends React.Component {
     let menuItems = this.menuItems();
 
     return (
-      <div styleName='container' {...other}>
+      <div styleName='container'>
 					<div styleName='mobile-menu' onClick={this.handleClick} />
 					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
-						<TabList styleName={styleName}>
+						<TabList styleName={styleName}  {...other}>
 							{ padded ? this.renderPadded(menuItems.tabs) : menuItems.tabs }
 						</TabList>
 						{menuItems.panels}
