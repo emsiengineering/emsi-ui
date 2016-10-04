@@ -73,7 +73,7 @@ class TabPanel extends React.Component {
 
   menuItems() {
     const { position, children, center } = this.props;
-    const { activeTab }: { activeTab: number } = this.props;
+    const { activeTab } = this.props;
     const width = center ? 1 / React.Children.count(children) * 100 + '%' : 'auto';
 
     let tabs: Array = [];
