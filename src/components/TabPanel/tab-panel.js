@@ -40,7 +40,7 @@ class TabPanel extends React.Component {
 
   renderPadded(tabs) {
     return (
-      <ContentWrap>
+      <ContentWrap styleName='padded'>
         {tabs}
       </ContentWrap>
     );

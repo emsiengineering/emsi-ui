@@ -8,13 +8,13 @@
   cursor: pointer;
 
   &-active-bottom {
-    box-shadow: inset 0 -3px 0 0 var(--primary-color);
-    color: #2ad587;
+    box-shadow: inset 0 -3px 0 0;
+    color: var(--primary-color);
   }
 
   &-active-top {
-    box-shadow: inset 0 3px 0 0 var(--primary-color);
-    color: #2ad587;
+    box-shadow: inset 0 3px 0 0;
+    color: var(--primary-color);
   }
   @media (--medium-viewport) {
     display: block;
