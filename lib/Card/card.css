@@ -5,6 +5,6 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 3px;
-  box-shadow: 0 5px 10px 0 color(black a(5%)), 0 0 0 1px color(black a(7.5%));
+  border-radius: 6px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
 }
