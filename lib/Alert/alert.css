@@ -15,7 +15,8 @@
 }
 
 .alert-title {
-  composes: @import strong from '../Header/header.css';
+  composes: @import bold from '../Header/header.css';
+  composes: @import body from '../Header/header.css';
   color: var(--gray2);
   display: block;
   width: 100%;
