@@ -18,9 +18,9 @@ function Alert({ children, title, type = 'alert' }: Props) {
         <Header type='body' styleName={`${type}-title`} bold>
           {title}:
         </Header>
-        <div>
+        <Header component='p' type='body'>
           {children}
-        </div>
+        </Header>
       </div>
     </div>
   );
