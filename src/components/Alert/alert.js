@@ -1,6 +1,7 @@
 import CSSModules from 'react-css-modules';
 import React from 'react';
 import Card from '../Card';
+import Header from '../Header';
 
 import styles from './alert.css';
 
@@ -14,9 +15,9 @@ function Alert({ children, title, type = 'alert' }: Props) {
   return (
     <div styleName='alert-container'>
       <div styleName={type}>
-        <div styleName={`${type}-title`}>
+        <Header type='body' styleName={`${type}-title`} bold>
           {title}:
-        </div>
+        </Header>
         <div>
           {children}
         </div>
