@@ -1,0 +1,115 @@
+@import "../variables.css";
+
+.tab-panel {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  max-height: 60rem;
+  background-color: white;
+  color: color(black a(75%));
+  transition: max-height 500ms ease-in-out;
+
+  @media (--medium-viewport) {
+    padding: 2rem 2.5rem;
+    background-color: var(--slate-color);
+
+    &::before {
+      display: block;
+      margin-bottom: 2rem;
+      color: white;
+      content: 'Menu';
+
+      &-closed {
+        margin-bottom: 0;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      top: 2rem;
+      right: 2.5rem;
+      color: white;
+      content: '\f123';
+      font-family: Ionicons;
+      transition: all 250ms ease;
+    }
+  }
+}
+
+.closed {
+  composes: tab-panel;
+  @media (--medium-viewport) {
+    max-height: 6rem;
+
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.center {
+  composes: tab-panel;
+  text-align: center;
+
+  @media (--medium-viewport) {
+    text-align: left;
+  }
+}
+
+.tab-panel-center {
+  composes: tab-panel center;
+}
+
+.closed-center {
+  composes: center closed;
+}
+
+.dark {
+  composes: tab-panel;
+  background-color: var(--slate-color);
+  color: white;
+}
+
+.tab-panel-dark {
+  composes: tab-panel dark;
+}
+
+.closed-dark {
+  composes: closed dark;
+}
+
+.tab-panel-center-dark {
+  composes: tab-panel center dark;
+}
+
+.closed-center-dark {
+  composes: closed center dark;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mobile-menu {
+  width: 0%;
+  height: 0%;
+  cursor: pointer;
+
+  @media (--medium-viewport) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 6rem;
+  }
+}
+
+.padded {
+  padding-left: 0;
+}

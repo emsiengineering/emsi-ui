@@ -40,14 +40,14 @@ class TabPanel extends React.Component {
 
   renderPadded(tabs) {
     return (
-      <ContentWrap>
+      <ContentWrap styleName='padded'>
         {tabs}
       </ContentWrap>
     );
   }
 
   render() {
-    const { position, onChange, activeTab, theme, center, padded } = this.props;
+    const { position, onChange, activeTab, theme, center, padded, ...other } = this.props;
     let styleName = this.state.closed ? 'closed' : 'tab-panel';
 
     if (center)
@@ -62,7 +62,7 @@ class TabPanel extends React.Component {
       <div styleName='container'>
 					<div styleName='mobile-menu' onClick={this.handleClick} />
 					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
-						<TabList styleName={styleName}>
+						<TabList styleName={styleName}  {...other}>
 							{ padded ? this.renderPadded(menuItems.tabs) : menuItems.tabs }
 						</TabList>
 						{menuItems.panels}
@@ -73,7 +73,7 @@ class TabPanel extends React.Component {
 
   menuItems() {
     const { position, children, center } = this.props;
-    const { activeTab }: { activeTab: number } = this.props;
+    const { activeTab } = this.props;
     const width = center ? 1 / React.Children.count(children) * 100 + '%' : 'auto';
 
     let tabs: Array = [];

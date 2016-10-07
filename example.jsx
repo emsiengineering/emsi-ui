@@ -13,30 +13,22 @@ import ContentWrap from './src/components/ContentWrap';
 import Select from './src/components/Select';
 import Option from './src/components/Option';
 import Icon from './src/components/Icon';
-import CardBody from './src/components/CardBody';
+import CardBody from './lib/CardBody';
 
 import theme from './src/theme';
-import jss from './src/jss';
-import fonts from './assets/jss/fonts';
-import body from './assets/jss/body';
 
 import 'reset-css/reset.css';
-
-jss.createStyleSheet(fonts, { named: false }).attach();
-jss.createStyleSheet(body, { named: false }).attach();
 
 export class App extends React.Component {
   render() {
     return (
-			<div>
-        <Checkbox radio>Test</Checkbox>
-        <Checkbox checked />
-        <Icon name='checkbox' />
-        <Icon name='checkbox' color='primary' />
-        <Icon name='checkbox' color='alternate' />
-        <CardBody component='span'>Test</CardBody>
-        <CardBody>Test</CardBody>
-      </div>
+      <CardBody>
+        <div>
+          <span>
+            test
+          </span>
+        </div>
+      </CardBody>
     );
   }
 }

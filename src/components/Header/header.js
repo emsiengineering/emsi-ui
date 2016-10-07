@@ -14,7 +14,7 @@ type Props = {
 
 function Header({ component: Component = 'div', color, children, type, bold, styles: CSSStyles, ...other }: Props) {
 
-  let styleNames: string = bold ? `bold ${type}` : `${type}`;
+  let styleNames = bold ? `${type} bold` : `${type}`;
 
   switch (color) {
   case 'primary':

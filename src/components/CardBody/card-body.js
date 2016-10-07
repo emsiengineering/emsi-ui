@@ -5,7 +5,7 @@ import style from './card-body.css';
 
 type Props = {
   styles: any,
-  children: any,
+  children?: any,
   component?: string,
   other?: Object
 }

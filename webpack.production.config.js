@@ -2,49 +2,55 @@ var webpack = require('webpack');
 var path = require('path');
 var loaders = require('./webpack.loaders');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
 	entry: {
-		Alert: ['./src/components/Alert'],
-		Button: ['./src/components/Button'],
-		Card: ['./src/components/Card'],
-		CardBody: ['./src/components/CardBody'],
-		CardMedia: ['./src/components/CardMedia'],
-		Checkbox: ['./src/components/Checkbox'],
-		CheckboxGroup: ['./src/components/CheckboxGroup'],
-		Col: ['./src/components/Col'],
-		ContentWrap: ['./src/components/ContentWrap'],
-		GlobalHeader: ['./src/components/GlobalHeader'],
-		Grid: ['./src/components/Grid'],
-		Header: ['./src/components/Header'],
-		Icon: ['./src/components/Icon'],
-		Input: ['./src/components/Input'],
-		Label: ['./src/components/Label'],
-		Modal: ['./src/components/Modal'],
-		Option: ['./src/components/Option'],
-		Pillbox: ['./src/components/Pillbox'],
-		Radio: ['./src/components/Radio'],
-		RadioGroup: ['./src/components/RadioGroup'],
-		Row: ['./src/components/Row'],
-		Select: ['./src/components/Select'],
-		Tab: ['./src/components/Tab'],
-		Table: ['./src/components/Table'],
-		TabPanel: ['./src/components/TabPanel'],
-		Td: ['./src/components/Td'],
-		Textarea: ['./src/components/Textarea'],
-		Tr: ['./src/components/Tr']
+		Alert: ['./src/components/Alert/alert.css'],
+		Button: ['./src/components/Button/button.css'],
+		Card: ['./src/components/Card/card.css'],
+		CardBody: ['./src/components/CardBody/card-body.css'],
+		CardMedia: ['./src/components/CardMedia/card-media.css'],
+		Checkbox: ['./src/components/Checkbox/checkbox.css'],
+		// CheckboxGroup: ['./src/components/CheckboxGroup/checkbox-group.css'],
+		Col: ['./src/components/Col/col.css'],
+		ContentWrap: ['./src/components/ContentWrap/contentwrap.css'],
+		// GlobalHeader: ['./src/components/GlobalHeader/card.css'],
+		Grid: ['./src/components/Grid/grid.css'],
+		Header: ['./src/components/Header/header.css'],
+		Icon: ['./src/components/Icon/icon.css'],
+		Input: ['./src/components/Input/input.css'],
+		Label: ['./src/components/Label/label.css'],
+		Modal: ['./src/components/Modal/modal.css'],
+		Option: ['./src/components/Option/option.css'],
+		Pillbox: ['./src/components/Pillbox/pillbox.css'],
+		// Radio: ['./src/components/Radio/radio.css'],
+		// RadioGroup: ['./src/components/RadioGroup/radio-group.css'],
+		Row: ['./src/components/Row/row.css'],
+		Select: ['./src/components/Select/select.css'],
+		Tab: ['./src/components/Tab/tab.css'],
+		Table: ['./src/components/Table/table.css'],
+		TabPanel: ['./src/components/TabPanel/tab-panel.css'],
+		Td: ['./src/components/Td/td.css'],
+		// Textarea: ['./src/components/Textarea/textarea.css'],
+		Tr: ['./src/components/Tr/tr.css']
 	},
 	output: {
 		path: path.join(__dirname, 'lib'),
-		filename: '[name].js',
-		library: 'emsi-ui',
-		libraryTarget: 'umd'
+		filename: '[name]/[name].css'
 	},
 	resolve: {
-		extensions: ['', '.js', '.jsx']
+		extensions: ['', '.css']
 	},
 	module: {
-		loaders: loaders
+		loaders:
+			{
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract({
+		    	notExtractLoader: 'style-loader',
+		    	loader: 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!resolve-url!postcss',
+				})
+			}
 	},
 	postcss: function(webpack) {
 		return {
@@ -72,32 +78,8 @@ module.exports = {
 		}
 	},
 	plugins: [
-		new CopyWebpackPlugin([
-			{ from: './index.html' },
-			{ from: './assets/fonts' }
-		]),
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-			}
-		}),
 		new webpack.NoErrorsPlugin(),
-		new webpack.optimize.UglifyJsPlugin({
-			mangle: {
-				screw_ie8: true
-			},
-			compress: {
-				warnings: true,
-				sequences: true,
-				dead_code: true,
-				conditionals: true,
-				booleans: true,
-				unused: true,
-				if_return: true,
-				join_vars: true,
-				drop_console: true
-			}
-		}),
-		new webpack.optimize.DedupePlugin()
+		new ExtractTextPlugin('[name].css')
+		// new webpack.optimize.DedupePlugin()
 	]
 };

@@ -37,7 +37,11 @@ storiesOf('Card', module)
           </Col>
           <Col xs={12} md={4}>
             <CardBody>
-              Test2
+              <div>
+                <span>
+                  test
+                </span>
+              </div>
             </CardBody>
           </Col>
         </Row>

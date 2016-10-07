@@ -1,0 +1,51 @@
+@import "../variables.css";
+
+.option {
+  position: relative;
+  z-index: 2;
+  padding: 0.75em 2rem;
+  outline: none;
+  border: 1px solid transparent;
+  color: color(black a(75%));
+  cursor: pointer;
+
+  &:focus {
+    z-index: 3;
+
+    &::after {
+      color: color(black a(75%));
+      opacity: 1;
+      content: '\f124';
+      margin-top: -0.4rem;
+      font-size: 0.5rem;
+      vertical-align: middle;
+      margin-left: 1rem;
+      display: inline-block;
+      font-family: Ionicons;
+    }
+  }
+
+  &:focus:not(.active) {
+    &::after {
+      color: black;
+    }
+  }
+
+  &:hover:not(.active) {
+    background-color: color(var(--link-color) a(10%));
+    color: var(--link-color);
+  }
+}
+
+.active {
+  composes: option;
+  border-color: var(--link-color);
+  background-color: var(--link-color);
+  color: color(var(--white) a(75%));
+
+  &:focus {
+    &::after {
+      color: color(var(--white) a(75%));
+    }
+  }
+}

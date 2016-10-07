@@ -1,13 +1,1 @@
-export { default as Select } from './src/components/Select';
-export { default as Option } from './src/components/Option';
-export { default as Button } from './src/components/Button';
-export { default as ContentWrap } from './src/components/ContentWrap';
-export { default as Icon } from './src/components/Icon';
-export { default as Header } from './src/components/Header';
-export { default as Pillbox } from './src/components/Pillbox';
-export { default as Col } from './src/components/Col';
-export { default as Row } from './src/components/Row';
-export { default as Grid } from './src/components/Grid';
-export { default as Tab } from './src/components/Tab';
-export { default as TabPanel } from './src/components/TabPanel';
-export { default as Input } from './src/components/Input';
+export { default as CardBody } from './src/components/CardBody';
