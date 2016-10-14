@@ -31,15 +31,13 @@ export class App extends React.Component {
       height: '30rem'
     };
     return (
-			<div>
-        <Checkbox radio>Test</Checkbox>
-        <Checkbox checked />
-        <Icon name='checkbox' />
-        <Icon name='checkbox' color='primary' />
-        <Icon name='checkbox' color='alternate' />
-        <CardBody component='span'>Test</CardBody>
-        <CardBody>Test</CardBody>
-      </div>
+      <CardBody>
+        <div>
+          <span>
+            test
+          </span>
+        </div>
+      </CardBody>
     );
   }
 }

@@ -7,7 +7,7 @@ type Props = {
   /** html element, div,span,button */
   component?: string,
   styles: any,
-  children: any,
+  children?: any,
   /** add any other props to the component */
   other?: Object
 }
