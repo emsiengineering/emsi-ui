@@ -7,18 +7,22 @@ import Label from '../Label';
 
 type Props = {
   styles: any,
+  /** the value to pass into the component */
   value?: string,
+  /** sets the checkbox to radio */
   radio?: boolean,
+  /** active state of the checkbox */
   checked?: boolean,
+  /** add any other props to the component */
   other?: any,
   children: any,
+  /** function to pass in to track the change of state outside the component */
   onChange?: Function
 }
 
-class Checkbox extends React.Component {
-  static props = Props;
-
+class Checkbox extends React.Component<void, Props, void> {
   static defaultProps = {
+    value: '',
     radio: false,
     checked: false,
     onChange: function noop() {}

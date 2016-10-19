@@ -13,7 +13,10 @@ import ContentWrap from './src/components/ContentWrap';
 import Select from './src/components/Select';
 import Option from './src/components/Option';
 import Icon from './src/components/Icon';
-import CardBody from './lib/CardBody';
+import CardBody from './src/components/CardBody';
+import Grid from './src/components/Grid';
+import Col from './src/components/Col';
+import Row from './src/components/Row';
 
 import theme from './src/theme';
 
@@ -21,6 +24,12 @@ import 'reset-css/reset.css';
 
 export class App extends React.Component {
   render() {
+    const styles = {
+      backgroundColor: '#efeeed',
+      textAlign: 'center',
+      padding: '1rem',
+      height: '30rem'
+    };
     return (
       <CardBody>
         <div>

@@ -6,6 +6,9 @@ import Checkbox from '../Checkbox';
 
 import styles from './tr.css';
 
+/**
+ * TODO need documentation and examples for this component
+ */
 const Tr = ({ children, selectable, selected, onSelect, styles: CSS, ...other }) => {
   const selectTd = selectable ?  (
     <Td align='center'>

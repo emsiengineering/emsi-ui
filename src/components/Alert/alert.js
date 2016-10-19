@@ -7,11 +7,13 @@ import styles from './alert.css';
 
 type Props = {
   children: any,
+  /** message of the alert */
   title: string,
-  type?: string
+  /** One of: alert, error */
+  type: 'alert'|'error'
 }
 
-function Alert({ children, title, type = 'alert' }: Props) {
+function Alert({ children, title, type }: Props) {
   return (
     <div styleName='alert-container'>
       <div styleName={type}>
@@ -25,5 +27,8 @@ function Alert({ children, title, type = 'alert' }: Props) {
     </div>
   );
 }
+Alert.defaultProps = {
+  type: 'alert'
+};
 
 export default CSSModules(Alert, styles);

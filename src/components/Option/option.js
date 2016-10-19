@@ -5,12 +5,14 @@ import CSSModules from 'react-css-modules';
 import styles from './option.css';
 
 type Props = {
+  /** sets the active class when true */
   active?: boolean,
   children?: any,
-  onClick?: Function
 }
-
-function Option({ active, children, onClick }: Props) {
+/**
+ * Must be used in inside a Select Component
+ */
+function Option({ active, children }: Props) {
   const styleName: string = active ? 'active' : 'option';
 
   return (
@@ -21,5 +23,8 @@ function Option({ active, children, onClick }: Props) {
     </li>
   );
 }
+Option.defaultProps = {
+  acitve: false
+};
 
 export default CSSModules(Option, styles);

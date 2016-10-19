@@ -5,23 +5,28 @@ import Header from '../Header';
 import styles from './input.css';
 
 type Props = {
+  /** default text to display inside the input */
   children?: string,
+  /** html element, div,span,button */
   component?: string,
+  /** function to capture the state change outside the component */
   onChange?: Function,
+  /** error message to show to the user */
   errorMessage?: string,
+  /** make the input required */
   required?: boolean,
+  /** change state of input when true */
   error?: boolean,
+  /** disable the input */
   disabled?: boolean,
   styles: Object,
+  /** add any other props to the component */
   other?: Object,
+  /** placeholder text */
   placeholder?: string
 }
 
-function renderValue() {
-
-}
-
-function Input({ children, component: Component = 'input', onChange = function noop() {}, placeholder, errorMessage, required, error, disabled, styles: CSS, ...other }: Props) {
+function Input({ children, component: Component, onChange, placeholder, errorMessage, required, error, disabled, styles: CSS, ...other }: Props) {
   const styleName: string = error ? 'error' : 'input';
 
   return (
@@ -41,5 +46,12 @@ function Input({ children, component: Component = 'input', onChange = function n
     </label>
   );
 }
+Input.defaultProps = {
+  component: 'input',
+  disabled: false,
+  required: false,
+  error: false,
+  onChange: function noop() {}
+};
 
 export default CSSModules(Input, styles, { allowMultiple: true });

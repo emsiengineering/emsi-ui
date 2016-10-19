@@ -7,16 +7,23 @@ import uniqueId from 'lodash.uniqueid';
 import Icon from '../Icon';
 
 type Props = {
+  /** Option component */
   children: Array<Object>,
   onSelect?: Function,
+  /** disable the select box */
   disabled?: boolean,
-  styles?: Object,
-  other?: Object
+  styles: Object|void,
+  /** add any other props to the component */
+  other?: Object|void
 }
-
-class Select extends React.Component {
+/**
+ * Required to use the Option Component for a Select's children
+ * The select box has a fixed width, long options will be clipped
+ */
+class Select extends React.Component<void, Props, void> {
   static defaultProps = {
-    onSelect: function noop() {}
+    onSelect: function noop() {},
+    disabled: false
   }
 
   constructor(props: Props) {

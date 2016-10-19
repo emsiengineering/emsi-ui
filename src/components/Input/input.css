@@ -6,8 +6,8 @@
 
 .message {
   position: absolute;
-  bottom: -1.5rem;
-  right: 0;
+  bottom: -3rem;
+  left: 0;
   color: var(--red);
 }
 

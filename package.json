@@ -12,6 +12,8 @@
     "build:new": "rm -rf lib && npm run babel && npm run copy_css && npm run replace_imports",
     "dev": "webpack-dev-server --config webpack.config.js --progress --profile --colors --hot",
     "storybook": "start-storybook -p 9001 -s ./public",
+    "styleguide-server": "styleguidist server",
+    "styleguide-build": "styleguidist build",
     "prepublish": "npm run build"
   },
   "license": "SEE LICENSE IN LICENSE",
@@ -50,6 +52,7 @@
     "copy-webpack-plugin": "^3.0.1",
     "cpx": "^1.5.0",
     "css-loader": "^0.24.0",
+    "dasherize": "^2.0.0",
     "eslint": "^3.3.1",
     "eslint-plugin-react": "^6.1.2",
     "extract-text-webpack-plugin": "^1.0.1",

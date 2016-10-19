@@ -4,13 +4,15 @@ import React from 'react';
 import style from './card-body.css';
 
 type Props = {
+  /** html element, div,span,button */
+  component?: string,
   styles: any,
   children?: any,
-  component?: string,
+  /** add any other props to the component */
   other?: Object
 }
 
-function CardText({ styles, children, component: Component = 'div', ...other }: Props) {
+function CardBody({ component: Component = 'div', children, styles, ...other }: Props) {
   return (
     <Component styleName='card-body' {...other}>
       {children}
@@ -18,4 +20,4 @@ function CardText({ styles, children, component: Component = 'div', ...other }: 
   );
 }
 
-export default CSSModules(CardText, style);
+export default CSSModules(CardBody, style);
