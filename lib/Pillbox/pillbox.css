@@ -1,16 +1,17 @@
-@import "../variables.css";
-
 .pillbox {
   display: inline-block;
-  background-color: color(var(--gray3));
+  background-color: rgb(191, 191, 191);
+  padding: 16px 24px;
   padding: 1rem 1.5rem;
   border-radius: 1.5rem;
+  font-size: 20.8px;
   font-size: 1.3rem;
   color: #fff;
+  margin: 16px;
   margin: 1rem;
-  margin-left: 0;
+  margin-left: 0
+}
 
-  &.active {
-    background-color: color(#fff a(30%));
-  }
+.pillbox.active {
+  background-color: rgba(255, 255, 255, 0.3)
 }

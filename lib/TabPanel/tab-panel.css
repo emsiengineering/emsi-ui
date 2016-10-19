@@ -1,61 +1,73 @@
-@import "../variables.css";
-
 .tab-panel {
   position: relative;
   display: inline-block;
   width: 100%;
   overflow: hidden;
+  max-height: 960px;
   max-height: 60rem;
   background-color: white;
-  color: color(black a(75%));
-  transition: max-height 500ms ease-in-out;
-
-  @media (--medium-viewport) {
-    padding: 2rem 2.5rem;
-    background-color: var(--slate-color);
-
-    &::before {
-      display: block;
-      margin-bottom: 2rem;
-      color: white;
-      content: 'Menu';
-
-      &-closed {
-        margin-bottom: 0;
-      }
-    }
-
-    &::after {
-      position: absolute;
-      top: 2rem;
-      right: 2.5rem;
-      color: white;
-      content: '\f123';
-      font-family: Ionicons;
-      transition: all 250ms ease;
-    }
-  }
+  color: rgba(0, 0, 0, 0.75);
+  -webkit-transition: max-height 500ms ease-in-out;
+  transition: max-height 500ms ease-in-out
 }
+
+@media (max-width: 46.8em) {
+
+  .tab-panel {
+    padding: 2rem 2.5rem;
+    background-color: #203a45
+  }
+
+  .tab-panel::before {
+    display: block;
+    margin-bottom: 2rem;
+    color: white;
+    content: 'Menu'
+  }
+
+  .tab-panel::before-closed {
+    margin-bottom: 0
+  }
+
+  .tab-panel::after {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    color: white;
+    content: '\f123';
+    font-family: Ionicons;
+    -webkit-transition: all 250ms ease;
+    transition: all 250ms ease
+  }
+  }
 
 .closed {
-  composes: tab-panel;
-  @media (--medium-viewport) {
-    max-height: 6rem;
-
-    &::after {
-      transform: rotate(90deg);
-    }
-  }
+  composes: tab-panel
 }
+
+@media (max-width: 46.8em) {
+
+  .closed {
+    max-height: 6rem
+  }
+
+  .closed::after {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg)
+  }
+  }
 
 .center {
   composes: tab-panel;
-  text-align: center;
-
-  @media (--medium-viewport) {
-    text-align: left;
-  }
+  text-align: center
 }
+
+@media (max-width: 46.8em) {
+
+  .center {
+    text-align: left
+  }
+  }
 
 .tab-panel-center {
   composes: tab-panel center;
@@ -67,7 +79,7 @@
 
 .dark {
   composes: tab-panel;
-  background-color: var(--slate-color);
+  background-color: #203a45;
   color: white;
 }
 
@@ -96,9 +108,12 @@
 .mobile-menu {
   width: 0%;
   height: 0%;
-  cursor: pointer;
+  cursor: pointer
+}
 
-  @media (--medium-viewport) {
+@media (max-width: 46.8em) {
+
+  .mobile-menu {
     position: absolute;
     top: 0;
     right: 0;
@@ -106,9 +121,9 @@
     left: 0;
     z-index: 10;
     width: 100%;
-    height: 6rem;
+    height: 6rem
   }
-}
+  }
 
 .padded {
   padding-left: 0;

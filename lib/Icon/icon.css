@@ -1,21 +1,23 @@
-@import "../variables.css";
-
 .icon {
   vertical-align: middle;
+  width: 48px;
   width: 3rem;
+  height: 48px;
   height: 3rem;
 }
 
 .small {
   composes: icon;
+  width: 24px;
   width: 1.5rem;
+  height: 24px;
   height: 1.5rem;
 }
 
 .primary {
-  color: var(--primary-color);
+  color: #41d492;
 }
 
 .alternate {
-  color: var(--link-color);
+  color: #1964eb;
 }

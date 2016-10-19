@@ -1,16 +1,14 @@
-@import "../variables.css";
-
 .row {
-  border-bottom: 1px solid var(--gray4);
-  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  width: 100%
+}
 
-  &:hover {
-    background-color: var(--gray5);
-  }
+.row:hover {
+  background-color: #f2f2f2
 }
 
 .selected {
-  background-color: color(var(--link-color) a(10%));
+  background-color: rgba(25, 100, 235, 0.1);
 }
 
 .selectable {
