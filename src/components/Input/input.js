@@ -1,8 +1,8 @@
-import React from 'react';
 import CSSModules from 'react-css-modules';
-import Header from '../Header';
+import React from 'react';
 
 import styles from './input.css';
+import Header from '../Header';
 
 type Props = {
   /** default text to display inside the input */
@@ -26,26 +26,29 @@ type Props = {
   placeholder?: string
 }
 
-function Input({ children, component: Component, onChange, placeholder, errorMessage, required, error, disabled, styles: CSS, ...other }: Props) {
-  const styleName: string = error ? 'error' : 'input';
+class Input extends React.Component {
+  render() {
+    const { component: Component, onChange, disabled, required, invalid, error, errorMessage, placeholder, children, ...other } = this.props;
+    const styleName: string = error ? 'error' : 'input';
 
-  return (
-    <label styleName='label'>
-      <Component
-        {...other}
-        onChange={onChange}
-        disabled={disabled}
-        styleName={styleName}
-        aria-disabled={disabled}
-        aria-required={required}
-        aria-invalid={error}
-        placeholder={placeholder}
-        defaultValue={children}
-        {...other} />
-      {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
-    </label>
-  );
+    return (
+      <label styleName='label'>
+        <Component
+          onChange={onChange}
+          disabled={disabled}
+          styleName={styleName}
+          aria-disabled={disabled}
+          aria-required={required}
+          aria-invalid={error}
+          placeholder={placeholder}
+          defaultValue={children}
+          {...other} />
+        {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
+      </label>
+    );
+  }
 }
+
 Input.defaultProps = {
   component: 'input',
   disabled: false,
