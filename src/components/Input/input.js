@@ -27,6 +27,11 @@ type Props = {
 }
 
 class Input extends React.Component {
+  componentDidMount() {
+    console.log(this.refs);
+  }
+
+
   render() {
     const { component: Component, onChange, disabled, required, invalid, error, errorMessage, placeholder, children, ...other } = this.props;
     const styleName: string = error ? 'error' : 'input';
@@ -34,6 +39,7 @@ class Input extends React.Component {
     return (
       <label styleName='label'>
         <Component
+          ref={(el) => { console.log(el) }}
           onChange={onChange}
           disabled={disabled}
           styleName={styleName}
