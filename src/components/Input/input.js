@@ -27,13 +27,9 @@ type Props = {
 }
 
 class Input extends React.Component {
-  componentDidMount() {
-    console.log(this.refs);
-  }
-
 
   render() {
-    const { component: Component, onChange, disabled, required, invalid, error, errorMessage, placeholder, children, ...other } = this.props;
+    const { component: Component = 'input', onChange = function noop() {}, disabled, required, invalid, error, errorMessage, placeholder, children, ref, ...other } = this.props;
     const styleName: string = error ? 'error' : 'input';
 
     return (
