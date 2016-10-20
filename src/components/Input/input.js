@@ -29,13 +29,15 @@ type Props = {
 class Input extends React.Component {
 
   render() {
-    const { component: Component = 'input', onChange = function noop() {}, disabled, required, invalid, error, errorMessage, placeholder, children, ref, ...other } = this.props;
+    const { component: Component = 'input', onChange = function noop() {}, handleRef = function noop() {}, disabled, required, invalid, error, errorMessage, placeholder, children, ref, ...other } = this.props;
     const styleName: string = error ? 'error' : 'input';
 
     return (
       <label styleName='label'>
         <Component
-          ref={(el) => { console.log(el) }}
+          ref={(el) => {
+            handleRef(el);
+          }}
           onChange={onChange}
           disabled={disabled}
           styleName={styleName}
