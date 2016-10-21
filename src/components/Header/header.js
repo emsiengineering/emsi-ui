@@ -24,7 +24,7 @@ function Header({ component: Component = 'div', color, children, type, bold, sty
   let styleNames = bold ? `${type} bold` : `${type}`;
 
   return (
-    <Component {...other} styleName={styleNames += ` ${color}`}>{children}</Component>
+    <Component tabIndex='0' {...other} styleName={styleNames += ` ${color}`}>{children}</Component>
   );
 }
 Header.defaultProps = {
