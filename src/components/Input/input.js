@@ -28,9 +28,7 @@ type Props = {
   handleRef?: Function,
   ref?: Function,
   /** used to link the label element with the input */
-  id: string,
-  /** used for the label element */
-  label: string
+  id: string
 }
 
 class Input extends React.Component<void, Props, void> {
@@ -40,12 +38,11 @@ class Input extends React.Component<void, Props, void> {
   }
 
   render() {
-    const { component: Component, onChange, id, label, handleRef, disabled, required, error, errorMessage, placeholder, children, ref, css, ...other } = this.props;
+    const { component: Component, onChange, id, handleRef, disabled, required, error, errorMessage, placeholder, children, ref, css, ...other } = this.props;
     const styleName: string = error ? 'error' : 'input';
 
     return (
       <label htmlFor={id} styleName='label'>
-        {label}
         <Component
           id={id}
           ref={(el) => {
