@@ -1,7 +1,7 @@
 import CSSModules from 'react-css-modules';
 import React from 'react';
 
-import styles from './input.css';
+import CSS from './input.css';
 import Header from '../Header';
 
 type Props = {
@@ -19,48 +19,41 @@ type Props = {
   error?: boolean,
   /** disable the input */
   disabled?: boolean,
-  css: Object,
+  styles: Object,
   /** add any other props to the component */
   other?: Object,
   /** placeholder text */
   placeholder?: string,
-  /** reference funciton */
+  /** function to handle the ref */
   handleRef?: Function,
-  ref?: Function,
-  /** used to link the label element with the input */
-  id: string
+  /** name of the ref */
+  ref?: string,
+  /** id on the input */
+  id?: string
 }
 
-class Input extends React.Component<void, Props, void> {
+function Input({ component: Component, onChange, handleRef, id, disabled, required, error, errorMessage, placeholder, children, ref, styles, ...other }: Props) {
+  const styleName: string = error ? 'error' : 'input';
 
-  constructor(props: Props) {
-    super(props);
-  }
-
-  render() {
-    const { component: Component, onChange, id, handleRef, disabled, required, error, errorMessage, placeholder, children, ref, css, ...other } = this.props;
-    const styleName: string = error ? 'error' : 'input';
-
-    return (
-      <label htmlFor={id} styleName='label'>
-        <Component
-          id={id}
-          ref={(el) => {
-            handleRef(el);
-          }}
-          onChange={onChange}
-          disabled={disabled}
-          styleName={styleName}
-          aria-disabled={disabled}
-          aria-required={required}
-          aria-invalid={error}
-          placeholder={placeholder}
-          defaultValue={children}
-          {...other} />
-        {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
-      </label>
-    );
-  }
+  return (
+    <label htmlFor={id} styleName='label'>
+      <Component
+        id={id}
+        ref={(el) => {
+          handleRef(el);
+        }}
+        onChange={onChange}
+        disabled={disabled}
+        styleName={styleName}
+        aria-disabled={disabled}
+        aria-required={required}
+        aria-invalid={error}
+        placeholder={placeholder}
+        defaultValue={children}
+        {...other} />
+      {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
+    </label>
+  );
 }
 
 Input.defaultProps = {
@@ -72,4 +65,4 @@ Input.defaultProps = {
   handleRef: function noop() {}
 };
 
-export default CSSModules(Input, styles, { allowMultiple: true });
+export default CSSModules(Input, CSS, { allowMultiple: true });
