@@ -19,22 +19,32 @@ type Props = {
   error?: boolean,
   /** disable the input */
   disabled?: boolean,
-  styles: Object,
+  css: Object,
   /** add any other props to the component */
   other?: Object,
   /** placeholder text */
-  placeholder?: string
+  placeholder?: string,
+  /** reference funciton */
+  handleRef?: Function,
+  ref?: Function,
+  /** used to link the label element with the input */
+  id: string
 }
 
-class Input extends React.Component {
+class Input extends React.Component<void, Props, void> {
+
+  constructor(props: Props) {
+    super(props);
+  }
 
   render() {
-    const { component: Component, onChange, handleRef, disabled, required, invalid, error, errorMessage, placeholder, children, ref, styles, ...other } = this.props;
+    const { component: Component, onChange, id, handleRef, disabled, required, error, errorMessage, placeholder, children, ref, css, ...other } = this.props;
     const styleName: string = error ? 'error' : 'input';
 
     return (
-      <label styleName='label'>
+      <label htmlFor={id} styleName='label'>
         <Component
+          id={id}
           ref={(el) => {
             handleRef(el);
           }}
