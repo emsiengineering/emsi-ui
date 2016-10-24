@@ -12,7 +12,7 @@ type Props = {
   /** background color of the panel */
   theme: 'dark'|void,
   /** function to handle the change of panel */
-  onChange?: Function,
+  onClick?: Function,
   /** number of the activeTab */
   activeTab?: number|string,
   /** aligns text centered */
@@ -25,7 +25,7 @@ type Props = {
 class TabPanel extends React.Component<void, Props, void> {
   static defaultProps = {
     position: 'bottom',
-    onChange: function noop() {},
+    onClick: function noop() {},
     activeTab: 0,
     center: false,
     padded: false,
@@ -55,7 +55,7 @@ class TabPanel extends React.Component<void, Props, void> {
   }
 
   render() {
-    const { position, onChange, activeTab, theme, center, padded, ...other } = this.props;
+    const { position, onClick, activeTab, theme, center, padded, ...other } = this.props;
     let styleName = this.state.closed ? 'closed' : 'tab-panel';
 
     if (center)
@@ -69,7 +69,7 @@ class TabPanel extends React.Component<void, Props, void> {
     return (
       <div styleName='container'>
 					<div styleName='mobile-menu' onClick={this.handleClick} />
-					<Wrapper onChange={onChange} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
+					<Wrapper onClick={onClick} activeTabId={this.state.childIds[this.props.activeTab] || this.props.activeTab}>
 						<TabList styleName={styleName}  {...other}>
 							{ padded ? this.renderPadded(menuItems.tabs) : menuItems.tabs }
 						</TabList>
