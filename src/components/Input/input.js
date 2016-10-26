@@ -29,12 +29,10 @@ type Props = {
   /** name of the ref */
   ref?: string,
   /** id on the input */
-  id?: string,
-  /** aria label on the input */
-  ariaLabel: string
+  id?: string
 }
 
-function Input({ component: Component, onChange, ariaLabel, handleRef, id, disabled, required, error, errorMessage, placeholder, children, ref, styles, ...other }: Props) {
+function Input({ component: Component, onChange, handleRef, id, disabled, required, error, errorMessage, placeholder, children, ref, styles, ...other }: Props) {
   const styleName: string = error ? 'error' : 'input';
 
   return (
@@ -47,7 +45,6 @@ function Input({ component: Component, onChange, ariaLabel, handleRef, id, disab
         onChange={onChange}
         disabled={disabled}
         styleName={styleName}
-        aria-label={ariaLabel}
         aria-disabled={disabled}
         aria-required={required}
         aria-invalid={error}
