@@ -27,18 +27,15 @@ type Props = {
   /** function to handle the ref */
   handleRef?: Function,
   /** name of the ref */
-  ref?: string,
-  /** id on the input */
-  id?: string
+  ref?: string
 }
 
-function Input({ component: Component, onChange, handleRef, id, disabled, required, error, errorMessage, placeholder, children, ref, styles, ...other }: Props) {
+function Input({ component: Component, onChange, handleRef, disabled, required, error, errorMessage, placeholder, children, ref, styles, ...other }: Props) {
   const styleName: string = error ? 'error' : 'input';
 
   return (
-    <label htmlFor={id} styleName='label'>
+    <span>
       <Component
-        id={id}
         ref={(el) => {
           handleRef(el);
         }}
@@ -52,7 +49,7 @@ function Input({ component: Component, onChange, handleRef, id, disabled, requir
         defaultValue={children}
         {...other} />
       {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
-    </label>
+    </span>
   );
 }
 
