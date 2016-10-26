@@ -1,7 +1,7 @@
 import CSSModules from 'react-css-modules';
 import React from 'react';
 
-import styles from './input.css';
+import CSS from './input.css';
 import Header from '../Header';
 
 type Props = {
@@ -23,34 +23,32 @@ type Props = {
   /** add any other props to the component */
   other?: Object,
   /** placeholder text */
-  placeholder?: string
+  placeholder?: string,
+  /** function to handle the ref */
+  handleRef?: Function
 }
 
-class Input extends React.Component {
+function Input({ component: Component, onChange, handleRef, disabled, required, error, errorMessage, placeholder, children, styles, ...other }: Props) {
+  const styleName: string = error ? 'error' : 'input';
 
-  render() {
-    const { component: Component, onChange, handleRef, disabled, required, invalid, error, errorMessage, placeholder, children, ref, styles, ...other } = this.props;
-    const styleName: string = error ? 'error' : 'input';
-
-    return (
-      <label styleName='label'>
-        <Component
-          ref={(el) => {
-            handleRef(el);
-          }}
-          onChange={onChange}
-          disabled={disabled}
-          styleName={styleName}
-          aria-disabled={disabled}
-          aria-required={required}
-          aria-invalid={error}
-          placeholder={placeholder}
-          defaultValue={children}
-          {...other} />
-        {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
-      </label>
-    );
-  }
+  return (
+    <span>
+      <Component
+        ref={(el) => {
+          handleRef(el);
+        }}
+        onChange={onChange}
+        disabled={disabled}
+        styleName={styleName}
+        aria-disabled={disabled}
+        aria-required={required}
+        aria-invalid={error}
+        placeholder={placeholder}
+        defaultValue={children}
+        {...other} />
+      {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
+    </span>
+  );
 }
 
 Input.defaultProps = {
@@ -62,4 +60,4 @@ Input.defaultProps = {
   handleRef: function noop() {}
 };
 
-export default CSSModules(Input, styles, { allowMultiple: true });
+export default CSSModules(Input, CSS, { allowMultiple: true });
