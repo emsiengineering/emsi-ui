@@ -14,26 +14,23 @@ type Props = {
   children: any,
   styles: Object,
   /** add any other props to the component */
-  other?: Object,
-  /** accessability */
-  tabIndex?: string
+  other?: Object
 }
 /**
  * All the rem sizes are based on having the html element set to 65.5% font-size
  */
-function Header({ component: Component = 'div', tabIndex, color, children, type, bold, styles: CSSStyles, ...other }: Props) {
+function Header({ component: Component = 'div', color, children, type, bold, styles: CSSStyles, ...other }: Props) {
 
   let styleNames = bold ? `${type} bold` : `${type}`;
 
   return (
-    <Component tabIndex={tabIndex} {...other} styleName={styleNames += ` ${color}`}>{children}</Component>
+    <Component {...other} styleName={styleNames += ` ${color}`}>{children}</Component>
   );
 }
 Header.defaultProps = {
   component: 'div',
   bold: false,
-  color: 'inherit',
-  tabIndex: '0'
+  color: 'inherit'
 };
 
 export default CSSModules(Header, styles, { allowMultiple: true });

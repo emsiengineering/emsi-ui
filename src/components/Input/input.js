@@ -25,12 +25,10 @@ type Props = {
   /** placeholder text */
   placeholder?: string,
   /** function to handle the ref */
-  handleRef?: Function,
-  /** name of the ref */
-  ref?: string
+  handleRef?: Function
 }
 
-function Input({ component: Component, onChange, handleRef, disabled, required, error, errorMessage, placeholder, children, ref, styles, ...other }: Props) {
+function Input({ component: Component, onChange, handleRef, disabled, required, error, errorMessage, placeholder, children, styles, ...other }: Props) {
   const styleName: string = error ? 'error' : 'input';
 
   return (
