@@ -1,0 +1,32 @@
+@import '../../variables.styl'
+
+.column
+  box-sizing border-box
+  padding-right $half-gutter-width
+  padding-left $half-gutter-width
+
+.xs
+  max-width 100%
+  flex-grow 1
+  flex-basis 0
+
+for i in (1..12)
+  .xs-{i}
+    max-width i * 8.3333333333333333 + '%'
+    flex-basis i * 8.3333333333333333 + '%'
+
+  .xs-offset-{i}
+    margin-left: i * 8.3333333333333333 + '%'
+
+for type, index in $types
+  .{type}
+    @extend .xs
+
+  for i in (1..12)
+    @media only screen and (min-width: $viewport[type])
+      .{type}-{i}
+        max-width i * 8.3333333333333333 + '%'
+        flex-basis i * 8.3333333333333333 + '%'
+
+      .{type}-offset-{i}
+        margin-left: i * 8.3333333333333333 + '%'

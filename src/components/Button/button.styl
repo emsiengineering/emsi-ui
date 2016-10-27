@@ -1,8 +1,4 @@
-$accent-color = #41d492
-$link-color = #1964eb
-$gray3 = #bfbfbf
-$gray5 = #f2f2f2
-$red = #f5474f
+@import '../../variables.styl'
 
 .button
   background-color $accent-color
@@ -19,7 +15,7 @@ $red = #f5474f
   border-radius 3px
   text-shadow 0 -1px 0 rgba(0, 0, 0, 0.1)
 
-  &:hover
+  &:hover:not(:disabled):not(:focus)
     box-shadow inset 0 0 0 20rem alpha(black, 0.1), 
                inset 0 2px 0 0 alpha(white 0.2), 
                inset 0 -1px 0 0 alpha(black, 0.1)
@@ -38,21 +34,26 @@ $red = #f5474f
     cursor not-allowed
     opacity 0.6
     
-  &.alternate
+  &.secondary
     background-color $link-color
-  
+
     &:focus
       box-shadow inset 0 0 0 20rem alpha(black, 0.2), 
-                 0 0 0 3px alpha($link-color, 0.5), 
+                 0 0 0 3px alpha($link-color, 0.25), 
                  inset 0 -2px 0 0 alpha(white, 0.2), 
                  inset 0 2px 0 0 alpha(black, 0.1)
                  
   &.gray, &.warning
     background-color $gray5
     
+    &:hover:not(:disabled):not(:focus)
+      box-shadow inset 0 0 0 20rem alpha(black, 0.1), 
+                inset 0 2px 0 0 alpha(white 0.2), 
+                inset 0 -1px 0 0 alpha(black, 0.05)
+    
     &:focus
-      box-shadow inset 0 0 0 20rem alpha(black, 0.2), 
-                 0 0 0 3px alpha($gray3, 0.3), 
+      box-shadow inset 0 0 0 20rem alpha($gray3, 0.75), 
+                 0 0 0 3px $gray4,
                  inset 0 -2px 0 0 alpha(white, 0.2), 
                  inset 0 2px 0 0 alpha(black, 0.1)
 
@@ -61,12 +62,12 @@ $red = #f5474f
 
   &.warning
     color $red
-    
-  &.error
+                  
+  &.danger
     background-color $red
     
-  &:focus
-    box-shadow inset 0 0 0 20rem alpha(black, 0.2), 
-               0 0 0 3px alpha($red, 0.25), 
-               inset 0 -2px 0 0 alpha(white, 0.2), 
-               inset 0 2px 0 0 alpha(black, 0.1)
+    &:focus
+      box-shadow inset 0 0 0 20rem alpha(black, 0.2), 
+                0 0 0 3px alpha($red, 0.35), 
+                inset 0 -2px 0 0 alpha(white, 0.2), 
+                inset 0 2px 0 0 alpha(black, 0.1)

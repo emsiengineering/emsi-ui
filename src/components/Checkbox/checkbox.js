@@ -1,7 +1,7 @@
 import CSSModules from 'react-css-modules';
 import React, { PropTypes } from 'react';
 
-import styles from './checkbox.css';
+import CSS from './checkbox.styl';
 import Icon from '../Icon';
 import Label from '../Label';
 
@@ -38,18 +38,18 @@ class Checkbox extends React.Component<void, Props, void> {
 
   renderRadio(checked?: boolean) {
     return checked ?
-      <Icon name='radioChecked' styleName='selected' /> :
+      <Icon name='radioChecked' styleName='checkbox selected' /> :
       <Icon name='radio' />;
   }
 
   renderCheckbox(checked?: boolean) {
     return checked ?
-      <Icon name='checkboxChecked' styleName='selected' /> :
+      <Icon name='checkboxChecked' styleName='checkbox' /> :
       <Icon name='checkbox'  />;
   }
 
   render() {
-    const { children, checked, value, radio, styles: CSS, ...other } = this.props;
+    const { children, checked, value, radio, styles, ...other } = this.props;
     const role: string = radio ? 'radio' : 'checkbox';
 
     // tabIndex, onKeyPress and onClick come before ...other so that the user can override the behavior
@@ -66,7 +66,7 @@ class Checkbox extends React.Component<void, Props, void> {
             onKeyPress={this.handleKeyPress}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            styleName={checked ? 'selected' : 'content'}
+            styleName={checked ? 'checkbox selected' : 'checkbox'}
           >
             {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
             {React.Children.toArray(children).length > 0 && <span>{children}</span>}
@@ -100,4 +100,4 @@ class Checkbox extends React.Component<void, Props, void> {
   }
 }
 
-export default CSSModules(Checkbox, styles);
+export default CSSModules(Checkbox, CSS, { allowMultiple: true });

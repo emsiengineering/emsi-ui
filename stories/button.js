@@ -1,16 +1,26 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+
+import theme from '../src/theme';
 import Button from '../src/components/Button';
 import ThemeProvider from '../src/components/ThemeProvider/component';
-import theme from '../src/theme';
 
 storiesOf('Button', module)
-  .add('primary button', () => (
+  .add('default button', () => (
     <ThemeProvider theme={theme}>
       <div>
-        <Button>Primary</Button>
+        <Button>Default</Button>
         <div style={{ display: 'block', paddingBottom: '1rem' }} />
         <Button disabled>Disabled</Button>
+      </div>
+    </ThemeProvider>
+  ))
+  .add('gray button', () => (
+    <ThemeProvider theme={theme}>
+      <div>
+        <Button type='gray'>Secondary</Button>
+        <div style={{ display: 'block', paddingBottom: '1rem' }} />
+        <Button type='gray' disabled>Disabled</Button>
       </div>
     </ThemeProvider>
   ))
@@ -20,15 +30,6 @@ storiesOf('Button', module)
         <Button type='secondary'>Secondary</Button>
         <div style={{ display: 'block', paddingBottom: '1rem' }} />
         <Button type='secondary' disabled>Disabled</Button>
-      </div>
-    </ThemeProvider>
-  ))
-  .add('alternate button', () => (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Button type='alternate'>Alternate</Button>
-        <div style={{ display: 'block', paddingBottom: '1rem' }} />
-        <Button type='alternate' disabled>Disabled</Button>
       </div>
     </ThemeProvider>
   )).add('warning button', () => (

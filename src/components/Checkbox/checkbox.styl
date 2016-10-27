@@ -1,0 +1,62 @@
+@import '../../variables.styl'
+
+.checkbox
+  margin 0
+  padding 0
+  display inline-block
+  width auto
+  border 1px solid transparent
+  cursor pointer
+  outline none
+
+  & > svg
+    color black
+    opacity 0.5
+    position relative
+    cursor pointer
+    transition opacity 0.2s ease
+
+  & > span
+      color alpha(black, 75%)
+      vertical-align middle
+      margin-left 0.5rem
+      display inline-block
+
+  &:focus
+    & > svg, & > span
+      color $link-color
+      opacity 0.75
+
+    &::after
+      color $link-color
+      font-weight 600
+      opacity 0.75
+      content '\f124'
+      margin-top 0.2rem
+      font-size 0.5rem
+      vertical-align middle
+      margin-left 0.5rem
+      display inline-block
+      font-family Ionicons
+      opacity 1
+
+  &:hover > span, &:hover svg
+    opacity 0.5
+    color $link-color
+
+  &.selected
+    color $link-color
+    opacity 1
+
+    & > svg
+      opacity 1
+
+      & > svg, & > span
+        opacity 1
+
+      &::after
+        opacity 1
+
+    & > svg, & > span
+      opacity 1
+      color var(--link-color)
