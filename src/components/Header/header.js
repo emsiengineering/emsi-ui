@@ -14,7 +14,8 @@ type Props = {
   children: any,
   styles: void,
   /** add any other props to the component */
-  other?: void
+  other?: void,
+  handleRef?: Function
 }
 /**
  * All the rem sizes are based on having the html element set to 65.5% font-size
@@ -24,10 +25,18 @@ class Header extends React.Component<void, Props, void> {
     super(props);
   }
   render() {
-    const { component: Component = 'div', color, children, type, bold, styles: CSSStyles, ...other } = this.props;
+    const { component: Component = 'div', handleRef, color, children, type, bold, styles: CSSStyles, ...other } = this.props;
     let styleNames = bold ? `${type} bold` : `${type}`;
     return (
-      <Component {...other} styleName={styleNames += ` ${color}`}>{children}</Component>
+      <Component
+        {...other}
+        ref={(el) => {
+          handleRef(el);
+        }}
+        styleName={styleNames += ` ${color}`}
+      >
+        {children}
+      </Component>
     );
   }
 }
