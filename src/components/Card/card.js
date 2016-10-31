@@ -7,14 +7,16 @@ type Props = {
   children: any,
   /** add any other props to the component */
   other?: any,
-  styles: any
+  styles: any,
+  /** html element */
+  component?: string
 }
 
-function Card({ children, styles: CSSStyles, ...other }: Props) {
+function Card({ children, styles: CSSStyles, component: Component, ...other }: Props) {
   return (
-    <div styleName='card' {...other}>
+    <Component styleName='card' {...other}>
       {children}
-    </div>
+    </Component>
   );
 }
 
