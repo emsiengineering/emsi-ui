@@ -12,7 +12,7 @@ type Props = {
   component?: string
 }
 
-function Card({ children, styles: CSSStyles, component: Component, ...other }: Props) {
+function Card({ component: Component = 'div', children, styles: CSSStyles, ...other }: Props) {
   return (
     <Component styleName='card' {...other}>
       {children}
