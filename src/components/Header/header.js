@@ -12,14 +12,14 @@ type Props = {
   /** html element: div,span,button, etc */
   component?: string,
   children: any,
-  styles: Object,
+  styles: void,
   /** add any other props to the component */
-  other?: Object
+  other?: void
 }
 /**
  * All the rem sizes are based on having the html element set to 65.5% font-size
  */
-class Header extends React.Component {
+class Header extends React.Component<void, Props, void> {
   constructor(props: Props) {
     super(props);
   }
