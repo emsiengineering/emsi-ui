@@ -20,4 +20,8 @@ function Card({ children, styles: CSSStyles, component: Component, ...other }: P
   );
 }
 
+Card.defaultProps = {
+  component: 'div'
+};
+
 export default CSSModules(Card, styles);
