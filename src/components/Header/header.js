@@ -15,7 +15,7 @@ type Props = {
   styles: void,
   /** add any other props to the component */
   other?: void,
-  handleRef?: Function
+  handleRef?: void
 }
 /**
  * All the rem sizes are based on having the html element set to 65.5% font-size
