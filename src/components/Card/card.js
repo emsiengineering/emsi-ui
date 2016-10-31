@@ -7,15 +7,21 @@ type Props = {
   children: any,
   /** add any other props to the component */
   other?: any,
-  styles: any
+  styles: any,
+  /** html element */
+  component?: string
 }
 
-function Card({ children, styles: CSSStyles, ...other }: Props) {
+function Card({ component: Component = 'div', children, styles: CSSStyles, ...other }: Props) {
   return (
-    <div styleName='card' {...other}>
+    <Component styleName='card' {...other}>
       {children}
-    </div>
+    </Component>
   );
 }
+
+Card.defaultProps = {
+  component: 'div'
+};
 
 export default CSSModules(Card, styles);
