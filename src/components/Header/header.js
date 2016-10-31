@@ -19,13 +19,17 @@ type Props = {
 /**
  * All the rem sizes are based on having the html element set to 65.5% font-size
  */
-function Header({ component: Component = 'div', color, children, type, bold, styles: CSSStyles, ...other }: Props) {
-
-  let styleNames = bold ? `${type} bold` : `${type}`;
-
-  return (
-    <Component {...other} styleName={styleNames += ` ${color}`}>{children}</Component>
-  );
+class Header extends React.Component {
+  constructor(props: Props) {
+    super(props);
+  }
+  render() {
+    const { component: Component = 'div', color, children, type, bold, styles: CSSStyles, ...other } = this.props;
+    let styleNames = bold ? `${type} bold` : `${type}`;
+    return (
+      <Component {...other} styleName={styleNames += ` ${color}`}>{children}</Component>
+    );
+  }
 }
 Header.defaultProps = {
   component: 'div',
