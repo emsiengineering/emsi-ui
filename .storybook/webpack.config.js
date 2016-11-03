@@ -25,7 +25,7 @@ module.exports = {
         loader: 'file-loader'
       }, {
         test: /\.styl$/,
-        loader: 'style?sourcemap!css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!stylus',
+        loader: 'style?sourcemap!css?modules&importLoaders=1&localIdentName=[local]!stylus',
       }
     ]
   },

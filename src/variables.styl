@@ -1,15 +1,46 @@
 $accent-color = #41d492
 $link-color = #1964eb
+$gray2 = #7f7f7f
 $gray3 = #bfbfbf
 $gray4 = #e5e5e5
 $gray5 = #f2f2f2
 $red = #f5474f
 $yellow = #fce563
 
-$half-gutter-width = 0.5rem
-$types = sm md lg
-$viewport = {
-  sm: 48em,
-  md: 64em,
-  lg: 75em
+$gutter-width = 1rem
+$outer-margin = 0
+
+// ALERT
+$alert-background = $gray4
+$alert-primary-background = blend(rgba($accent-color, .25))
+$alert-danger-background = blend(rgba($red, .3))
+$alert-link-background = blend(rgba($link-color, .2))
+
+// GRID
+$half-gutter-width = $gutter-width / 2
+$types = small medium large
+
+// TabPanel
+$tab-panel-background = #203a45
+
+$screen = {
+  tiny: 30
+  small: 48,
+  medium: 64,
+  large: 75
 }
+
+$viewport = {
+  tiny: unit($screen['tiny'], em),
+  small: unit($screen['small'], em),
+  medium: unit($screen['medium'], em),
+  large: unit($screen['large'], em),
+}
+
+media(sizes)
+  conditions = ()
+  for size in sizes
+    push(conditions, 'only screen and (min-width: ' + $viewport[size] + ')')
+  conditions = join(', ', conditions)
+  @media conditions
+    {block}
