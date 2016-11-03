@@ -6,7 +6,7 @@
   "scripts": {
     "replace_imports": "replace '@import \"../../../assets/css/' '@import \"../' lib/**/*.css",
     "postcss": "postcss lib/**/*.css -r --use postcss-each postcss-for postcss-simple-vars postcss-color-function --local-plugins",
-    "babel": "babel ./src/components --out-dir ./lib --ignore **/*-test.js",
+    "babel": "NODE_ENV=production babel ./src/components --out-dir ./lib --ignore **/*-test.js",
     "copy_css": "cpx \"src/components/**/*.css\" lib && cpx \"assets/css/variables.css\" lib && cpx \"assets/css/mixins.css\" lib",
     "cleanup": "rm ./lib/mixins.css ./lib/variables.css",
     "postcssify": "find ./lib -type f -name '*.css' -exec ./node_modules/.bin/postcss -c postcss.json -r {} \\; && npm run cleanup",

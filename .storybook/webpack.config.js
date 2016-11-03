@@ -11,47 +11,15 @@ module.exports = {
           presets: ['es2015', 'stage-0', 'react']
         }
       }, {
-        test: /\.css$/,
-        loaders: [
-          'style?sourceMap',
-          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-          'postcss',
-        ]
-      }, {
         test: /\.png$/,
         loader: 'url-loader?limit=100000'
       }, {
         test: /\.jpg$/,
         loader: 'file-loader'
       }, {
-        test: /\.styl$/,
+        test: /\.(styl|css)$/,
         loader: 'style?sourcemap!css?modules&importLoaders=1&localIdentName=[local]!stylus?paths=src',
       }
     ]
-  },
-  postcss: function(webpack) {
-    return {
-      plugins: [
-        require('postcss-easy-import')({
-					addDependencyTo: webpack
-				}),
-				require("postcss-url")(),
-				require('postcss-mixins')(),
-				require('postcss-each')(),
-				require('postcss-for')(),
-				require('postcss-simple-vars')(),
-				require('postcss-calc')(),
-				require('postcss-cssnext')({
-					features: {
-						colorFunction: true
-					}
-				}),
-				// put plugins here
-
-				// end plugins
-				require('postcss-color-function')(),
-				require("postcss-reporter")()
-      ]
-    };
   }
 };
