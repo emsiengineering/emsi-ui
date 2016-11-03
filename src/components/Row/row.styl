@@ -1,0 +1,52 @@
+@import '../../variables.styl'
+
+$options = start center end top middle bottom around between
+
+start()
+  text-align start
+  justify-content flex-start
+
+center()
+  text-align center
+  justify-content center
+
+end()
+  text-align end
+  justify-content flex-end
+  
+top()
+  align-items flex-start
+
+middle()
+  align-items center
+
+bottom()
+  align-items flex-end
+
+around()
+  justify-content space-around
+
+between()
+  justify-content space-between
+
+invoke(fn)
+  fn()
+
+.rows
+  box-sizing border-box
+  display flex
+  -webkit-box-flex 0
+  -moz-box-flex 0
+  -ms-box-flex 0
+  flex 0 1 auto
+  flex-direction row
+  flex-wrap: wrap
+
+  &.reverse
+    flex-direction row-reverse
+  
+  for type in $types
+    @media only screen and (min-width: $viewport[type])
+      for option, index in $options 
+        &.{option}-{type}
+          invoke(option)

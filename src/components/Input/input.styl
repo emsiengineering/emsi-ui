@@ -1,0 +1,45 @@
+@import '../../variables.styl'
+
+.input
+  position relative
+  display inline-block
+
+  & > input, & > textarea
+    border-radius 3px
+    border 1px solid $gray3
+    display block
+    padding 1rem
+    // this shouldn't be here
+    font-size 1.5rem
+    outline none
+
+    &:focus
+      border 1px solid $link-color
+      box-shadow: inset 0 0 0 2px alpha($link-color 20%)
+      z-index: 3;
+
+    &:disabled
+      color $gray2
+      cursor not-allowed
+      border-color $gray4
+      background-color $gray5
+
+  &.error > input, &.error > textarea
+    border 1px solid $red
+    color $red
+
+    &:focus
+      border: 1px solid $red
+      box-shadow: inset 0 0 0 2px alpha($red 20%)
+      z-index: 3;
+
+  &.icon > input
+    padding-left: 3.5rem
+
+.input-message
+  position absolute
+  top 100%
+  right 0
+
+  &.error
+    color $red

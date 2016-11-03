@@ -1,0 +1,60 @@
+@import '../../variables.styl'
+
+.nav-item
+  position relative
+  display inline-block
+  background-color $tab-panel-background
+  padding 2rem
+  cursor pointer
+  outline none
+  border 0
+
+  &.top
+    & > .nav-item-border
+      bottom auto
+      top 0
+      
+
+  &.active
+    & > .nav-item-text
+      color white
+
+    & > .nav-item-border
+      width calc(100% - 4rem)
+      background-color $accent-color
+
+  &:not(.active)
+    & > .nav-item-text
+      color $gray3
+
+  &:focus:not(.active)
+    & > .nav-item-border
+      height 3px
+      width calc(100% - 4rem)
+      background-color $gray3
+  
+  &:not(:focus):not(.active)
+    & > .nav-item-border
+      width 0
+      transition width .3s ease
+      background-color $gray3
+
+  &:hover
+    .nav-item-text
+      color white
+
+
+.nav-item-text
+  font-size 1.5rem
+  display inline-block
+  
+.nav-item-border
+  position absolute
+  width 0
+  bottom 0
+  transform translateX(-50%)
+  left 50%
+  height 3px
+  z-index 3
+  background-color $tab-panel-background
+  transition width .3s ease

@@ -1,32 +1,36 @@
 @import '../../variables.styl'
 
-.column
+.columns
   box-sizing border-box
   padding-right $half-gutter-width
   padding-left $half-gutter-width
 
-.xs
-  max-width 100%
-  flex-grow 1
-  flex-basis 0
+.columns.tiny
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+
 
 for i in (1..12)
-  .xs-{i}
+  .columns.tiny-{i}
     max-width i * 8.3333333333333333 + '%'
     flex-basis i * 8.3333333333333333 + '%'
 
-  .xs-offset-{i}
+  .columns.tiny-offset-{i}
     margin-left: i * 8.3333333333333333 + '%'
 
 for type, index in $types
-  .{type}
-    @extend .xs
+  .columns.{type}
+    @extend .columns.tiny
 
-  for i in (1..12)
-    @media only screen and (min-width: $viewport[type])
-      .{type}-{i}
-        max-width i * 8.3333333333333333 + '%'
-        flex-basis i * 8.3333333333333333 + '%'
+    +media(type)
+      for i in (1..12)
+        &-{i}
+          max-width i * 8.3333333333333333 + '%'
+          flex-basis i * 8.3333333333333333 + '%'
 
-      .{type}-offset-{i}
-        margin-left: i * 8.3333333333333333 + '%'
+        &-offset-{i}
+          margin-left: i * 8.3333333333333333 + '%'

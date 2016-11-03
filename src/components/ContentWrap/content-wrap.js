@@ -1,7 +1,7 @@
 import CSSModules from 'react-css-modules';
 import React, { PropTypes } from 'react';
 
-import CSS from './contentwrap.css';
+import CSS from './content-wrap.styl';
 
 type Props = {
   children: any,

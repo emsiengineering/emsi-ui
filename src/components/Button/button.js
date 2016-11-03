@@ -9,17 +9,17 @@ type Props = {
   component?: string,
   /** disable the button */
   disabled?: boolean,
-  type?: 'primary'|'gray'|'secondary'|'warning'|'danger',
+  type?: 'primary'|'gray'|'link'|'warning'|'danger',
   active?: boolean,
   /** text to display for the button */
   children: string,
-  other: Object,
   styles: Object
 }
 
-function Button({ component: Component = 'button', disabled, children, type = 'primary', styles, active, ...other }: Props) {
+function Button({ component: Component, disabled, children, type, styles, active, ...other }: Props) {
   let styleName = {
-    button: true
+    button: true,
+    active
   };
 
   if (type !== 'primary')
@@ -29,6 +29,7 @@ function Button({ component: Component = 'button', disabled, children, type = 'p
     <Component {...other} tabIndex='0' disabled={Component === 'button' && disabled} styleName={cx(styleName)}>{children}</Component>
   );
 }
+
 Button.defaultProps = {
   component: 'button',
   type: 'primary',

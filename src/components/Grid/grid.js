@@ -1,7 +1,7 @@
-import React from 'react';
 import CSSModules from 'react-css-modules';
+import React from 'react';
 
-import styles from './grid.css';
+import CSS from './grid.styl';
 
 type Props = {
   fluid?: boolean,
@@ -14,8 +14,8 @@ type Props = {
  * The Gird is composed of 12 flexable columns, it has a gutter of 2rem between columns
  * It breaks down at 1024px and 767px
  */
-function Grid({ fluid, children, component: Component, styles: CSSStyles, ...other }: Props) {
-  const styleName: string = fluid ? 'fluid' : 'grid';
+function Grid({ fluid, children, component: Component, styles, ...other }: Props) {
+  const styleName: string = fluid ? 'grid fluid' : 'grid';
 
   return (
     <div {...other} styleName={styleName}>
@@ -28,4 +28,4 @@ Grid.defaultProps = {
   fluid: false
 };
 
-export default CSSModules(Grid, styles, { allowMultiple: true });
+export default CSSModules(Grid, CSS, { allowMultiple: true });

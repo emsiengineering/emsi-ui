@@ -22,7 +22,7 @@ type Props = {
   mdOffset?: NumberType,
   /** One of: 1 - 12 */
   lgOffset?: NumberType,
-  reverse?: Boolean,
+  // reverse?: Boolean,
   component?: string,
   styles?: Object,
   /** add additional props */
@@ -32,38 +32,36 @@ type Props = {
 
 function getClassNames(props: Object): string {
   const classMap: Object = {
-    xs: 'xs',
-    sm: 'sm',
-    md: 'md',
-    lg: 'lg',
-    xsOffset: 'xs-offset',
-    smOffset: 'sm-offset',
-    mdOffset: 'md-offset',
-    lgOffset: 'lg-offset'
+    xs: 'tiny',
+    sm: 'small',
+    md: 'medium',
+    lg: 'large',
+    xsOffset: 'tiny-offset',
+    smOffset: 'small-offset',
+    mdOffset: 'medium-offset',
+    lgOffset: 'large-offset'
   };
+
   // for some reason styleguide throws an error if you chain the join function to end of this
-  const concatProps = Object.keys(props)
+  let concatProps = Object.keys(props)
                         .filter(key => classMap[key])
                         .map(key => Number.isInteger(props[key]) ? `${classMap[key]}-${props[key]}` : key);
 
-  return concatProps;
+  return ['columns'].concat(concatProps).join(' ');
 }
 /**
  * Col component used only inside the Grid component
  */
-function Col({ children, component: Component, styles, reverse, ...other }: Props) {
-  const styleName: Array = getClassNames(other);
-
-  if (reverse)
-    styleName.push('reverse');
-
+function Col({ children, component: Component, styles, ...other }: Props) {
+  let styleName: string = getClassNames(other);
 
   return (
-    <div styleName={styleName.join(' ')}>
+    <div styleName={styleName} {...other}>
       {children}
     </div>
   );
 }
+
 Col.defaultProps = {
   component: 'div'
 };
