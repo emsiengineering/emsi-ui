@@ -1,0 +1,47 @@
+.font.display {
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 6rem;
+}
+.font.headline {
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+}
+.font.title {
+  font-weight: 400;
+  font-size: 2.1rem;
+  line-height: 3rem;
+}
+.font.subtitle {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 3rem;
+}
+.font.body {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+.font.caption {
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+.font.footnote {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.font.bold {
+  font-weight: 700;
+}
+.font.inherit {
+  color: inherit;
+}
+.font.primary {
+  color: #000;
+}
+.font.alternate {
+  color: #1964eb;
+}

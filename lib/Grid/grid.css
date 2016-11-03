@@ -1,0 +1,28 @@
+.grid {
+  margin-right: auto;
+  margin-left: auto;
+}
+.grid.fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+@media only screen and (min-width: 30em) {
+  .grid:not(.fluid) {
+    width: 26em;
+  }
+}
+@media only screen and (min-width: 48em) {
+  .grid:not(.fluid) {
+    width: 46em;
+  }
+}
+@media only screen and (min-width: 64em) {
+  .grid:not(.fluid) {
+    width: 61em;
+  }
+}
+@media only screen and (min-width: 75em) {
+  .grid:not(.fluid) {
+    width: 71em;
+  }
+}

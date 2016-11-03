@@ -1,0 +1,64 @@
+.checkbox {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: auto;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+}
+.checkbox > svg {
+  color: #000;
+  opacity: 0.5;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.checkbox > span {
+  color: rgba(0,0,0,0.75);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  display: inline-block;
+}
+.checkbox:focus > svg,
+.checkbox:focus > span {
+  color: #1964eb;
+  opacity: 0.75;
+}
+.checkbox:focus::after {
+  color: #1964eb;
+  font-weight: 600;
+  opacity: 0.75;
+  content: '\f124';
+  margin-top: 0.2rem;
+  font-size: 0.5rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  display: inline-block;
+  font-family: Ionicons;
+  opacity: 1;
+}
+.checkbox:hover > span,
+.checkbox:hover svg {
+  opacity: 0.5;
+  color: #1964eb;
+}
+.checkbox.selected {
+  color: #1964eb;
+  opacity: 1;
+}
+.checkbox.selected > svg {
+  opacity: 1;
+}
+.checkbox.selected > svg > svg,
+.checkbox.selected > svg > span {
+  opacity: 1;
+}
+.checkbox.selected > svg::after {
+  opacity: 1;
+}
+.checkbox.selected > svg,
+.checkbox.selected > span {
+  opacity: 1;
+  color: var(--link-color);
+}

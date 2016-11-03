@@ -1,0 +1,62 @@
+.modal-underlay {
+  background-color: transparent;
+  transition: all 0.15s linear;
+}
+.modal-underlay.entered {
+  background-color: rgba(0,0,0,0.5);
+}
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  width: 100%;
+  border-radius: 0;
+  background-color: #fff;
+  box-shadow: rgba(0,0,0,0.2) 0 1rem 1rem;
+}
+@media only screen and (min-width: 64em) {
+  .modal {
+    top: 6rem;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 64em;
+    width: 80%;
+    border-radius: 3px;
+  }
+}
+.modal-close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #7f7f7f;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.modal-close-icon:hover {
+  transform: scale(1.2);
+}
+.modal-enter {
+  opacity: 0.01;
+  transform: scale(0);
+}
+.modal-enter.modal-enter-active {
+  opacity: 1;
+  transition: all 0.15s ease-out;
+  transform: scale(1);
+}
+.modal-leave {
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-leave.modal-leave-active {
+  opacity: 0.01;
+  transition: all 0.15s ease-in-out;
+  transform: scale(0);
+}

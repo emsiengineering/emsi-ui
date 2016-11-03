@@ -54,9 +54,10 @@ function getClassNames(props: Object): string {
  */
 function Col({ children, component: Component, styles, ...other }: Props) {
   let styleName: string = getClassNames(other);
+  let { xs, sm, md, lg, xsOffset, smOffset, mdOffset, lgOffset, ...rest } = other;
 
   return (
-    <div styleName={styleName} {...other}>
+    <div styleName={styleName} {...rest}>
       {children}
     </div>
   );

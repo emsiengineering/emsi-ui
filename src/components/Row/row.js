@@ -61,8 +61,10 @@ function getClassNames(props: Object) {
  */
 function Row({ children, component: Component, styles, ...other }: Props) {
   const styleName: string = getClassNames(other);
+  let { start, center, end, top, middle, bottom, around, between, first, last, ...rest } = other;
+
   return (
-    <div {...other} styleName={styleName}>
+    <div styleName={styleName} {...rest}>
       {children}
     </div>
   );
