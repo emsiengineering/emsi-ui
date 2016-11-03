@@ -12,6 +12,7 @@
   opacity: 0.5;
   position: relative;
   cursor: pointer;
+  -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
 .checkbox > span {

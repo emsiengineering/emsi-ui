@@ -28,6 +28,7 @@
 }
 .nav-item:not(:focus):not(.active) > .nav-item-border {
   width: 0;
+  -webkit-transition: width 0.3s ease;
   transition: width 0.3s ease;
   background-color: #bfbfbf;
 }
@@ -42,10 +43,12 @@
   position: absolute;
   width: 0;
   bottom: 0;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   left: 50%;
   height: 3px;
   z-index: 3;
   background-color: #203a45;
+  -webkit-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
