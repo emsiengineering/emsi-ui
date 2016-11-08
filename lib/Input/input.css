@@ -1,28 +1,28 @@
 .input {
-  position: relative;
   display: inline-block;
+  position: relative;
 }
 .input > input,
 .input > textarea {
-  border-radius: 3px;
   border: 1px solid #bfbfbf;
+  border-radius: 3px;
   display: block;
-  padding: 1rem;
   font-size: 1.5rem;
-  outline: none;
+  outline: 0;
+  padding: 1rem;
 }
 .input > input:focus,
 .input > textarea:focus {
   border: 1px solid #1964eb;
   box-shadow: inset 0 0 0 2px rgba(25,100,235,0.2);
-  z-index: 3;
+  z-index: 5;
 }
 .input > input:disabled,
 .input > textarea:disabled {
+  background-color: #f2f2f2;
+  border-color: #e5e5e5;
   color: #7f7f7f;
   cursor: not-allowed;
-  border-color: #e5e5e5;
-  background-color: #f2f2f2;
 }
 .input.error > input,
 .input.error > textarea {
@@ -33,15 +33,15 @@
 .input.error > textarea:focus {
   border: 1px solid #f5474f;
   box-shadow: inset 0 0 0 2px rgba(245,71,79,0.2);
-  z-index: 3;
+  z-index: 5;
 }
 .input.icon > input {
   padding-left: 3.5rem;
 }
 .input-message {
   position: absolute;
-  top: 100%;
   right: 0;
+  top: 100%;
 }
 .input-message.error {
   color: #f5474f;

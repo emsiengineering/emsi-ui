@@ -1,11 +1,11 @@
 .nav-item {
-  position: relative;
-  display: inline-block;
   background-color: #203a45;
-  padding: 2rem;
-  cursor: pointer;
-  outline: none;
   border: 0;
+  cursor: pointer;
+  display: inline-block;
+  outline: 0;
+  padding: 2rem;
+  position: relative;
 }
 .nav-item.top > .nav-item-border {
   bottom: auto;
@@ -15,40 +15,52 @@
   color: #fff;
 }
 .nav-item.active > .nav-item-border {
-  width: calc(100% - 4rem);
   background-color: #41d492;
+  width: calc(100% - 4rem);
 }
-.nav-item:not(.active) > .nav-item-text {
-  color: #bfbfbf;
+.nav-item:focus.active > .nav-item-border {
+  height: 25%;
 }
-.nav-item:focus:not(.active) > .nav-item-border {
+.nav-item:focus:not(.active):not(:hover) > .nav-item-border {
+  background-color: #bfbfbf;
   height: 3px;
   width: calc(100% - 4rem);
-  background-color: #bfbfbf;
 }
-.nav-item:not(:focus):not(.active) > .nav-item-border {
-  width: 0;
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
-  background-color: #bfbfbf;
-}
-.nav-item:hover .nav-item-text {
+.nav-item:focus:not(.active):not(:hover) > .nav-item-text {
   color: #fff;
 }
-.nav-item-text {
-  font-size: 1.5rem;
-  display: inline-block;
-}
-.nav-item-border {
-  position: absolute;
-  width: 0;
-  bottom: 0;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  left: 50%;
-  height: 3px;
-  z-index: 3;
-  background-color: #203a45;
+.nav-item:not(:focus):not(.active) > .nav-item-border {
+  background-color: #bfbfbf;
   -webkit-transition: width 0.3s ease;
   transition: width 0.3s ease;
+  width: 0;
+}
+.nav-item:hover:not(.active):not(:focus) > .nav-item-border {
+  background-color: #bfbfbf;
+  height: 3px;
+  width: calc(100% - 4rem);
+}
+.nav-item:not(:hover):not(.active) > .nav-item-border {
+  background-color: #bfbfbf;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+  width: 0;
+}
+.nav-item-text {
+  color: #bfbfbf;
+  display: inline-block;
+  font-size: 1.5rem;
+}
+.nav-item-border {
+  background-color: #203a45;
+  bottom: 0;
+  height: 3px;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: height 0.2s ease, width 0.3s ease;
+  transition: height 0.2s ease, width 0.3s ease;
+  width: 0;
+  z-index: 5;
 }

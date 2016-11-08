@@ -1,12 +1,12 @@
 @import 'variables.styl'
 
 .grid
-  margin-right auto
-  margin-left auto
+  margin-left: auto
+  margin-right: auto
 
   &.fluid
-    padding-right $outer-margin
-    padding-left $outer-margin
+    padding-left: $outer-margin
+    padding-right: $outer-margin
 
   &:not(.fluid)
      for size, value in $viewport

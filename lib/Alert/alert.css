@@ -1,16 +1,16 @@
 .alert {
-  color: #000;
   background-color: #e5e5e5;
+  color: #000;
 }
 .alert.primary {
-  color: #277f58;
   background-color: #d0f4e4;
+  color: #277f58;
 }
 .alert.link {
-  color: #0f3c8d;
   background-color: #d1e0fb;
+  color: #0f3c8d;
 }
 .alert.danger {
-  color: #932b2f;
   background-color: #fcc8ca;
+  color: #932b2f;
 }

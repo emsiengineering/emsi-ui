@@ -2,16 +2,16 @@
   vertical-align: middle;
 }
 .icon.small {
-  width: 1.5rem;
   height: 1.5rem;
+  width: 1.5rem;
 }
 .icon.medium {
-  width: 2rem;
   height: 2rem;
+  width: 2rem;
 }
 .icon.large {
-  width: 3rem;
   height: 3rem;
+  width: 3rem;
 }
 .icon.primary {
   color: #41d492;

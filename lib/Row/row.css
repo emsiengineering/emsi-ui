@@ -1,10 +1,11 @@
 .rows {
+  -moz-box-flex: 0;
+  -ms-box-flex: 0;
+  -webkit-box-flex: 0;
   box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 0;
-  -ms-box-flex: 0;
   -ms-flex: 0 1 auto;
       flex: 0 1 auto;
   -webkit-box-orient: horizontal;
@@ -22,22 +23,22 @@
 }
 @media only screen and (min-width: 48em) {
   .rows.start-small {
-    text-align: start;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    text-align: start;
   }
   .rows.center-small {
-    text-align: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    text-align: center;
   }
   .rows.end-small {
-    text-align: end;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    text-align: end;
   }
   .rows.top-small {
     -webkit-box-align: start;
@@ -66,22 +67,22 @@
 }
 @media only screen and (min-width: 64em) {
   .rows.start-medium {
-    text-align: start;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    text-align: start;
   }
   .rows.center-medium {
-    text-align: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    text-align: center;
   }
   .rows.end-medium {
-    text-align: end;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    text-align: end;
   }
   .rows.top-medium {
     -webkit-box-align: start;
@@ -110,22 +111,22 @@
 }
 @media only screen and (min-width: 75em) {
   .rows.start-large {
-    text-align: start;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    text-align: start;
   }
   .rows.center-large {
-    text-align: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    text-align: center;
   }
   .rows.end-large {
-    text-align: end;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    text-align: end;
   }
   .rows.top-large {
     -webkit-box-align: start;

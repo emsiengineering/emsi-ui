@@ -1,10 +1,10 @@
 .grid {
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 }
 .grid.fluid {
-  padding-right: 0;
   padding-left: 0;
+  padding-right: 0;
 }
 @media only screen and (min-width: 30em) {
   .grid:not(.fluid) {

@@ -7,37 +7,37 @@
   background-color: rgba(0,0,0,0.5);
 }
 .modal {
-  position: absolute;
-  top: 0;
-  right: 0;
+  background-color: #fff;
+  border-radius: 0;
+  box-shadow: rgba(0,0,0,0.2) 0 1rem 1rem;
   left: 0;
   margin: 0;
   margin-bottom: 1rem;
   padding: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 100%;
-  border-radius: 0;
-  background-color: #fff;
-  box-shadow: rgba(0,0,0,0.2) 0 1rem 1rem;
 }
 @media only screen and (min-width: 64em) {
   .modal {
-    top: 6rem;
-    right: 0;
+    border-radius: 3px;
     left: 0;
     margin: 0 auto;
-    padding: 2rem;
     max-width: 64em;
+    padding: 2rem;
+    right: 0;
+    top: 6rem;
     width: 80%;
-    border-radius: 3px;
   }
 }
 .modal-close-icon {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   color: #7f7f7f;
-  font-size: 2.5rem;
   cursor: pointer;
+  font-size: 2.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }

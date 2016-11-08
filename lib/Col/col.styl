@@ -1,23 +1,23 @@
 @import 'variables.styl'
 
 .columns
-  box-sizing border-box
-  padding-right $half-gutter-width
-  padding-left $half-gutter-width
+  box-sizing: border-box
+  padding-left: $half-gutter-width
+  padding-right: $half-gutter-width
 
 .columns.tiny
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  max-width: 100%;
+  -ms-flex-positive: 1 // @stylint ignore
+  -ms-flex-preferred-size: 0 // @stylint ignore
+  -webkit-box-flex: 1
+  flex-basis: 0
+  flex-grow: 1
+  max-width: 100%
 
 
 for i in (1..12)
   .columns.tiny-{i}
-    max-width i * 8.3333333333333333 + '%'
-    flex-basis i * 8.3333333333333333 + '%'
+    flex-basis: i * 8.3333333333333333 + '%'
+    max-width: i * 8.3333333333333333 + '%'
 
   .columns.tiny-offset-{i}
     margin-left: i * 8.3333333333333333 + '%'
@@ -29,8 +29,8 @@ for type, index in $types
     +media(type)
       for i in (1..12)
         &-{i}
-          max-width i * 8.3333333333333333 + '%'
-          flex-basis i * 8.3333333333333333 + '%'
+          flex-basis: i * 8.3333333333333333 + '%'
+          max-width: i * 8.3333333333333333 + '%'
 
         &-offset-{i}
           margin-left: i * 8.3333333333333333 + '%'
