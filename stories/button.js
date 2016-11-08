@@ -1,50 +1,49 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+
 import Button from '../src/components/Button';
-import ThemeProvider from '../src/components/ThemeProvider/component';
-import theme from '../src/theme';
 
 storiesOf('Button', module)
-  .add('primary button', () => (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Button>Primary</Button>
-        <div style={{ display: 'block', paddingBottom: '1rem' }} />
-        <Button disabled>Disabled</Button>
-      </div>
-    </ThemeProvider>
+  .add('default button', () => (
+    <div>
+      <Button>Default</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button active>Active</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button disabled>Disabled</Button>
+    </div>
   ))
-  .add('secondary button', () => (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Button type='secondary'>Secondary</Button>
-        <div style={{ display: 'block', paddingBottom: '1rem' }} />
-        <Button type='secondary' disabled>Disabled</Button>
-      </div>
-    </ThemeProvider>
+  .add('gray button', () => (
+    <div>
+      <Button type='gray'>Secondary</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='gray' active>Active</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='gray' disabled>Disabled</Button>
+    </div>
   ))
-  .add('alternate button', () => (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Button type='alternate'>Alternate</Button>
-        <div style={{ display: 'block', paddingBottom: '1rem' }} />
-        <Button type='alternate' disabled>Disabled</Button>
-      </div>
-    </ThemeProvider>
+  .add('link button', () => (
+    <div>
+      <Button type='link'>Secondary</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='link' active>Active</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='link' disabled>Disabled</Button>
+    </div>
   )).add('warning button', () => (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Button type='warning'>Warning</Button>
-        <div style={{ display: 'block', paddingBottom: '1rem' }} />
-        <Button type='warning' disabled>Disabled</Button>
-      </div>
-    </ThemeProvider>
+    <div>
+      <Button type='warning'>Warning</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='warning' active>Active</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='warning' disabled>Disabled</Button>
+    </div>
   )).add('danger button', () => (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Button type='danger'>Danger</Button>
-        <div style={{ display: 'block', paddingBottom: '1rem' }} />
-        <Button type='danger' disabled>Disabled</Button>
-      </div>
-    </ThemeProvider>
+    <div>
+      <Button type='danger'>Danger</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='danger' active>Active</Button>
+      <div style={{ display: 'block', paddingBottom: '1rem' }} />
+      <Button type='danger' disabled>Disabled</Button>
+    </div>
   ));

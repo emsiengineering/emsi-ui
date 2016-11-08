@@ -1,112 +1,58 @@
-@import "../variables.css";
-
-@define-mixin active $color, $blend: 5 {
-  border-color: color($color blend(black calc($blend * 4) %));
-  border-bottom-color: color($color blend(black calc($blend * 3) %));
-  background-color: color($color blend(black calc($blend * 3) %));
-  box-shadow: inset 0 -0.1rem 0 0 color(white a(25%));
-
-  &:hover {
-    background-color: color($color blend(black calc($blend * 3) %));
-  }
-}
-
-@define-mixin button $color, $blend: 5 {
-  border-color: color($color blend(black 10%));
-  border-top-color: color($color blend(black $(blend) %));
-  background-color: color($color);
-  outline-color: color($color);
-
-  &:focus {
-    outline: none;
-    background-color: color($color blend(black calc($blend * 3) %));
-    border-color: color($color blend(black calc($blend * 10) %));
-  }
-
-  &:hover:not(:disabled) {
-    background-color: color($color blend(black $(blend) %));
-  }
-
-  &:active:not(:disabled) {
-    @mixin active $color, $blend);
-  }
-
-  @mixin-content;
-}
-
 .button {
+  background-color: #41d492;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
   font-size: 1em;
   font-weight: 500;
-  display: inline-block;
   padding: 1.2rem 2rem;
-  cursor: pointer;
-  color: white;
-  border-width: 1px;
-  border-style: solid;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1), inset 0 2px 0 0 rgba(255,255,255,0.1), inset 0 -1px 0 0 rgba(0,0,0,0.1);
   border-radius: 3px;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
 }
-
-.primary {
-  composes: button;
-  @mixin button var(--primary-color);
+.button:hover:not(:disabled):not(:focus) {
+  box-shadow: inset 0 0 0 20rem rgba(0,0,0,0.1), inset 0 2px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.1);
 }
-
-.primary-active {
-  composes: primary;
-  @mixin active var(--primary-color);
+.button:active,
+.button.active {
+  box-shadow: inset 0 0 0 20rem rgba(0,0,0,0.1), inset 0 -2px 0 0 rgba(255,255,255,0.2), inset 0 0 0 1px rgba(0,0,0,0.1);
 }
-
-.alternate {
-  composes: button;
-  @mixin button var(--link-color);
+.button:focus {
+  box-shadow: inset 0 0 0 20rem rgba(0,0,0,0.2), 0 0 0 3px rgba(65,212,146,0.5), inset 0 -2px 0 0 rgba(255,255,255,0.2), inset 0 2px 0 0 rgba(0,0,0,0.1);
+  outline: 0;
 }
-
-.alternate-active {
-  composes: alternate;
-  @mixin active var(--link-color);
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
-
-.danger {
-  composes: button;
-  @mixin button var(--red);
+.button.link {
+  background-color: #1964eb;
 }
-
-.danger-active {
-  composes: danger;
-  @mixin active var(--red);
+.button.link:focus {
+  box-shadow: inset 0 0 0 20rem rgba(0,0,0,0.2), 0 0 0 3px rgba(25,100,235,0.25), inset 0 -2px 0 0 rgba(255,255,255,0.2), inset 0 2px 0 0 rgba(0,0,0,0.1);
 }
-
-.secondary {
-  composes: button;
-  color: color(black a(50%));
-  text-shadow: 0 -1px 0 0 color(white a(50%));
-  @mixin button var(--gray5), 3 {
-    outline: none;
-  }
+.button.gray,
+.button.warning {
+  background-color: #f2f2f2;
 }
-
-.secondary-active {
-  composes: secondary;
-  @mixin active var(--gray5), 3);
+.button.gray:hover:not(:disabled):not(:focus),
+.button.warning:hover:not(:disabled):not(:focus) {
+  box-shadow: inset 0 0 0 20rem rgba(0,0,0,0.1), inset 0 2px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.05);
 }
-
-.warning {
-  composes: button;
-  color: var(--red);
-  text-shadow: 0 -1px 0 0 color(white a(50%));
-  outline-color: var(--red);
-  @mixin button var(--gray5), 3 {
-    outline-color: color(var(--red) w(50%));
-  }
+.button.gray:focus,
+.button.warning:focus {
+  box-shadow: inset 0 0 0 20rem rgba(191,191,191,0.75), 0 0 0 3px #e5e5e5, inset 0 -2px 0 0 rgba(255,255,255,0.2), inset 0 2px 0 0 rgba(0,0,0,0.1);
 }
-
-.warning-active {
-  composes: warning;
-  @mixin active var(--gray5), 3);
+.button.gray {
+  color: rgba(0,0,0,0.5);
+}
+.button.warning {
+  color: #f5474f;
+}
+.button.danger {
+  background-color: #f5474f;
+}
+.button.danger:focus {
+  box-shadow: inset 0 0 0 20rem rgba(0,0,0,0.2), 0 0 0 3px rgba(245,71,79,0.35), inset 0 -2px 0 0 rgba(255,255,255,0.2), inset 0 2px 0 0 rgba(0,0,0,0.1);
 }

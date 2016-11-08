@@ -1,9 +1,33 @@
 {
   "presets": ["es2015", "react", "stage-0"],
-  "plugins": ["transform-runtime", "transform-export-extensions", ["typecheck", {
-      "disable": {
-        "production": true
+  "env": {
+    "production": {
+      "plugins":     
+      [
+        "transform-export-extensions",
+        [
+          "import-rename", 
+          { 
+            "^(.*)\\.styl": "$1.css",
+            "disable":
+              {
+                "development": true
+              }
+          }
+        ],
+      ]
+    }
+  },
+  "plugins": [
+    "transform-runtime", 
+    [
+      "typecheck", 
+      {
+        "disable": 
+        {
+          "production": true
+        }
       }
-    }]
+    ]
   ]
 }

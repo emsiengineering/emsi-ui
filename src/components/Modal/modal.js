@@ -2,10 +2,10 @@ import AriaModal from 'react-aria-modal';
 import CSSModules from 'react-css-modules';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import React from 'react';
-import Icon from '../Icon';
 
-import styles from './modal.css';
+import styles from './modal.styl';
 import Button from '../Button';
+import Icon from '../Icon';
 
 type Props = {
   /** A string to use as the modal's accessible title */
@@ -46,18 +46,18 @@ class Modal extends React.Component<void, Props, void> {
       focusDialog: !focusElementId
     };
 
-    let underlayClass: string = styles.underlay;
+    let underlayClass: string = styles['modal-underlay'];
 
     if (this.state.entered)
-      underlayClass += ` ${styles.underlayEntered}`;
+      underlayClass += ' entered';
 
     const transitionNames = {
-      enter: styles.enter,
-      enterActive: styles.enterActive,
-      leave: styles.leave,
-      leaveActive: styles.leaveActive,
-      appear: styles.enter,
-      appearActive: styles.enterActive
+      enter: styles['modal-enter'],
+      enterActive: styles['modal-enter-active'],
+      leave: styles['modal-leave'],
+      leaveActive: styles['modal-leave-active'],
+      appear: styles['modal-enter'],
+      appearActive: styles['modal-enter-active']
     };
 
     return (
@@ -85,7 +85,7 @@ class Modal extends React.Component<void, Props, void> {
           >
            { this.state.entered &&
              <div styleName='modal' key='animationItem'>
-              <Icon name='close' styleName='close-icon' onClick={this.handleExit}/>
+              <Icon name='close' styleName='modal-close-icon' onClick={this.handleExit}/>
               {children}
             </div> }
           </CSSTransitionGroup>

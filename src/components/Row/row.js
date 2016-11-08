@@ -1,13 +1,12 @@
-import React from 'react';
 import CSSModules from 'react-css-modules';
+import React from 'react';
 
-import styles from './row.css';
+import CSS from './row.styl';
 
 type ModificatorType = 'xs'|'sm'|'md'|'lg';
+type DirectionType = 'row'|'column'
 
 type Props = {
-  /** true sets the flex-direction to row-reverse */
-  reverse?: boolean,
   /** One of: 'xs'|'sm'|'md'|'lg' */
   start?: ModificatorType,
   /** One of: 'xs'|'sm'|'md'|'lg' */
@@ -37,27 +36,35 @@ type Props = {
 
 function getClassNames(props: Object) {
   const modificatorKeys: Array = ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'first', 'last'];
-  const mods: Array = ['row'];
+  const mods: Array = ['rows'];
+  const classMap: Object = {
+    xs: 'tiny',
+    sm: 'small',
+    md: 'medium',
+    lg: 'large'
+  };
 
   modificatorKeys.forEach((key: string) => {
-    const value: ?string = props[key];
+    const value: ?string = classMap[props[key]];
 
     if (value)
       mods.push(`${key}-${value}`);
   });
 
   if (props.reverse)
-    mods.push('row-reverse');
+    mods.push('reverse');
 
   return mods.join(' ');
 }
 /**
  * Row component is used inside the Grid component only
  */
-function Row({ children, component: Component, styles: CSSSTyles, ...other }: Props) {
+function Row({ children, component: Component, styles, ...other }: Props) {
   const styleName: string = getClassNames(other);
+  let { start, center, end, top, middle, bottom, around, between, first, last, ...rest } = other;
+
   return (
-    <div {...other} styleName={styleName}>
+    <div styleName={styleName} {...rest}>
       {children}
     </div>
   );
@@ -66,4 +73,4 @@ Row.defaultProps = {
   component: 'div'
 };
 
-export default CSSModules(Row, styles, { allowMultiple: true });
+export default CSSModules(Row, CSS, { allowMultiple: true });

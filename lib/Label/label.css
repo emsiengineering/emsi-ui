@@ -1,15 +1,9 @@
-@import "../variables.css";
-
 .label {
-  /* hmm? */
+  color: inherit;
 }
-
-.primary {
-  composes: label;
-  color: var(--primary-color);
+.label.primary {
+  color: #41d492;
 }
-
-.alternate {
-  composes: label;
-  color: var(--link-color);
+.label.link {
+  color: #1964eb;
 }

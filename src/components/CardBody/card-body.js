@@ -1,12 +1,12 @@
 import CSSModules from 'react-css-modules';
 import React from 'react';
 
-import style from './card-body.css';
+import CSS from './card-body.styl';
 
 type Props = {
   /** html element, div,span,button */
   component?: string,
-  styles: any,
+  styles: Object,
   children?: any,
   /** add any other props to the component */
   other?: Object
@@ -20,4 +20,4 @@ function CardBody({ component: Component = 'div', children, styles, ...other }: 
   );
 }
 
-export default CSSModules(CardBody, style);
+export default CSSModules(CardBody, CSS);

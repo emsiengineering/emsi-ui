@@ -1,0 +1,19 @@
+@import 'variables.styl'
+
+.grid
+  margin-left: auto
+  margin-right: auto
+
+  &.fluid
+    padding-left: $outer-margin
+    padding-right: $outer-margin
+
+  &:not(.fluid)
+     for size, value in $viewport
+       +media(size)
+         if size == small
+           width: $viewport[size] - 2
+         else if size == medium
+           width: $viewport[size] - 3 
+         else
+           width: $viewport[size] - 4

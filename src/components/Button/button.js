@@ -1,29 +1,35 @@
+import cx from 'classnames';
 import CSSModules from 'react-css-modules';
 import React from 'react';
 
-import styles from './button.css';
+import CSS from './button.styl';
 
 type Props = {
   /** html element, div,span,button */
   component?: string,
   /** disable the button */
   disabled?: boolean,
-  /** type of button, Oneof: primary, secondary, alternate, warning, danger */
-  type?: 'primary'|'secondary'|'alternate'|'warning'|'danger',
-  /** adds the active class to the button */
+  type?: 'primary'|'gray'|'link'|'warning'|'danger',
   active?: boolean,
   /** text to display for the button */
   children: string,
-  styles: any
+  styles: Object
 }
 
-function Button({ component: Component = 'button', disabled, children, type = 'primary', styles: CSSStyles, active, ...other }: Props) {
-  let styleName: string = type;
-  styleName += active && !disabled ? '-active' : '';
+function Button({ component: Component, disabled, children, type, styles, active, ...other }: Props) {
+  let styleName = {
+    button: true,
+    active
+  };
+
+  if (type !== 'primary')
+    styleName[type] = true;
+
   return (
-    <Component {...other} tabIndex='0' disabled={Component === 'button' && disabled} styleName={styleName}>{children}</Component>
+    <Component {...other} tabIndex='0' disabled={Component === 'button' && disabled} styleName={cx(styleName)}>{children}</Component>
   );
 }
+
 Button.defaultProps = {
   component: 'button',
   type: 'primary',
@@ -31,4 +37,4 @@ Button.defaultProps = {
   active: false
 };
 
-export default CSSModules(Button, styles);
+export default CSSModules(Button, CSS, { allowMultiple: true });

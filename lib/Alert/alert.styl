@@ -1,0 +1,17 @@
+@import 'variables.styl'
+
+.alert
+  background-color: $gray4
+  color: black
+
+  &.primary
+    background-color: $alert-primary-background
+    color: blend(rgba($accent-color, .6), black)
+
+  &.link
+    background-color: $alert-link-background
+    color: blend(rgba($link-color, .6), black)
+
+  &.danger
+    background-color: $alert-danger-background
+    color: blend(rgba($red, .6), black)

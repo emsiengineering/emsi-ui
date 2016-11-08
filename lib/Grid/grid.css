@@ -1,26 +1,28 @@
-@import "../variables.css";
-
 .grid {
-  margin-right: auto;
   margin-left: auto;
-
-  &:not(.fluid) {
-    @media (--sm-viewport) {
-      width: var(--container-sm, 46rem);
-    }
-
-    @media (--md-viewport) {
-      width: var(--container-md, 61rem);
-    }
-
-    @media (--lg-viewport) {
-      width: var(--container-lg, 71rem);
-    }
+  margin-right: auto;
+}
+.grid.fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media only screen and (min-width: 30em) {
+  .grid:not(.fluid) {
+    width: 26em;
   }
 }
-
-.fluid {
-  composes: grid;
-  padding-right: var(--outer-margin, 2rem);
-  padding-left: var(--outer-margin, 2rem);
+@media only screen and (min-width: 48em) {
+  .grid:not(.fluid) {
+    width: 46em;
+  }
+}
+@media only screen and (min-width: 64em) {
+  .grid:not(.fluid) {
+    width: 61em;
+  }
+}
+@media only screen and (min-width: 75em) {
+  .grid:not(.fluid) {
+    width: 71em;
+  }
 }

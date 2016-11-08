@@ -1,35 +1,16 @@
-@import "../variables.css";
-
-.alert-container {
-  background-color: white;
-  border-radius: 6px;
-}
-
 .alert {
-  composes: @import card from '../Card/card.css';
-  padding: 2rem;
-  max-width: 100%;
-  vertical-align: top;
-  height: 100%;
-  color: rgba(0, 0, 0, 0.5);
-  background-color: color(var(--yellow) a(20%));
-  box-shadow: inset 0 0 0 1px color(black a(5%));
+  background-color: #e5e5e5;
+  color: #000;
 }
-
-.alert-title {
-  display: block;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 2rem;
+.alert.primary {
+  background-color: #d0f4e4;
+  color: #277f58;
 }
-
-.error {
-  composes: alert;
-  background-color: color(var(--red) a(20%));
-  box-shadow: inset 0 0 0 1px color(black a(3.5%));
+.alert.link {
+  background-color: #d1e0fb;
+  color: #0f3c8d;
 }
-
-.error-title {
-  composes: alert-title;
-  color: var(--red);
+.alert.danger {
+  background-color: #fcc8ca;
+  color: #932b2f;
 }

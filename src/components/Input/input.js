@@ -1,18 +1,19 @@
 import CSSModules from 'react-css-modules';
 import React from 'react';
 
-import CSS from './input.css';
-import Header from '../Header';
+import CSS from './input.styl';
+import Icon from '../Icon';
+import Text from '../Text';
 
 type Props = {
   /** default text to display inside the input */
-  children?: string,
+  children?: any,
   /** html element, div,span,button */
   component?: string,
   /** function to capture the state change outside the component */
   onChange?: Function,
-  /** error message to show to the user */
-  errorMessage?: string,
+  /** message to show to the user */
+  message?: string,
   /** make the input required */
   required?: boolean,
   /** change state of input when true */
@@ -25,28 +26,33 @@ type Props = {
   /** placeholder text */
   placeholder?: string,
   /** function to handle the ref */
-  handleRef?: Function
+  handleRef?: Function,
+
+  icon: boolean
 }
 
-function Input({ component: Component, onChange, handleRef, disabled, required, error, errorMessage, placeholder, children, styles, ...other }: Props) {
-  const styleName: string = error ? 'error' : 'input';
+function Input({ component: Component, onChange, handleRef, disabled, required, error, message, placeholder, children, styles, icon, ...other }: Props) {
+  const messageStyleName: string = error ? 'input-message error' : 'input-message';
+  let styleName: string = error ? 'input error' : 'input';
+
+  if (icon)
+    styleName += ' icon';
 
   return (
-    <span>
+    <span styleName={styleName}>
+      {children}
       <Component
         ref={(el) => {
           handleRef(el);
         }}
         onChange={onChange}
         disabled={disabled}
-        styleName={styleName}
         aria-disabled={disabled}
         aria-required={required}
         aria-invalid={error}
         placeholder={placeholder}
-        defaultValue={children}
         {...other} />
-      {error && errorMessage && <span styleName='message'><Header type='footnote' component='span'>{errorMessage}</Header></span> }
+      {message && <span styleName={messageStyleName}><Text type='caption'>{message}</Text></span> }
     </span>
   );
 }
@@ -57,7 +63,8 @@ Input.defaultProps = {
   required: false,
   error: false,
   onChange: function noop() {},
-  handleRef: function noop() {}
+  handleRef: function noop() {},
+  icon: false
 };
 
 export default CSSModules(Input, CSS, { allowMultiple: true });

@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+
 import Card from '../src/components/Card';
 import CardBody from '../src/components/CardBody';
-import CardMedia from '../src/components/CardMedia';
-import Grid from '../src/components/Grid';
 import Col from '../src/components/Col';
+import Grid from '../src/components/Grid';
 import Row from '../src/components/Row';
 
 storiesOf('Card', module)

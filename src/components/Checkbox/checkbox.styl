@@ -1,0 +1,61 @@
+@import 'variables.styl'
+
+.checkbox
+  border: 1px solid transparent
+  cursor: pointer
+  display: inline-block
+  margin: 0
+  outline: 0
+  padding: 0
+  width: auto
+
+  & > svg
+    color: black
+    cursor: pointer
+    opacity: 0.5
+    position: relative
+    transition: opacity 0.2s ease
+
+  & > span
+      color: alpha(black 75%)
+      display: inline-block
+      margin-left: 0.5rem
+      vertical-align: middle
+
+  &:focus
+    & > svg, & > span
+      color: $link-color
+      opacity: 0.75
+
+    &::after
+      color: $link-color
+      content: '\f124'
+      display: inline-block
+      font-family: Ionicons
+      font-size: 0.5rem
+      font-weight: 600
+      margin-left: 0.5rem
+      margin-top: 0.2rem
+      opacity: 1
+      vertical-align: middle
+
+  &:hover > span, &:hover svg
+    color: $link-color
+    opacity: 0.5
+
+  &.selected
+    color: $link-color
+    opacity: 1
+
+    & > svg
+      opacity: 1
+
+      & > svg, & > span
+        opacity: 1
+
+      &::after
+        opacity: 1
+
+    & > svg, & > span
+      color: $link-color
+      opacity: 1

@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
+
 import TextArea from '../src/components/Textarea';
 
 storiesOf('Textarea', module)
@@ -13,8 +14,8 @@ storiesOf('Textarea', module)
       <TextArea placeholder='Something'/>
   ))
   .add('with initial value', () => (
-      <TextArea>Test Value</TextArea>
+      <TextArea defaultValue='Test Value' />
   ))
   .add('with error', () => (
-      <TextArea error errorMessage='This is an error.'>Invalid</TextArea>
+      <TextArea error message='This is an error.' defaultValue='Invalid' />
   ));

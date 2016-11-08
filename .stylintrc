@@ -1,0 +1,26 @@
+{
+        "brackets": {
+                "expect": "never",
+                "error": true
+        },
+        "colons": {
+                "expect": "always",
+                "error": true
+        },
+        "commaSpace": "always",
+        "commentSpace": "always",
+        "duplicates": true,
+        "efficient": "always",
+        "globalDupe": true,
+        "namingConvention": {
+                "expect": "lowercase-dash",
+                "error": true
+        },
+        "noImportant": true,
+        "none": "never",
+        "semicolons": "never",
+        "sortOrder": "alphabetical",
+        "valid": true,
+        "zeroUnits": "never",
+        "zIndexNormalize": 5
+}
