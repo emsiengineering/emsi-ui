@@ -1,60 +1,70 @@
 @import 'variables.styl'
 
 .nav-item
-  position relative
-  display inline-block
-  background-color $tab-panel-background
-  padding 2rem
-  cursor pointer
-  outline none
-  border 0
+  background-color: $tab-panel-background
+  border: 0
+  cursor: pointer
+  display: inline-block
+  outline: 0
+  padding: 2rem
+  position: relative
 
   &.top
     & > .nav-item-border
-      bottom auto
-      top 0
+      bottom: auto
+      top: 0
       
-
   &.active
     & > .nav-item-text
-      color white
+      color: white
 
     & > .nav-item-border
-      width calc(100% - 4rem)
-      background-color $accent-color
+      background-color: $accent-color
+      width: calc(100% - 4rem)
 
-  &:not(.active)
+  &:focus.active
+    & > .nav-item-border
+      height: 25%
+
+  &:focus:not(.active):not(:hover)
+    & > .nav-item-border
+      background-color: $gray3
+      height: 3px
+      width: calc(100% - 4rem)
+
     & > .nav-item-text
-      color $gray3
-
-  &:focus:not(.active)
-    & > .nav-item-border
-      height 3px
-      width calc(100% - 4rem)
-      background-color $gray3
+      color: white
   
   &:not(:focus):not(.active)
     & > .nav-item-border
-      width 0
-      transition width .3s ease
-      background-color $gray3
+      background-color: $gray3
+      transition: width .3s ease
+      width: 0
 
-  &:hover
-    .nav-item-text
-      color white
-
+  &:hover:not(.active):not(:focus)
+    & > .nav-item-border
+      background-color: $gray3
+      height: 3px
+      width: calc(100% - 4rem)
+  
+  &:not(:hover):not(.active)
+    & > .nav-item-border
+      background-color: $gray3
+      transition: width .3s ease
+      width: 0
 
 .nav-item-text
-  font-size 1.5rem
-  display inline-block
+  color: $gray3
+  display: inline-block
+  font-size: 1.5rem
   
-.nav-item-border
-  position absolute
-  width 0
-  bottom 0
-  transform translateX(-50%)
-  left 50%
-  height 3px
-  z-index 3
-  background-color $tab-panel-background
-  transition width .3s ease
+.nav-item-border  
+  background-color: $tab-panel-background 
+  bottom: 0
+  height: 3px
+  left: 50%
+  position: absolute
+  transform: translateX(-50%)
+  transition: height .2s ease, width .3s ease
+  width: 0
+  z-index: 5

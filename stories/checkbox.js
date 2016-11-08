@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+
 import Checkbox from '../src/components/Checkbox';
 import CheckboxGroup from '../src/components/CheckboxGroup';
+import Label from '../src/components/Label';
 import Radio from '../src/components/Radio';
 import RadioGroup from '../src/components/RadioGroup';
-import Label from '../src/components/Label';
-import theme from '../src/theme';
 
 storiesOf('Checkbox/Radio', module)
   .add('default', () => (

@@ -1,75 +1,76 @@
 @import 'variables.styl'
 
 .button
-  background-color $accent-color
-  border 0
-  font-size 1em
-  font-weight 500
-  display inline-block
-  padding 1.2rem 2rem
-  cursor pointer
-  color white
-  box-shadow inset 0 0 0 1px alpha(black, 0.1), 
-             inset 0 2px 0 0 alpha(white, 0.1), 
-             inset 0 -1px 0 0 alpha(black, 0.1);
-  border-radius 3px
-  text-shadow 0 -1px 0 rgba(0, 0, 0, 0.1)
+  background-color: $accent-color
+  border: 0
+  color: white
+  cursor: pointer
+  display: inline-block
+  font-size: 1em
+  font-weight: 500
+  padding: 1.2rem 2rem
+
+  box-shadow: inset 0 0 0 1px alpha(black, 0.1), 
+              inset 0 2px 0 0 alpha(white, 0.1), 
+              inset 0 -1px 0 0 alpha(black, 0.1)
+  border-radius: 3px
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1)
 
   &:hover:not(:disabled):not(:focus)
-    box-shadow inset 0 0 0 20rem alpha(black, 0.1), 
-               inset 0 2px 0 0 alpha(white 0.2), 
-               inset 0 -1px 0 0 alpha(black, 0.1)
+    box-shadow: inset 0 0 0 20rem alpha(black, 0.1), 
+                inset 0 2px 0 0 alpha(white 0.2), 
+                inset 0 -1px 0 0 alpha(black, 0.1)
   
   &:active, &.active
-    box-shadow inset 0 0 0 20rem alpha(black, 0.1), 
-               inset 0 -2px 0 0 alpha(white 20%), 
-               inset 0 0 0 1px alpha(black 10%)
+    box-shadow: inset 0 0 0 20rem alpha(black, 0.1), 
+                inset 0 -2px 0 0 alpha(white 20%), 
+                inset 0 0 0 1px alpha(black 10%)
 
   &:focus
-    outline none
-    box-shadow inset 0 0 0 20rem alpha(black, 0.2), 
-               0 0 0 3px alpha($accent-color, 0.5), 
-               inset 0 -2px 0 0 alpha(white, 0.2), 
-               inset 0 2px 0 0 alpha(black, 0.1)
-
-  &:disabled
-    cursor not-allowed
-    opacity 0.6
-    
-  &.link
-    background-color $link-color
-
-    &:focus
-      box-shadow inset 0 0 0 20rem alpha(black, 0.2), 
-                 0 0 0 3px alpha($link-color, 0.25), 
-                 inset 0 -2px 0 0 alpha(white, 0.2), 
-                 inset 0 2px 0 0 alpha(black, 0.1)
-                 
-  &.gray, &.warning
-    background-color $gray5
-    
-    &:hover:not(:disabled):not(:focus)
-      box-shadow inset 0 0 0 20rem alpha(black, 0.1), 
-                inset 0 2px 0 0 alpha(white 0.2), 
-                inset 0 -1px 0 0 alpha(black, 0.05)
-    
-    &:focus
-      box-shadow inset 0 0 0 20rem alpha($gray3, 0.75), 
-                 0 0 0 3px $gray4,
-                 inset 0 -2px 0 0 alpha(white, 0.2), 
-                 inset 0 2px 0 0 alpha(black, 0.1)
-
-  &.gray
-    color alpha(black, 0.5)
-
-  &.warning
-    color $red
-                  
-  &.danger
-    background-color $red
-    
-    &:focus
-      box-shadow inset 0 0 0 20rem alpha(black, 0.2), 
-                0 0 0 3px alpha($red, 0.35), 
+    box-shadow: inset 0 0 0 20rem alpha(black, 0.2), 
+                0 0 0 3px alpha($accent-color, 0.5), 
                 inset 0 -2px 0 0 alpha(white, 0.2), 
                 inset 0 2px 0 0 alpha(black, 0.1)
+    outline: 0
+
+  &:disabled
+    cursor: not-allowed
+    opacity: 0.6
+    
+  &.link
+    background-color: $link-color
+
+    &:focus
+      box-shadow: inset 0 0 0 20rem alpha(black, 0.2), 
+                  0 0 0 3px alpha($link-color, 0.25), 
+                  inset 0 -2px 0 0 alpha(white, 0.2), 
+                  inset 0 2px 0 0 alpha(black, 0.1)
+                 
+  &.gray, &.warning
+    background-color: $gray5
+    
+    &:hover:not(:disabled):not(:focus)
+      box-shadow: inset 0 0 0 20rem alpha(black, 0.1), 
+                  inset 0 2px 0 0 alpha(white 0.2), 
+                  inset 0 -1px 0 0 alpha(black, 0.05)
+    
+    &:focus
+      box-shadow: inset 0 0 0 20rem alpha($gray3, 0.75), 
+                  0 0 0 3px $gray4, // @stylint ignore
+                  inset 0 -2px 0 0 alpha(white, 0.2), 
+                  inset 0 2px 0 0 alpha(black, 0.1)
+
+  &.gray
+    color: alpha(black, 0.5)
+
+  &.warning
+    color: $red
+                  
+  &.danger
+    background-color: $red
+    
+    &:focus
+      box-shadow: inset 0 0 0 20rem alpha(black, 0.2), 
+                  0 0 0 3px alpha($red, 0.35), 
+                  inset 0 -2px 0 0 alpha(white, 0.2), 
+                  inset 0 2px 0 0 alpha(black, 0.1)

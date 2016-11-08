@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
-import theme from '../src/theme';
 import Icon from '../src/components/Icon';
 
 storiesOf('Icon', module)

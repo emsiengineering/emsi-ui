@@ -1,62 +1,62 @@
 @import 'variables.styl'
 
 .modal-underlay
-  background-color transparent
-  transition all 0.15s linear
+  background-color: transparent
+  transition: all 0.15s linear
 
   &.entered 
-    background-color alpha(black 50%)
+    background-color: alpha(black 50%)
 
 .modal
-  position absolute
-  top 0
-  right 0
-  left 0
-  margin 0
-  margin-bottom 1rem
-  padding 2rem
-  width 100%
-  border-radius 0
-  background-color white
-  box-shadow alpha(black 20%) 0 1rem 1rem
+  background-color: white
+  border-radius: 0
+  box-shadow: alpha(black 20%) 0 1rem 1rem
+  left: 0
+  margin: 0
+  margin-bottom: 1rem
+  padding: 2rem
+  position: absolute
+  right: 0
+  top: 0
+  width: 100%
 
 +media(medium)
   .modal
-    top 6rem
-    right 0
-    left 0
-    margin 0 auto
-    padding 2rem
+    border-radius: 3px
+    left: 0
+    margin: 0 auto
     max-width: $viewport[medium]
-    width 80%
-    border-radius 3px
+    padding: 2rem
+    right: 0
+    top: 6rem
+    width: 80%
 
 .modal-close-icon
-  position absolute
-  top 1rem
-  right 1rem
-  color $gray2
-  font-size 2.5rem
-  cursor pointer
-  transition all 0.2s ease-in-out
+  color: $gray2
+  cursor: pointer
+  font-size: 2.5rem
+  position: absolute
+  right: 1rem
+  top: 1rem
+  transition: all 0.2s ease-in-out
 
   &:hover
-    transform scale(1.2)
+    transform: scale(1.2)
 
 .modal-enter
-  opacity 0.01
-  transform scale(0)
+  opacity: 0.01
+  transform: scale(0)
 
 .modal-enter.modal-enter-active
-  opacity 1
-  transition all .15s ease-out
-  transform scale(1)
+  opacity: 1
+  transition: all .15s ease-out
+  transform: scale(1)
 
 .modal-leave
-  opacity 1
-  transform scale(1)
+  opacity: 1
+  transform: scale(1)
 
 .modal-leave.modal-leave-active
-  opacity 0.01
-  transition all .15s ease-in-out
-  transform scale(0)
+  opacity: 0.01
+  transition: all .15s ease-in-out
+  transform: scale(0)
