@@ -15,35 +15,35 @@ storiesOf('Button', module)
   ))
   .add('gray button', () => (
     <div>
-      <Button type='gray'>Secondary</Button>
+      <Button color='gray'>Secondary</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='gray' active>Active</Button>
+      <Button color='gray' active>Active</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='gray' disabled>Disabled</Button>
+      <Button color='gray' disabled>Disabled</Button>
     </div>
   ))
   .add('link button', () => (
     <div>
-      <Button type='link'>Secondary</Button>
+      <Button color='link'>Secondary</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='link' active>Active</Button>
+      <Button color='link' active>Active</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='link' disabled>Disabled</Button>
+      <Button color='link' disabled>Disabled</Button>
     </div>
   )).add('warning button', () => (
     <div>
-      <Button type='warning'>Warning</Button>
+      <Button color='warning'>Warning</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='warning' active>Active</Button>
+      <Button color='warning' active>Active</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='warning' disabled>Disabled</Button>
+      <Button color='warning' disabled>Disabled</Button>
     </div>
   )).add('danger button', () => (
     <div>
-      <Button type='danger'>Danger</Button>
+      <Button color='danger'>Danger</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='danger' active>Active</Button>
+      <Button color='danger' active>Active</Button>
       <div style={{ display: 'block', paddingBottom: '1rem' }} />
-      <Button type='danger' disabled>Disabled</Button>
+      <Button color='danger' disabled>Disabled</Button>
     </div>
   ));
