@@ -3,9 +3,9 @@
 <Button>Primary</Button>
 <Button disabled>Disabled</Button>
 <Button component='a' active>Active</Button>
-<Button type='secondary'>Secondary</Button>
-<Button type='alternate'>Alternate</Button>
-<Button type='warning'>Warning</Button>
-<Button type='danger'>Danger</Button>
+<Button color='secondary'>Secondary</Button>
+<Button color='alternate'>Alternate</Button>
+<Button color='warning'>Warning</Button>
+<Button color='danger'>Danger</Button>
 </div>
 ```
