@@ -56,21 +56,19 @@ class Checkbox extends React.Component<void, Props, void> {
 
     return (
       <Label>
-        <div>
-          <div
-            tabIndex='0'
-            {...other}
-            role={role}
-            aria-checked={checked}
-            onClick={this.handleChange}
-            onKeyPress={this.handleKeyPress}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            styleName={checked ? 'checkbox selected' : 'checkbox'}
-          >
-            {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
-            {React.Children.toArray(children).length > 0 && <span>{children}</span>}
-          </div>
+        <div
+          tabIndex='0'
+          {...other}
+          role={role}
+          aria-checked={checked}
+          onClick={this.handleChange}
+          onKeyPress={this.handleKeyPress}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          styleName={checked ? 'checkbox selected' : 'checkbox'}
+        >
+          {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
+          {React.Children.toArray(children).length > 0 && <span>{children}</span>}
         </div>
       </Label>
     );
