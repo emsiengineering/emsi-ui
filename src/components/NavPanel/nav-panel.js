@@ -18,7 +18,7 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 
   render() {
-    const props = { invert, children, ...other } = this.props;
+    const { invert, children, ...other } = this.props;
 
     return (
       <nav
