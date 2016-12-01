@@ -9,7 +9,6 @@ type Props = {
   onClick?: Function|void,
   /** number of the activeTab */
   invert?: boolean|void,
-
   children: any
 }
 
@@ -19,10 +18,13 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 
   render() {
+    const props = { invert, children, ...other } = this.props;
+
     return (
       <nav
         role='navigation'
         styleName='nav-panel'
+        {...other}
       >
         {this.props.children}
       </nav>
