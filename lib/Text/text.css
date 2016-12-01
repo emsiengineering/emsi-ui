@@ -45,3 +45,6 @@
 .font.alternate {
   color: #1964eb;
 }
+.font.header {
+  margin-bottom: 2rem;
+}
