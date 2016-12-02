@@ -1,17 +1,33 @@
 @import 'variables.styl'
 
+html[data-whatinput="keyboard"] .checkbox:focus
+  z-index: 5
+  outline-color: $link-color
+
+  & > svg, & > span
+    color: $link-color
+    opacity: 0.75
+
+html[data-whatinput="mouse"] .checkbox:focus
+  outline: none
+
 .checkbox
   border: 1px solid transparent
+  clear: left
   cursor: pointer
-  display: inline-block
+  display: block
+  float: left
   margin: 0
-  outline: 0
   padding: 0
-  width: auto
+  transform-origin: 0 50%
+
+  &.small
+    width: 2rem;
 
   & > svg
     color: black
     cursor: pointer
+    display: inline-block
     opacity: 0.5
     position: relative
     transition: opacity 0.2s ease
@@ -20,23 +36,6 @@
       color: alpha(black 75%)
       display: inline-block
       margin-left: 0.5rem
-      vertical-align: middle
-
-  &:focus
-    & > svg, & > span
-      color: $link-color
-      opacity: 0.75
-
-    &::after
-      color: $link-color
-      content: '\f124'
-      display: inline-block
-      font-family: Ionicons
-      font-size: 0.5rem
-      font-weight: 600
-      margin-left: 0.5rem
-      margin-top: 0.2rem
-      opacity: 1
       vertical-align: middle
 
   &:hover > span, &:hover svg

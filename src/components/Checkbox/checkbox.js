@@ -1,9 +1,11 @@
+import whatInput from 'what-input';
 import CSSModules from 'react-css-modules';
 import React, { PropTypes } from 'react';
 
 import CSS from './checkbox.styl';
 import Icon from '../Icon';
 import Label from '../Label';
+import Text from '../Text';
 
 type Props = {
   styles: any,
@@ -38,14 +40,14 @@ class Checkbox extends React.Component<void, Props, void> {
 
   renderRadio(checked?: boolean) {
     return checked ?
-      <Icon name='radioChecked' styleName='checkbox selected' /> :
-      <Icon name='radio' />;
+      <Icon name='radioChecked' styleName='selected' size='medium' /> :
+      <Icon name='radio' size='medium' />;
   }
 
   renderCheckbox(checked?: boolean) {
     return checked ?
-      <Icon name='checkboxChecked' styleName='checkbox' /> :
-      <Icon name='checkbox'  />;
+      <Icon name='checkboxChecked' size='medium' /> :
+      <Icon name='checkbox' size='medium' />;
   }
 
   render() {
@@ -56,19 +58,21 @@ class Checkbox extends React.Component<void, Props, void> {
 
     return (
       <Label>
-        <div
-          tabIndex='0'
-          {...other}
-          role={role}
-          aria-checked={checked}
-          onClick={this.handleChange}
-          onKeyPress={this.handleKeyPress}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          styleName={checked ? 'checkbox selected' : 'checkbox'}
-        >
-          {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
-          {React.Children.toArray(children).length > 0 && <span>{children}</span>}
+        <div>
+          <div
+            tabIndex='0'
+            {...other}
+            role={role}
+            aria-checked={checked}
+            onClick={this.handleChange}
+            onKeyPress={this.handleKeyPress}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            styleName={checked ? 'checkbox selected' : 'checkbox'}
+          >
+            {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
+            {React.Children.toArray(children).length > 0 && <Text type='body'>{children}</Text>}
+          </div>
         </div>
       </Label>
     );
