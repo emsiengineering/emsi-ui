@@ -10,36 +10,23 @@ type Props = {
   /** position the active class on the bottom or top of the text */
   styles: Object,
   /** any additional props to add */
-  tabIndex: number,
-  title: string,
-  top: boolean
+  title: string
 }
 /**
  * Tab can't be used outside the TabPanel Component context
  */
-function NavItem({ children, active, styles, title, tabIndex, top, ...other }: Props) {
-  let styleName = cx({
-    'nav-item': true,
-    active,
-    top
-  });
-
-  let styleNameBorder = cx({
-    'nav-item-border': true,
-    active
-  });
+function NavItem({ children, active, styles, title, ...other }: Props) {
+  const styleName = active ? 'nav-item active' : 'nav-item';
 
   return (
-    <div
+    <li
       styleName={styleName}
-      tabIndex={tabIndex}
       {...other}
     >
-      <div styleName='nav-item-text'>
+      <div>
         {title}
       </div>
-      <div styleName='nav-item-border' />
-    </div>
+    </li>
   );
 }
 
