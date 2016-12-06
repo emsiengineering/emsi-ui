@@ -54,6 +54,6 @@ function Checkbox({ value, radio, checked, onChange, children, ...other }: Props
       </div>
     </Label>
   );
-};
+}
 
 export default CSSModules(Checkbox, CSS, { allowMultiple: true });

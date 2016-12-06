@@ -12,7 +12,7 @@ type Props = {
   color?: 'primary'|'gray'|'link'|'warning'|'danger',
   active?: boolean,
   /** text to display for the button */
-  children: string,
+  children: any,
   styles: Object
 }
 

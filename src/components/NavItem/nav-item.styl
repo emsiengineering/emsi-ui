@@ -1,11 +1,13 @@
 @import 'variables.styl'
 
-html[data-whatinput="keyboard"] .nav-item:focus
-  z-index: 5
-  outline-color: $accent-color
+html
+  &[data-whatinput="keyboard"] .nav-item:focus
+    outline-color: $accent-color
+    z-index: 5
 
-html[data-whatinput="mouse"] .nav-item:focus
-  outline: none
+
+  &[data-whatinput="mouse"] .nav-item:focus
+   outline: 0
 
 .nav-item
   background-color: $tab-panel-background
