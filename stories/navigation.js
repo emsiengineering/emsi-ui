@@ -14,7 +14,7 @@ storiesOf('NavPanel', module)
     </NavPanel>
   ))
   .add('first item selected, top', () => (
-    <NavPanel align='top' onNavigate={action('Navigated to')}>
+    <NavPanel top onNavigate={action('Navigated to')}>
       <NavItem title='Interesting' to='/interesting' />
       <NavItem title='Dark Theme' to='/dark-theme' />
       <NavItem title='Interestinger' to='/interestinger' />

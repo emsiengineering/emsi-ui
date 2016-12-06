@@ -22,56 +22,38 @@ type Props = {
   onChange?: Function
 }
 
-class Checkbox extends React.Component<void, Props, void> {
-  static defaultProps = {
-    value: '',
-    radio: false,
-    checked: false,
-    onChange: function noop() {}
-  }
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      focused: false
-    };
-  }
-
-  renderRadio(checked?: boolean) {
-    return checked ?
-      <Icon name='radioChecked' styleName='selected' size='medium' /> :
-      <Icon name='radio' size='medium' />;
-  }
-
-  renderCheckbox(checked?: boolean) {
-    return checked ?
-      <Icon name='checkboxChecked' size='medium' /> :
-      <Icon name='checkbox' size='medium' />;
-  }
-
-  render() {
-    const { children, checked, value, radio, styles, onChange, ...other } = this.props;
-    const role: string = radio ? 'radio' : 'checkbox';
-
-    return (
-      <Label>
-        <div>
-          <div
-            tabIndex='0'
-            {...other}
-            role={role}
-            aria-checked={checked}
-            styleName={checked ? 'checkbox selected' : 'checkbox'}
-          >
-            {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
-            {React.Children.toArray(children).length > 0 && <Text type='body'>{children}</Text>}
-          </div>
-          <input type={role} style={{ display: 'none' }} onChange={(e) => onChange(e, value)} defaultValue={value} defaultChecked={checked} />
-        </div>
-      </Label>
-    );
-  }
+function renderRadio(checked) {
+  return checked ?
+    <Icon name='radioChecked' styleName='selected' size='medium' /> :
+    <Icon name='radio' size='medium' />;
 }
+
+function renderCheckbox(checked) {
+  return checked ?
+    <Icon name='checkboxChecked' size='medium' /> :
+    <Icon name='checkbox' size='medium' />;
+}
+
+function Checkbox({ value, radio, checked, onChange, children, ...other }: Props) {
+  const role: string = radio ? 'radio' : 'checkbox';
+
+  return (
+    <Label>
+      <div>
+        <div
+          tabIndex='0'
+          {...other}
+          role={role}
+          aria-checked={checked}
+          styleName={checked ? 'checkbox selected' : 'checkbox'}
+        >
+          {radio ? renderRadio(checked) : renderCheckbox(checked)}
+          {React.Children.toArray(children).length > 0 && <Text type='body'>{children}</Text>}
+        </div>
+        <input type={role} style={{ display: 'none' }} onChange={(e) => onChange(e, value)} defaultValue={value} defaultChecked={checked} />
+      </div>
+    </Label>
+  );
+};
 
 export default CSSModules(Checkbox, CSS, { allowMultiple: true });

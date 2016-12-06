@@ -8,7 +8,7 @@ import CSS from './nav-panel.styl';
 
 type Props = {
   /** adds the active class, when true */
-  align?: "bottom"|"top",
+  top?: Boolean|void,
   /** position the active class on the bottom or top of the text */
   styles: Object|void,
   /** any additional props to add */
@@ -16,10 +16,6 @@ type Props = {
 }
 
 class NavPanel extends React.Component<void, Props, void> {
-  static defaultProps = {
-    align: 'bottom'
-  }
-
   constructor(props) {
     super(props);
 
@@ -59,8 +55,8 @@ class NavPanel extends React.Component<void, Props, void> {
 
   render() {
     const { animate, hovering, widths, active, hover } = this.state;
-    const { children, align, styles, ...other } = this.props;
-    const styleName = align === 'bottom' ? 'nav-panel' : 'nav-panel top';
+    const { children, styles, top, onNavigate, ...other } = this.props;
+    const styleName = top ? 'nav-panel' : 'nav-panel top';
     const menu = this.props.children.map((child, index) => {
 
       const clone = React.cloneElement(

@@ -10,7 +10,9 @@ type Props = {
   /** position the active class on the bottom or top of the text */
   styles: Object,
   /** any additional props to add */
-  title: string
+  title: string,
+
+  tabIndex: number
 }
 /**
  * Tab can't be used outside the TabPanel Component context
@@ -31,8 +33,7 @@ function NavItem({ children, active, styles, title, ...other }: Props) {
 }
 
 NavItem.defaultProps = {
-  tabIndex: 0,
-  top: false
+  tabIndex: 0
 };
 
 export default CSSModules(NavItem, CSS, { allowMultiple: true });
