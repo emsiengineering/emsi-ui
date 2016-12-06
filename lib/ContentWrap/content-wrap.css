@@ -1,6 +1,6 @@
 .content-wrap {
   margin: 0 auto;
-  padding: 0 2 rem;
+  padding: 0 2rem;
 }
 .content-wrap::before {
   content: " ";

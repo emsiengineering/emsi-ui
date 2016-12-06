@@ -1,66 +1,23 @@
+html[data-whatinput="keyboard"] .nav-item:focus {
+  z-index: 5;
+  outline-color: #41d492;
+}
+html[data-whatinput="mouse"] .nav-item:focus {
+  outline: none;
+}
 .nav-item {
   background-color: #203a45;
   border: 0;
   cursor: pointer;
   display: inline-block;
-  outline: 0;
   padding: 2rem;
   position: relative;
 }
-.nav-item.top > .nav-item-border {
-  bottom: auto;
-  top: 0;
-}
-.nav-item.active > .nav-item-text {
-  color: #fff;
-}
-.nav-item.active > .nav-item-border {
-  background-color: #41d492;
-  width: calc(100% - 4rem);
-}
-.nav-item:focus.active > .nav-item-border {
-  height: 25%;
-}
-.nav-item:focus:not(.active):not(:hover) > .nav-item-border {
-  background-color: #bfbfbf;
-  height: 3px;
-  width: calc(100% - 4rem);
-}
-.nav-item:focus:not(.active):not(:hover) > .nav-item-text {
-  color: #fff;
-}
-.nav-item:not(:focus):not(.active) > .nav-item-border {
-  background-color: #bfbfbf;
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
-  width: 0;
-}
-.nav-item:hover:not(.active):not(:focus) > .nav-item-border {
-  background-color: #bfbfbf;
-  height: 3px;
-  width: calc(100% - 4rem);
-}
-.nav-item:not(:hover):not(.active) > .nav-item-border {
-  background-color: #bfbfbf;
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
-  width: 0;
-}
-.nav-item-text {
+.nav-item > div {
   color: #bfbfbf;
   display: inline-block;
   font-size: 1.5rem;
 }
-.nav-item-border {
-  background-color: #203a45;
-  bottom: 0;
-  height: 3px;
-  left: 50%;
-  position: absolute;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  -webkit-transition: height 0.2s ease, width 0.3s ease;
-  transition: height 0.2s ease, width 0.3s ease;
-  width: 0;
-  z-index: 5;
+.nav-item.active > div {
+  color: #fff;
 }

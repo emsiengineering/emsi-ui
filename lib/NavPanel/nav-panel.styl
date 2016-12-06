@@ -1,11 +1,29 @@
 @import 'variables.styl'
 
+.nav-content
+	background-color: $tab-panel-background
+
 .nav-panel
-  -ms-overflow-style: -ms-autohiding-scrollbar
-  -webkit-overflow-scrolling: touch
-  background-color: $tab-panel-background
-  color: alpha(black 75%)
-  display: block
-  overflow-x: scroll
-  white-space: nowrap
-  width: 100%
+	-ms-overflow-style: -ms-autohiding-scrollbar
+	-webkit-overflow-scrolling: touch
+	color: alpha(black 75%)
+	// overflow-x: scroll
+	position: relative
+	white-space: nowrap
+	width: 100%
+
+	&.top
+		& > .nav-panel-border
+			top: 0
+
+	&:not(top)
+		& > .nav-panel-border
+			bottom: 0
+
+.nav-panel-border
+	background-color: $accent-color
+	display: block
+	height: 0.25rem
+	position: absolute
+	transition: all 0.2s ease
+	z-index: 10
