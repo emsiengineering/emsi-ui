@@ -1,34 +1,127 @@
-import uniqueId from 'lodash.uniqueid';
+import whatInput from 'what-input';
 import CSSModules from 'react-css-modules';
-import React, { PropTypes } from 'react';
+import Measure from 'react-measure';
+import React from 'react';
 
 import ContentWrap from '../ContentWrap';
 import CSS from './nav-panel.styl';
 
 type Props = {
-  onClick?: Function|void,
-  /** number of the activeTab */
-  invert?: boolean|void,
-  children: any
+  /** adds the active class, when true */
+  align?: "bottom"|"top",
+  /** position the active class on the bottom or top of the text */
+  styles: Object|void,
+  /** any additional props to add */
+  onNavigate: Function
 }
 
 class NavPanel extends React.Component<void, Props, void> {
   static defaultProps = {
-    activePosition: 'bottom'
+    align: 'bottom'
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      animate: false,
+      hovering: false,
+      widths: [],
+      active: 0,
+      hover: 1
+    };
+  }
+
+  renderSpan() {
+    const { widths, active, hovering, hover } = this.state;
+    let width = widths[active];
+    let offset = 0;
+    let by = 'active';
+
+    if (hovering) {
+      by = 'hover';
+      width = widths[hover];
+    }
+
+    for (let i = this.state[by] - 1; i >= 0; i--) {
+      offset += widths[i];
+    }
+
+    return (
+      <span
+        styleName='nav-panel-border'
+        style={{
+          left: offset + 'px',
+          width: width + 'px'
+        }}/>
+    );
   }
 
   render() {
-    const { invert, children, ...other } = this.props;
+    const { animate, hovering, widths, active, hover } = this.state;
+    const { children, align, styles, ...other } = this.props;
+    const styleName = align === 'bottom' ? 'nav-panel' : 'nav-panel top';
+    const menu = this.props.children.map((child, index) => {
+
+      const clone = React.cloneElement(
+        child,
+        {
+          onClick: () => this.handleClick(index, this.props.onNavigate, child.props.to),
+          onMouseEnter: () => this.handleEnter(index),
+          onMouseLeave: () => this.handleLeave(index),
+          active: this.state.active === index ? true : false
+        }
+      );
+
+      return (
+        <Measure
+          key={`navitem-${index}`}
+          accurate
+          onMeasure={dimensions => {
+            let childWidths = this.state.widths;
+            childWidths[index] = dimensions.width;
+
+            this.setState({
+              widths: childWidths
+            });
+          }}
+        >
+          {clone}
+        </Measure>
+      );
+    });
 
     return (
-      <nav
-        role='navigation'
-        styleName='nav-panel'
-        {...other}
-      >
-        {this.props.children}
-      </nav>
+      <ContentWrap styleName='nav-content'>
+        <ul styleName={styleName} {...other}>
+          {menu}
+          {this.renderSpan()}
+        </ul>
+      </ContentWrap>
     );
+  }
+
+  handleClick(index, onNavigate, to) {
+    this.setState({
+      active: index
+    }, () => {
+      if (onNavigate)
+        onNavigate(to);
+    });
+  }
+
+  handleEnter(index) {
+    this.setState({
+      hovering: true,
+      hover: index
+    });
+  }
+
+  handleLeave(index) {
+    this.setState({
+      hovering: false,
+      hover: index
+    });
   }
 }
 
