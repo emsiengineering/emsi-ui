@@ -1,15 +1,16 @@
 @import 'variables.styl'
 
-html[data-whatinput="keyboard"] .checkbox:focus
-  z-index: 5
-  outline-color: $link-color
+html
+  &[data-whatinput="keyboard"] .checkbox:focus
+    outline-color: $link-color
+    z-index: 5
 
-  & > svg, & > span
-    color: $link-color
-    opacity: 0.75
+    & > svg, & > span
+      color: $link-color
+      opacity: 0.75
 
-html[data-whatinput="mouse"] .checkbox:focus
-  outline: none
+  &[data-whatinput="mouse"].checkbox:focus
+    outline: 0
 
 .checkbox
   border: 1px solid transparent
@@ -22,7 +23,7 @@ html[data-whatinput="mouse"] .checkbox:focus
   transform-origin: 0 50%
 
   &.small
-    width: 2rem;
+    width: 2rem
 
   & > svg
     color: black

@@ -1,9 +1,9 @@
 html[data-whatinput="keyboard"] .nav-item:focus {
-  z-index: 5;
   outline-color: #41d492;
+  z-index: 5;
 }
 html[data-whatinput="mouse"] .nav-item:focus {
-  outline: none;
+  outline: 0;
 }
 .nav-item {
   background-color: #203a45;
