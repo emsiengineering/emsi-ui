@@ -93,12 +93,10 @@ class NavPanel extends React.Component<void, Props, void> {
     });
 
     return (
-      <ContentWrap styleName='nav-content'>
-        <ul styleName={styleName} {...other}>
-          {menu}
-          {this.renderSpan()}
-        </ul>
-      </ContentWrap>
+      <ul styleName={styleName} {...other}>
+        {menu}
+        {this.renderSpan()}
+      </ul>
     );
   }
 
