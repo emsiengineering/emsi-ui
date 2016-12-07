@@ -57,10 +57,13 @@ class NavPanel extends React.Component<void, Props, void> {
     const { animate, hovering, widths, active, hover } = this.state;
     const { children, styles, top, onNavigate, styleName: styleNameProps, ...other } = this.props;
 
-    let styleName = cx({
-      'nav-panel': true,
-      top
-    }, styleNameProps);
+    let styleName = cx(
+      styleNameProps,
+      {
+        'nav-panel': true,
+        top
+      }
+    );
 
     const menu = this.props.children.map((child, index) => {
 
