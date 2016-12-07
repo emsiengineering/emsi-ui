@@ -1,5 +1,4 @@
 import CSS from './nav-panel.styl';
-import CSSModules from 'react-css-modules';
 import ContentWrap from '../ContentWrap';
 import Measure from 'react-measure';
 import React from 'react';
@@ -45,7 +44,7 @@ class NavPanel extends React.Component<void, Props, void> {
 
     return (
       <span
-        styleName='nav-panel-border'
+        className='nav-panel-border'
         style={{
           left: offset + 'px',
           width: width + 'px'
@@ -55,14 +54,14 @@ class NavPanel extends React.Component<void, Props, void> {
 
   render() {
     const { animate, hovering, widths, active, hover } = this.state;
-    const { children, styles, top, onNavigate, styleName: styleNameProps, ...other } = this.props;
+    const { children, top, onNavigate, className, ...other } = this.props;
 
     let styleName = cx(
-      styleNameProps,
       {
         'nav-panel': true,
         top
-      }
+      },
+      className
     );
 
     const menu = this.props.children.map((child, index) => {
@@ -96,7 +95,7 @@ class NavPanel extends React.Component<void, Props, void> {
     });
 
     return (
-      <ul styleName={styleName} {...other}>
+      <ul className={styleName} {...other}>
         {menu}
         {this.renderSpan()}
       </ul>
@@ -127,4 +126,4 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 }
 
-export default CSSModules(NavPanel, CSS, { allowMultiple: true });
+export default NavPanel;
