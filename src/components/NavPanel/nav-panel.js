@@ -1,14 +1,14 @@
-import whatInput from 'what-input';
+import CSS from './nav-panel.styl';
 import CSSModules from 'react-css-modules';
+import ContentWrap from '../ContentWrap';
 import Measure from 'react-measure';
 import React from 'react';
-
-import ContentWrap from '../ContentWrap';
-import CSS from './nav-panel.styl';
+import cx from 'classnames';
+import whatInput from 'what-input';
 
 type Props = {
   /** adds the active class, when true */
-  top?: Boolean|void,
+  top?: boolean|void,
   /** position the active class on the bottom or top of the text */
   styles: Object|void,
   /** any additional props to add */
@@ -55,8 +55,13 @@ class NavPanel extends React.Component<void, Props, void> {
 
   render() {
     const { animate, hovering, widths, active, hover } = this.state;
-    const { children, styles, top, onNavigate, ...other } = this.props;
-    const styleName = top ? 'nav-panel' : 'nav-panel top';
+    const { children, styles, top, onNavigate, styleName: styleNameProps, ...other } = this.props;
+
+    let styleName = cx({
+      'nav-panel': true,
+      top
+    }, styleNameProps);
+
     const menu = this.props.children.map((child, index) => {
 
       const clone = React.cloneElement(

@@ -1,8 +1,8 @@
-import React from 'react';
-import { storiesOf, action, linkTo } from '@kadira/storybook';
+import { action, linkTo, storiesOf } from '@kadira/storybook';
 
 import NavItem from '../src/components/NavItem';
 import NavPanel from '../src/components/NavPanel';
+import React from 'react';
 
 storiesOf('NavPanel', module)
   .add('first item selected', () => (
@@ -14,7 +14,7 @@ storiesOf('NavPanel', module)
     </NavPanel>
   ))
   .add('first item selected, top', () => (
-    <NavPanel top onNavigate={action('Navigated to')}>
+    <NavPanel top onNavigate={action('Navigated to')} styleName='test'>
       <NavItem title='Interesting' to='/interesting' />
       <NavItem title='Dark Theme' to='/dark-theme' />
       <NavItem title='Interestinger' to='/interestinger' />

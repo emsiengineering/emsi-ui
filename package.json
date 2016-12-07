@@ -23,6 +23,7 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
+    "classnames": "^2.2.5",
     "lodash.uniqueid": "^4.0.1",
     "react": "^15.2.1",
     "react-addons-css-transition-group": "^15.3.1",
