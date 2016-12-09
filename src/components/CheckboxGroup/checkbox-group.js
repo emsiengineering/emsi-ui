@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
 
@@ -57,14 +58,16 @@ class CheckboxGroup extends React.Component<void, Props, void> {
       });
   }
 
-  renderChildren(children: Array) {
+  renderChildren(children: Array, onChange: Function) {
     return children.map((child: Object, index: number) => {
       return React.cloneElement(
         child,
         {
           ...child.props,
           checked: this.state.selected.includes(child.props.value),
-          onChange: this.handleClick,
+          onClick: () => this.handleClick(child.props.value),
+          onKeyDown: (e) => this.handleKeyPress(e, child.props.value),
+          onChange: onChange,
           key: `checkbox-${index}`
         }
       );
@@ -74,17 +77,20 @@ class CheckboxGroup extends React.Component<void, Props, void> {
   render() {
     return (
       <div>
-        {this.renderChildren(this.props.children)}
+        {this.renderChildren(this.props.children, this.props.onChange)}
       </div>
     );
   }
 
-  handleClick = (e: Object, value: string) => {
+  handleKeyPress = (e: Object, value: string) => {
+    if (e.which == 32) {
+      e.preventDefault();
+      this.handleClick(value);
+    }
+  }
+
+  handleClick = (value: string) => {
     let selected: Array = this.state.selected;
-    let changeCallback = () => {
-      const state: string|Array<string> = this.state.selected.length == 1 ? this.state.selected[0] : this.state.selected;
-      this.props.onChange(e, state);
-    };
 
     // if the value is in the array and this doesn't force a selection
     // remove it.
@@ -108,7 +114,7 @@ class CheckboxGroup extends React.Component<void, Props, void> {
 
     this.setState({
       selected
-    }, changeCallback);
+    });
   }
 }
 

@@ -1,15 +1,33 @@
+html[data-whatinput="keyboard"] .checkbox:focus {
+  z-index: 5;
+  outline-color: #1964eb;
+}
+html[data-whatinput="keyboard"] .checkbox:focus > svg,
+html[data-whatinput="keyboard"] .checkbox:focus > span {
+  color: #1964eb;
+  opacity: 0.75;
+}
+html[data-whatinput="mouse"] .checkbox:focus {
+  outline: none;
+}
 .checkbox {
   border: 1px solid transparent;
+  clear: left;
   cursor: pointer;
-  display: inline-block;
+  display: block;
+  float: left;
   margin: 0;
-  outline: 0;
   padding: 0;
-  width: auto;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+.checkbox.small {
+  width: 2rem;
 }
 .checkbox > svg {
   color: #000;
   cursor: pointer;
+  display: inline-block;
   opacity: 0.5;
   position: relative;
   -webkit-transition: opacity 0.2s ease;
@@ -19,23 +37,6 @@
   color: rgba(0,0,0,0.75);
   display: inline-block;
   margin-left: 0.5rem;
-  vertical-align: middle;
-}
-.checkbox:focus > svg,
-.checkbox:focus > span {
-  color: #1964eb;
-  opacity: 0.75;
-}
-.checkbox:focus::after {
-  color: #1964eb;
-  content: '\f124';
-  display: inline-block;
-  font-family: Ionicons;
-  font-size: 0.5rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
-  margin-top: 0.2rem;
-  opacity: 1;
   vertical-align: middle;
 }
 .checkbox:hover > span,
