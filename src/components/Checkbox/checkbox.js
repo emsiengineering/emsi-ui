@@ -1,9 +1,11 @@
-import CSSModules from 'react-css-modules';
 import React, { PropTypes } from 'react';
 
 import CSS from './checkbox.styl';
+import CSSModules from 'react-css-modules';
 import Icon from '../Icon';
 import Label from '../Label';
+import Text from '../Text';
+import whatInput from 'what-input';
 
 type Props = {
   styles: any,
@@ -38,63 +40,37 @@ class Checkbox extends React.Component<void, Props, void> {
 
   renderRadio(checked?: boolean) {
     return checked ?
-      <Icon name='radioChecked' styleName='checkbox selected' /> :
-      <Icon name='radio' />;
+      <Icon name='radioChecked' styleName='selected' size='medium' /> :
+      <Icon name='radio' size='medium' />;
   }
 
   renderCheckbox(checked?: boolean) {
     return checked ?
-      <Icon name='checkboxChecked' styleName='checkbox' /> :
-      <Icon name='checkbox'  />;
+      <Icon name='checkboxChecked' size='medium' /> :
+      <Icon name='checkbox' size='medium' />;
   }
 
   render() {
-    const { children, checked, value, radio, styles, ...other } = this.props;
+    const { children, checked, value, radio, styles, onChange, ...other } = this.props;
     const role: string = radio ? 'radio' : 'checkbox';
-
-    // tabIndex, onKeyPress and onClick come before ...other so that the user can override the behavior
 
     return (
       <Label>
-        <div
-          tabIndex='0'
-          {...other}
-          role={role}
-          aria-checked={checked}
-          onClick={this.handleChange}
-          onKeyPress={this.handleKeyPress}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          styleName={checked ? 'checkbox selected' : 'checkbox'}
-        >
-          {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
-          {React.Children.toArray(children).length > 0 && <span>{children}</span>}
+        <div>
+          <div
+            tabIndex='0'
+            {...other}
+            role={role}
+            aria-checked={checked}
+            styleName={checked ? 'checkbox selected' : 'checkbox'}
+          >
+            {radio ? this.renderRadio(checked) : this.renderCheckbox(checked)}
+            {React.Children.toArray(children).length > 0 && <Text type='body'>{children}</Text>}
+          </div>
+          <input type={role} style={{ display: 'none' }} onChange={(e) => onChange(e, value)} defaultValue={value} defaultChecked={checked} />
         </div>
       </Label>
     );
-  }
-
-  handleKeyPress = (e: Object) => {
-    e.preventDefault();
-    // spacebar
-    if (e.which === 32 && this.state.focused)
-      this.handleChange(e);
-  }
-
-  handleChange = (e: Object) => {
-    this.props.onChange(e, this.props.value);
-  }
-
-  handleFocus = () => {
-    this.setState({
-      focused: true
-    });
-  }
-
-  handleBlur = () => {
-    this.setState({
-      focused: false
-    });
   }
 }
 
