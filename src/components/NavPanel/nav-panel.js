@@ -1,4 +1,5 @@
 import CSS from './nav-panel.styl';
+import CSSModules from 'react-css-modules';
 import ContentWrap from '../ContentWrap';
 import Measure from 'react-measure';
 import React from 'react';
@@ -9,9 +10,7 @@ type Props = {
   /** adds the active class, when true */
   top?: boolean|void,
   /** position the active class on the bottom or top of the text */
-  styles: Object|void,
-  /** any additional props to add */
-  onNavigate: Function
+  styles: Object|void
 }
 
 class NavPanel extends React.Component<void, Props, void> {
@@ -54,7 +53,7 @@ class NavPanel extends React.Component<void, Props, void> {
 
   render() {
     const { animate, hovering, widths, active, hover } = this.state;
-    const { children, top, onNavigate, className, ...other } = this.props;
+    const { children, top, className, ...other } = this.props;
 
     let styleName = cx(
       {
@@ -69,7 +68,7 @@ class NavPanel extends React.Component<void, Props, void> {
       const clone = React.cloneElement(
         child,
         {
-          onClick: () => this.handleClick(index, this.props.onNavigate, child.props.to),
+          onClick: () => this.handleClick(index, child.props.to),
           onMouseEnter: () => this.handleEnter(index),
           onMouseLeave: () => this.handleLeave(index),
           active: this.state.active === index ? true : false
@@ -95,7 +94,7 @@ class NavPanel extends React.Component<void, Props, void> {
     });
 
     return (
-      <ul className={styleName} {...other}>
+      <ul styleName={styleName} {...other}>
         {menu}
         {this.renderSpan()}
       </ul>
@@ -105,9 +104,6 @@ class NavPanel extends React.Component<void, Props, void> {
   handleClick(index, onNavigate, to) {
     this.setState({
       active: index
-    }, () => {
-      if (onNavigate)
-        onNavigate(to);
     });
   }
 
@@ -126,4 +122,4 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 }
 
-export default NavPanel;
+export default CSSModules(NavPanel, CSS, { allowMultiple: true });

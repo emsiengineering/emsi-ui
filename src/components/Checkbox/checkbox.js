@@ -46,7 +46,7 @@ function Checkbox({ value, radio, checked, children, ...other }: Props) {
           styleName={checked ? 'checkbox selected' : 'checkbox'}
         >
           {radio ? renderRadio(checked) : renderCheckbox(checked)}
-          {React.Children.toArray(children).length > 0 && <Text type='body'>{children}</Text>}
+          {React.Children.toArray(children).length > 0 && <Text type='caption'>{children}</Text>}
         </div>
         <input type={role} style={{ display: 'none' }} defaultValue={value} defaultChecked={checked} />
       </div>

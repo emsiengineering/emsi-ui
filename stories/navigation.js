@@ -16,7 +16,7 @@ storiesOf('NavPanel', module)
   .add('first item selected, top', () => (
     <NavPanel top onNavigate={action('Navigated to')}>
     <NavItem to='/interesting'>Interesting</NavItem>
-      <NavItem to='/dark-theme'>Dark Theme</NavItem>
+      <NavItem to='/dark-theme'><a href="/dark-theme" style={{ color: 'inherit', textDecoration: 'none' }}>Dark Theme</a></NavItem>
       <NavItem to='/interestinger' >Interestinger</NavItem>
       <NavItem to='/dark-themeer'>Dark Themeer</NavItem>
     </NavPanel>
