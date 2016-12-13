@@ -43,7 +43,7 @@ class NavPanel extends React.Component<void, Props, void> {
 
     return (
       <span
-        className='nav-panel-border'
+        styleName='nav-panel-border'
         style={{
           left: offset + 'px',
           width: width + 'px'
