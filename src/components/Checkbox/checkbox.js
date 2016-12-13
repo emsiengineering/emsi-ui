@@ -17,9 +17,7 @@ type Props = {
   checked?: boolean,
   /** add any other props to the component */
   other?: any,
-  children: any,
-  /** function to pass in to track the change of state outside the component */
-  onChange?: Function
+  children: any
 }
 
 function renderRadio(checked) {
@@ -34,7 +32,7 @@ function renderCheckbox(checked) {
     <Icon name='checkbox' size='medium' />;
 }
 
-function Checkbox({ value, radio, checked, onChange, children, ...other }: Props) {
+function Checkbox({ value, radio, checked, children, ...other }: Props) {
   const role: string = radio ? 'radio' : 'checkbox';
 
   return (
@@ -50,7 +48,7 @@ function Checkbox({ value, radio, checked, onChange, children, ...other }: Props
           {radio ? renderRadio(checked) : renderCheckbox(checked)}
           {React.Children.toArray(children).length > 0 && <Text type='body'>{children}</Text>}
         </div>
-        <input type={role} style={{ display: 'none' }} onChange={(e) => onChange(e, value)} defaultValue={value} defaultChecked={checked} />
+        <input type={role} style={{ display: 'none' }} defaultValue={value} defaultChecked={checked} />
       </div>
     </Label>
   );

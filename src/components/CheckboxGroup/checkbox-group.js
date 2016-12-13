@@ -26,7 +26,7 @@ class CheckboxGroup extends React.Component<void, Props, void> {
     super(props);
 
     this.state = {
-      selected: []
+      selected: this.populateDefaults()
     };
   }
 
@@ -67,7 +67,6 @@ class CheckboxGroup extends React.Component<void, Props, void> {
           checked: this.state.selected.includes(child.props.value),
           onClick: () => this.handleClick(child.props.value),
           onKeyDown: (e) => this.handleKeyPress(e, child.props.value),
-          onChange: onChange,
           key: `checkbox-${index}`
         }
       );
@@ -89,10 +88,19 @@ class CheckboxGroup extends React.Component<void, Props, void> {
     }
   }
 
+  populateDefaults = () => {
+    let selected = [];
+
+    React.Children.forEach(this.props.children, child => {
+      if (child.props.checked)
+        selected.push(child.props.value);
+    });
+
+    return selected;
+  }
+
   handleClick = (value: string) => {
     let selected: Array = this.state.selected;
-
-    console.log('Adding', value, 'to', selected);
 
     // if the value is in the array and this doesn't force a selection
     // remove it.
@@ -118,6 +126,8 @@ class CheckboxGroup extends React.Component<void, Props, void> {
 
     this.setState({
       selected
+    }, () => {
+      this.props.onChange(selected);
     });
   }
 }
