@@ -31,7 +31,7 @@ function NavItem({ children, active, styles, ...other }: Props) {
 }
 
 NavItem.defaultProps = {
-  tabIndex: 0
+  tabIndex: -1
 };
 
 export default CSSModules(NavItem, CSS, { allowMultiple: true });
