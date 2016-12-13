@@ -10,10 +10,16 @@ type Props = {
   /** adds the active class, when true */
   top?: boolean|void,
   /** position the active class on the bottom or top of the text */
-  styles: Object|void
+  styles: Object|void,
+
+  start: number
 }
 
 class NavPanel extends React.Component<void, Props, void> {
+  static defaultProps = {
+    start: 0
+  }
+
   constructor(props) {
     super(props);
 
@@ -21,7 +27,7 @@ class NavPanel extends React.Component<void, Props, void> {
       animate: false,
       hovering: false,
       widths: [],
-      active: 0,
+      active: props.start,
       hover: 1
     };
   }
@@ -37,9 +43,12 @@ class NavPanel extends React.Component<void, Props, void> {
       width = widths[hover];
     }
 
-    for (let i = this.state[by] - 1; i >= 0; i--) {
-      offset += widths[i];
-    }
+    if (active < 0 && !hovering)
+      offset = -300;
+    else
+      for (let i = this.state[by] - 1; i >= 0; i--) {
+        offset += widths[i];
+      }
 
     return (
       <span

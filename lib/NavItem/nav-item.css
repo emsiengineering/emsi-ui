@@ -10,13 +10,16 @@ html[data-whatinput="mouse"] .nav-item:focus {
   border: 0;
   cursor: pointer;
   display: inline-block;
-  padding: 2rem;
   position: relative;
 }
 .nav-item > div {
   color: #bfbfbf;
   display: inline-block;
   font-size: 1.5rem;
+}
+.nav-item > div > :first-child {
+  display: inline-block;
+  padding: 2rem;
 }
 .nav-item.active > div {
   color: #fff;
