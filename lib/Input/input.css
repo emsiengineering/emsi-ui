@@ -1,6 +1,7 @@
 .input {
   display: inline-block;
   position: relative;
+  width: 100%;
 }
 .input > input,
 .input > textarea {
