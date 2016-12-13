@@ -92,6 +92,8 @@ class CheckboxGroup extends React.Component<void, Props, void> {
   handleClick = (value: string) => {
     let selected: Array = this.state.selected;
 
+    console.log('Adding', value, 'to', selected);
+
     // if the value is in the array and this doesn't force a selection
     // remove it.
     if (selected.includes(value) && !this.props.required) {
@@ -110,6 +112,8 @@ class CheckboxGroup extends React.Component<void, Props, void> {
       selected = [];
       selected.push(value);
     }
+
+    console.log('New selected state is', selected);
 
 
     this.setState({
