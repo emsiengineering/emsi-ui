@@ -10,6 +10,10 @@ html[data-whatinput="keyboard"] .checkbox:focus > span {
 html[data-whatinput="mouse"].checkbox:focus {
   outline: 0;
 }
+.container {
+  overflow: auto;
+  width: 100%;
+}
 .checkbox {
   border: 1px solid transparent;
   clear: left;

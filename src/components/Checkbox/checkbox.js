@@ -39,7 +39,7 @@ function Checkbox({ value, radio, checked, onChange, children, ...other }: Props
 
   return (
     <Label>
-      <div>
+      <div styleName='container'>
         <div
           tabIndex='0'
           {...other}
