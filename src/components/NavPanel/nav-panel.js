@@ -27,15 +27,21 @@ class NavPanel extends React.Component<void, Props, void> {
   constructor(props) {
     super(props);
 
-    const active = getChildIndexByProp(props.children);
-
     this.state = {
       animate: false,
       hovering: false,
       widths: [],
-      active: active[0] || -1,
+      active: -1,
       hover: 1
     };
+  }
+
+  componentWillMount() {
+    const active = getChildIndexByProp(this.props.children);
+
+    this.setState({
+      active
+    });
   }
 
   componentWillReceiveProps(nextProps) {
