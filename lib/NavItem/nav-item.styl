@@ -1,12 +1,13 @@
 @import 'variables.styl'
 
 html
-  &[data-whatinput="keyboard"] .nav-item:focus
+  &[data-whatinput="keyboard"] .nav-item > div > :first-child:focus
     outline-color: $accent-color
-    z-index: 5
+    z-index: 10
+    position: relative
 
 
-  &[data-whatinput="mouse"] .nav-item:focus
+  &[data-whatinput="mouse"] .nav-item > div > :first-child:focus
    outline: 0
 
 .nav-item
@@ -27,4 +28,5 @@ html
 
   &.active > div
     color: white
+    
 

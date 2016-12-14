@@ -4,30 +4,31 @@ import ContentWrap from '../ContentWrap';
 import Measure from 'react-measure';
 import React from 'react';
 import cx from 'classnames';
+import { getChildIndexByProp } from '../../utils';
 import whatInput from 'what-input';
 
 type Props = {
   /** adds the active class, when true */
-  top?: boolean|void,
+  top: boolean,
   /** position the active class on the bottom or top of the text */
-  styles: Object|void,
-
-  start: number
+  styles: Object|void
 }
 
 class NavPanel extends React.Component<void, Props, void> {
   static defaultProps = {
-    start: 0
+    top: false
   }
 
   constructor(props) {
     super(props);
 
+    const active = getChildIndexByProp(props.children);
+
     this.state = {
       animate: false,
       hovering: false,
       widths: [],
-      active: props.start,
+      active: active[0] || -1,
       hover: 1
     };
   }

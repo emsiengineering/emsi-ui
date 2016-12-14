@@ -1,8 +1,9 @@
-html[data-whatinput="keyboard"] .nav-item:focus {
+html[data-whatinput="keyboard"] .nav-item > div > :first-child:focus {
   outline-color: #41d492;
-  z-index: 5;
+  z-index: 10;
+  position: relative;
 }
-html[data-whatinput="mouse"] .nav-item:focus {
+html[data-whatinput="mouse"] .nav-item > div > :first-child:focus {
   outline: 0;
 }
 .nav-item {
