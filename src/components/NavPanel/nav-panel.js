@@ -4,7 +4,7 @@ import ContentWrap from '../ContentWrap';
 import Measure from 'react-measure';
 import React from 'react';
 import cx from 'classnames';
-import { getChildIndexByProp } from '../../utils';
+import { getChildIndexByProp } from '../utils';
 import whatInput from 'what-input';
 
 type Props = {
