@@ -39,6 +39,7 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('test');
     const active = getChildIndexByProp(nextProps.children);
 
     if (this.state.active !== active)
@@ -93,9 +94,9 @@ class NavPanel extends React.Component<void, Props, void> {
       const clone = React.cloneElement(
         child,
         {
+          ...child.props,
           onMouseEnter: () => this.handleEnter(index),
-          onMouseLeave: () => this.handleLeave(index),
-          active: this.state.active === index ? true : false
+          onMouseLeave: () => this.handleLeave(index)
         }
       );
 
