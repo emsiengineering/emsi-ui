@@ -11,12 +11,17 @@ type Props = {
   /** adds the active class, when true */
   top: boolean,
   /** position the active class on the bottom or top of the text */
-  styles: Object|void
+  styles: Object|void,
+
+  offset: string,
+
+  offsetDirection: 'left'|'right'
 }
 
 class NavPanel extends React.Component<void, Props, void> {
   static defaultProps = {
-    top: false
+    top: false,
+    offset: 300
   }
 
   constructor(props) {
@@ -33,6 +38,15 @@ class NavPanel extends React.Component<void, Props, void> {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    const active = getChildIndexByProp(nextProps.children);
+
+    if (this.state.active !== active)
+      this.setState({
+        active
+      });
+  }
+
   renderSpan() {
     const { widths, active, hovering, hover } = this.state;
     let width = widths[active];
@@ -44,9 +58,10 @@ class NavPanel extends React.Component<void, Props, void> {
       width = widths[hover];
     }
 
-    if (active < 0 && !hovering)
-      offset = -300;
-    else
+    if (active < 0 && !hovering) {
+      width = widths[0];
+      offset = -widths[0];
+    } else
       for (let i = this.state[by] - 1; i >= 0; i--) {
         offset += widths[i];
       }
@@ -78,7 +93,6 @@ class NavPanel extends React.Component<void, Props, void> {
       const clone = React.cloneElement(
         child,
         {
-          onClick: () => this.handleClick(index, child.props.to),
           onMouseEnter: () => this.handleEnter(index),
           onMouseLeave: () => this.handleLeave(index),
           active: this.state.active === index ? true : false
@@ -109,12 +123,6 @@ class NavPanel extends React.Component<void, Props, void> {
         {this.renderSpan()}
       </ul>
     );
-  }
-
-  handleClick(index, onNavigate, to) {
-    this.setState({
-      active: index
-    });
   }
 
   handleEnter(index) {

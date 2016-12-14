@@ -5,9 +5,15 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
   color: rgba(0,0,0,0.75);
+  overflow-x: scroll;
   position: relative;
   white-space: nowrap;
   width: 100%;
+}
+@media only screen and (min-width: 64em) {
+  .nav-panel {
+    overflow-x: hidden;
+  }
 }
 .nav-panel.top > .nav-panel-border {
   top: 0;

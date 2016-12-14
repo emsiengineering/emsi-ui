@@ -7,10 +7,14 @@
 	-ms-overflow-style: -ms-autohiding-scrollbar
 	-webkit-overflow-scrolling: touch
 	color: alpha(black 75%)
-	// overflow-x: scroll
+	overflow-x: scroll
 	position: relative
 	white-space: nowrap
 	width: 100%
+
+	+media(medium)
+		overflow-x: hidden
+
 
 	&.top
 		& > .nav-panel-border
