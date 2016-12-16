@@ -22,7 +22,7 @@ export function getChildIndexByProp(children, propName = 'active', equals = true
   let indexes = [];
 
   childArray.forEach((child, index) => {
-    console.log(propname, 'is', propName === equals);
+    console.log(propName, 'is', propName === equals);
     if (child.props[propName] === equals)
       indexes.push(index);
   });
