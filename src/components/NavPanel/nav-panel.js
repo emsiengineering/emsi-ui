@@ -45,7 +45,7 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 
   componentWillReceiveProps(nextProps) {
-    const active = getChildIndexByProp(nextProps.children)[0];
+    const active = getChildIndexByProp(nextProps.children);
 
     if (this.state.active !== active)
       this.setState({
