@@ -39,6 +39,8 @@ class NavPanel extends React.Component<void, Props, void> {
   componentWillMount() {
     const active = getChildIndexByProp(this.props.children)[0] || -1;
 
+  console.log('CWM: Changing active to ', active);
+
     this.setState({
       active
     });
@@ -47,7 +49,7 @@ class NavPanel extends React.Component<void, Props, void> {
   componentWillReceiveProps(nextProps) {
     const active = getChildIndexByProp(nextProps.children)[0] || -1;
 
-    console.log('Changing active to ', active);
+    console.log('CWRP: Changing active to ', active);
 
     if (this.state.active !== active)
       this.setState({
@@ -87,8 +89,6 @@ class NavPanel extends React.Component<void, Props, void> {
   render() {
     const { animate, hovering, widths, active, hover } = this.state;
     const { children, top, className, ...other } = this.props;
-
-    console.log(active);
 
     let styleName = cx(
       {
