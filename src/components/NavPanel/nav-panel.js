@@ -37,23 +37,19 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 
   componentWillMount() {
-    const active = getChildIndexByProp(this.props.children)[0] || -1;
-
-  console.log('CWM: Changing active to ', active);
+    const active = getChildIndexByProp(this.props.children);
 
     this.setState({
-      active
+      active: active.length > 0 ? active[0] : -1
     });
   }
 
   componentWillReceiveProps(nextProps) {
-    const active = getChildIndexByProp(nextProps.children)[0] || -1;
-
-    console.log('CWRP: Changing active to ', active);
+    const active = getChildIndexByProp(nextProps.children)[0];
 
     if (this.state.active !== active)
       this.setState({
-        active
+        active: active.length > 0 ? active[0] : -1
       });
   }
 
