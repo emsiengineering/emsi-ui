@@ -37,7 +37,7 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 
   componentWillMount() {
-    const active = getChildIndexByProp(this.props.children);
+    const active = getChildIndexByProp(this.props.children)[0] || -1;
 
     this.setState({
       active
@@ -45,8 +45,7 @@ class NavPanel extends React.Component<void, Props, void> {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('test');
-    const active = getChildIndexByProp(nextProps.children);
+    const active = getChildIndexByProp(nextProps.children)[0] || -1;
 
     if (this.state.active !== active)
       this.setState({
@@ -86,6 +85,8 @@ class NavPanel extends React.Component<void, Props, void> {
   render() {
     const { animate, hovering, widths, active, hover } = this.state;
     const { children, top, className, ...other } = this.props;
+
+    console.log(active);
 
     let styleName = cx(
       {
@@ -142,7 +143,7 @@ class NavPanel extends React.Component<void, Props, void> {
   handleLeave(index) {
     this.setState({
       hovering: false,
-      hover: index
+      hover: this.state.active
     });
   }
 }
