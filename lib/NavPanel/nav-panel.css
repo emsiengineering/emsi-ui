@@ -1,10 +1,32 @@
+.nav-content {
+  background-color: #203a45;
+}
 .nav-panel {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
-  background-color: #203a45;
   color: rgba(0,0,0,0.75);
-  display: block;
   overflow-x: scroll;
+  position: relative;
   white-space: nowrap;
   width: 100%;
+}
+@media only screen and (min-width: 64em) {
+  .nav-panel {
+    overflow-x: hidden;
+  }
+}
+.nav-panel.top > .nav-panel-border {
+  top: 0;
+}
+.nav-panel:not(top) > .nav-panel-border {
+  bottom: 0;
+}
+.nav-panel-border {
+  background-color: #41d492;
+  display: block;
+  height: 0.25rem;
+  position: absolute;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  z-index: 10;
 }

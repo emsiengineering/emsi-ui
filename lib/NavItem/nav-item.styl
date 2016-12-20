@@ -1,70 +1,32 @@
 @import 'variables.styl'
 
+html
+  &[data-whatinput="keyboard"] .nav-item > div > :first-child:focus
+    border-color: $accent-color
+    outline: 0
+
+
+  &[data-whatinput="mouse"] .nav-item > div > :first-child:focus
+   outline: 0
+
 .nav-item
-  background-color: $tab-panel-background
+  background-color: inherit
   border: 0
   cursor: pointer
   display: inline-block
-  outline: 0
-  padding: 2rem
   position: relative
 
-  &.top
-    & > .nav-item-border
-      bottom: auto
-      top: 0
-      
-  &.active
-    & > .nav-item-text
-      color: white
+  > div
+    color: $gray3
+    display: inline-block
+    font-size: 1.5rem
 
-    & > .nav-item-border
-      background-color: $accent-color
-      width: calc(100% - 4rem)
+    > :first-child
+      border: 1px solid transparent
+      display: inline-block
+      padding: 2rem
 
-  &:focus.active
-    & > .nav-item-border
-      height: 25%
+  &.active > div
+    color: white
+    
 
-  &:focus:not(.active):not(:hover)
-    & > .nav-item-border
-      background-color: $gray3
-      height: 3px
-      width: calc(100% - 4rem)
-
-    & > .nav-item-text
-      color: white
-  
-  &:not(:focus):not(.active)
-    & > .nav-item-border
-      background-color: $gray3
-      transition: width .3s ease
-      width: 0
-
-  &:hover:not(.active):not(:focus)
-    & > .nav-item-border
-      background-color: $gray3
-      height: 3px
-      width: calc(100% - 4rem)
-  
-  &:not(:hover):not(.active)
-    & > .nav-item-border
-      background-color: $gray3
-      transition: width .3s ease
-      width: 0
-
-.nav-item-text
-  color: $gray3
-  display: inline-block
-  font-size: 1.5rem
-  
-.nav-item-border  
-  background-color: $tab-panel-background 
-  bottom: 0
-  height: 3px
-  left: 50%
-  position: absolute
-  transform: translateX(-50%)
-  transition: height .2s ease, width .3s ease
-  width: 0
-  z-index: 5

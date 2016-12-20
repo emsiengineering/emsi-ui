@@ -1,14 +1,18 @@
 html[data-whatinput="keyboard"] .checkbox:focus {
-  z-index: 5;
   outline-color: #1964eb;
+  z-index: 5;
 }
 html[data-whatinput="keyboard"] .checkbox:focus > svg,
 html[data-whatinput="keyboard"] .checkbox:focus > span {
   color: #1964eb;
   opacity: 0.75;
 }
-html[data-whatinput="mouse"] .checkbox:focus {
-  outline: none;
+html[data-whatinput="mouse"].checkbox:focus {
+  outline: 0;
+}
+.container {
+  overflow: auto;
+  width: 100%;
 }
 .checkbox {
   border: 1px solid transparent;

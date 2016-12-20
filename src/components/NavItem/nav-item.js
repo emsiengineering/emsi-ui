@@ -1,51 +1,37 @@
-import cx from 'classnames';
-import CSSModules from 'react-css-modules';
 import React, { PropTypes } from 'react';
 
 import CSS from './nav-item.styl';
+import CSSModules from 'react-css-modules';
+import cx from 'classnames';
 
 type Props = {
   /** adds the active class, when true */
   active?: boolean,
   /** position the active class on the bottom or top of the text */
   styles: Object,
-  /** any additional props to add */
-  tabIndex: number,
-  title: string,
-  top: boolean
+
+  tabIndex: number
 }
 /**
  * Tab can't be used outside the TabPanel Component context
  */
-function NavItem({ children, active, styles, title, tabIndex, top, ...other }: Props) {
-  let styleName = cx({
-    'nav-item': true,
-    active,
-    top
-  });
-
-  let styleNameBorder = cx({
-    'nav-item-border': true,
-    active
-  });
+function NavItem({ children, active, styles, ...other }: Props) {
+  const styleName = active ? 'nav-item active' : 'nav-item';
 
   return (
-    <div
+    <li
       styleName={styleName}
-      tabIndex={tabIndex}
       {...other}
     >
-      <div styleName='nav-item-text'>
-        {title}
+      <div>
+        {children}
       </div>
-      <div styleName='nav-item-border' />
-    </div>
+    </li>
   );
 }
 
 NavItem.defaultProps = {
-  tabIndex: 0,
-  top: false
+  tabIndex: -1
 };
 
 export default CSSModules(NavItem, CSS, { allowMultiple: true });

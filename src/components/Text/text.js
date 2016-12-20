@@ -15,14 +15,19 @@ type Props = {
   children: any,
   styles: Object,
   /** add any other props to the component */
-  other?: Object
+  other?: Object,
+  header?: boolean
 }
 /**
  * All the rem sizes are based on having the html element set to 65.5% font-size
  */
-function Text({ component: Component, color, children, type, bold, styles, ...other }: Props) {
+function Text({ component: Component, color, children, type, bold, styles, header, ...other }: Props) {
 
   let styleNames = bold ? `font ${type} bold` : `font ${type}`;
+
+  if (header)
+    styleNames += ' header';
+
 
   return (
     <Component {...other} styleName={`${styleNames} ${color}`}>{children}</Component>
