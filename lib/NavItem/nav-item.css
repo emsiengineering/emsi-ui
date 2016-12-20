@@ -6,7 +6,7 @@ html[data-whatinput="mouse"] .nav-item > div > :first-child:focus {
   outline: 0;
 }
 .nav-item {
-  background-color: #203a45;
+  background-color: inherit;
   border: 0;
   cursor: pointer;
   display: inline-block;
