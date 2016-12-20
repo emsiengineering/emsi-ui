@@ -94,7 +94,7 @@ class NavPanel extends React.Component<void, Props, void> {
       className
     );
 
-    const menu = this.props.children.map((child, index) => {
+    const menu = React.Children.toArray(this.props.children).map((child, index) => {
 
       const clone = React.cloneElement(
         child,
