@@ -5,6 +5,7 @@
 }
 .input > input,
 .input > textarea {
+  width: 100%;
   border: 1px solid #bfbfbf;
   border-radius: 3px;
   display: block;
