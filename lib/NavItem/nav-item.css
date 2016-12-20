@@ -1,14 +1,13 @@
 html[data-whatinput="keyboard"] .nav-item > div > :first-child:focus {
-  outline-color: #41d492;
-  z-index: 10;
-  position: relative;
+  border-color: #41d492;
+  outline: 0;
 }
 html[data-whatinput="mouse"] .nav-item > div > :first-child:focus {
   outline: 0;
 }
 .nav-item {
   background-color: #203a45;
-  border: 0;
+  border: 1px solid transparent;
   cursor: pointer;
   display: inline-block;
   position: relative;

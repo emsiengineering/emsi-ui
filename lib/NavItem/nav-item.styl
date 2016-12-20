@@ -2,9 +2,8 @@
 
 html
   &[data-whatinput="keyboard"] .nav-item > div > :first-child:focus
-    outline-color: $accent-color
-    z-index: 10
-    position: relative
+    border-color: $accent-color
+    outline: 0
 
 
   &[data-whatinput="mouse"] .nav-item > div > :first-child:focus
@@ -12,7 +11,7 @@ html
 
 .nav-item
   background-color: $tab-panel-background
-  border: 0
+  border: 1px solid transparent;
   cursor: pointer
   display: inline-block
   position: relative
