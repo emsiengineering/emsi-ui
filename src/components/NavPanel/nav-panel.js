@@ -75,7 +75,7 @@ class NavPanel extends React.Component<void, Props, void> {
     return (
       <span
         styleName='nav-panel-border'
-        dataTheme='nav-panel-border'
+        data-theme='nav-panel-border'
         style={{
           left: offset + 'px',
           width: width + 'px'
