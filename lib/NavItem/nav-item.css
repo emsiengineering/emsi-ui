@@ -7,7 +7,7 @@ html[data-whatinput="mouse"] .nav-item > div > :first-child:focus {
 }
 .nav-item {
   background-color: #203a45;
-  border: 1px solid transparent;
+  border: 0;
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -20,6 +20,7 @@ html[data-whatinput="mouse"] .nav-item > div > :first-child:focus {
 .nav-item > div > :first-child {
   display: inline-block;
   padding: 2rem;
+  border: 1px solid transparent;
 }
 .nav-item.active > div {
   color: #fff;
