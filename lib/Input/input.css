@@ -5,13 +5,13 @@
 }
 .input > input,
 .input > textarea {
-  width: 100%;
   border: 1px solid #bfbfbf;
   border-radius: 3px;
   display: block;
   font-size: 1.5rem;
   outline: 0;
   padding: 1rem;
+  width: 100%;
 }
 .input > input:focus,
 .input > textarea:focus {
