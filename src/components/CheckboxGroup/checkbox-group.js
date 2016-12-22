@@ -121,9 +121,6 @@ class CheckboxGroup extends React.Component<void, Props, void> {
       selected.push(value);
     }
 
-    console.log('New selected state is', selected);
-
-
     this.setState({
       selected
     }, () => {
