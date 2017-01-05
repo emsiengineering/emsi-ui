@@ -21,9 +21,9 @@ html
   clear: left
   cursor: pointer
   display: block
-  float: left
+  position: relative
   margin: 0
-  padding: 0
+  padding: 0.5rem 0 0.5rem 2rem
   transform-origin: 0 50%
 
   &.small
@@ -34,7 +34,9 @@ html
     cursor: pointer
     display: inline-block
     opacity: 0.5
-    position: relative
+    position: absolute
+    left: 0
+    top: 0.5rem
     transition: opacity 0.2s ease
 
   & > span
