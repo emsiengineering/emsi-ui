@@ -64,8 +64,8 @@ html[data-whatinput="mouse"].checkbox:focus {
 .checkbox.selected > svg::after {
   opacity: 1;
 }
-.checkbox.selected > svg > g {
-  color: #1964eb;
+.checkbox.selected > svg {
+  color: inherit;
   opacity: 1;
 }
 .checkbox.selected > span {
