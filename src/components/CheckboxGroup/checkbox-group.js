@@ -64,6 +64,7 @@ class CheckboxGroup extends React.Component<void, Props, void> {
         child,
         {
           ...child.props,
+          ...this.props.other,
           checked: this.state.selected.includes(child.props.value),
           onClick: () => this.handleClick(child.props.value),
           onKeyDown: (e) => this.handleKeyPress(e, child.props.value),
