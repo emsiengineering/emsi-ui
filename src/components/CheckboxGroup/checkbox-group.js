@@ -59,12 +59,14 @@ class CheckboxGroup extends React.Component<void, Props, void> {
   }
 
   renderChildren(children: Array, onChange: Function) {
+    const { ...other } = this.props;
+
     return children.map((child: Object, index: number) => {
       return React.cloneElement(
         child,
         {
+          ...other,
           ...child.props,
-          ...this.props.other,
           checked: this.state.selected.includes(child.props.value),
           onClick: () => this.handleClick(child.props.value),
           onKeyDown: (e) => this.handleKeyPress(e, child.props.value),
