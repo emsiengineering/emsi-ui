@@ -39,7 +39,6 @@ function Checkbox({ value, radio, checked, children, ...other }: Props) {
     <Label htmlFor={children}>
       <div styleName='container'>
         <div
-          id={children}
           tabIndex='0'
           {...other}
           role={role}
@@ -49,7 +48,7 @@ function Checkbox({ value, radio, checked, children, ...other }: Props) {
           {radio ? renderRadio(checked) : renderCheckbox(checked)}
           {React.Children.toArray(children).length > 0 && <Text type='caption'>{children}</Text>}
         </div>
-        <input type={role} style={{ display: 'none' }} defaultValue={value} defaultChecked={checked} />
+        <input id={children} type={role} style={{ display: 'none' }} defaultValue={value} defaultChecked={checked} />
       </div>
     </Label>
   );
