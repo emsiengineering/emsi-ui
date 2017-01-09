@@ -19,9 +19,9 @@ html[data-whatinput="mouse"].checkbox:focus {
   clear: left;
   cursor: pointer;
   display: block;
-  float: left;
+  position: relative;
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 0 0.5rem 2rem;
   -webkit-transform-origin: 0 50%;
           transform-origin: 0 50%;
 }
@@ -33,7 +33,9 @@ html[data-whatinput="mouse"].checkbox:focus {
   cursor: pointer;
   display: inline-block;
   opacity: 0.5;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
@@ -62,8 +64,10 @@ html[data-whatinput="mouse"].checkbox:focus {
 .checkbox.selected > svg::after {
   opacity: 1;
 }
-.checkbox.selected > svg,
-.checkbox.selected > span {
-  color: #1964eb;
+.checkbox.selected > svg {
+  color: inherit;
   opacity: 1;
+}
+.checkbox.selected > span {
+  color: #000;
 }
