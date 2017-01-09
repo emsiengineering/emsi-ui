@@ -39,7 +39,7 @@ function Checkbox({ value, radio, checked, children, ...other }: Props) {
     <Label htmlFor={children}>
       <div styleName='container'>
         <div
-          name={children}
+          id={children}
           tabIndex='0'
           {...other}
           role={role}
