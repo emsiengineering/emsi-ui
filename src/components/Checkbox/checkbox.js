@@ -36,9 +36,10 @@ function Checkbox({ value, radio, checked, children, ...other }: Props) {
   const role: string = radio ? 'radio' : 'checkbox';
 
   return (
-    <Label>
+    <Label htmlFor={children}>
       <div styleName='container'>
         <div
+          name={children}
           tabIndex='0'
           {...other}
           role={role}
