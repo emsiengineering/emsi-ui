@@ -13,7 +13,6 @@ html[data-whatinput="mouse"] .nav-item > div > :first-child:focus {
   position: relative;
 }
 .nav-item > div {
-  color: #bfbfbf;
   display: inline-block;
   font-size: 1.5rem;
 }
