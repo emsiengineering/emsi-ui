@@ -5,8 +5,6 @@ import CSSModules from 'react-css-modules';
 import cx from 'classnames';
 
 type Props = {
-  /** adds the active class, when true */
-  active?: boolean,
   /** position the active class on the bottom or top of the text */
   styles: Object,
 
@@ -15,12 +13,10 @@ type Props = {
 /**
  * Tab can't be used outside the TabPanel Component context
  */
-function NavItem({ children, active, styles, ...other }: Props) {
-  const styleName = active ? 'nav-item active' : 'nav-item';
-
+function NavItem({ children, styles, ...other }: Props) {
   return (
     <li
-      styleName={styleName}
+      styleName='nav-item'
       {...other}
     >
       <div>
