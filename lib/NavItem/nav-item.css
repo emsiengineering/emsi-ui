@@ -20,6 +20,3 @@ html[data-whatinput="mouse"] .nav-item > div > :first-child:focus {
   display: inline-block;
   padding: 2rem;
 }
-.nav-item.active > div {
-  color: #fff;
-}
