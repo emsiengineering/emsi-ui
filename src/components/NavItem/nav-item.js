@@ -7,7 +7,6 @@ import cx from 'classnames';
 type Props = {
   /** position the active class on the bottom or top of the text */
   styles: Object,
-
   tabIndex: number
 }
 /**
@@ -15,19 +14,10 @@ type Props = {
  */
 function NavItem({ children, styles, ...other }: Props) {
   return (
-    <li
-      styleName='nav-item'
-      {...other}
-    >
-      <div>
-        {children}
-      </div>
+    <li styleName='nav-item' {...other}>
+      {children}
     </li>
   );
 }
-
-NavItem.defaultProps = {
-  tabIndex: -1
-};
 
 export default CSSModules(NavItem, CSS, { allowMultiple: true });
