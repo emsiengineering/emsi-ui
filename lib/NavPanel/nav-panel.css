@@ -23,10 +23,12 @@
 }
 .nav-panel-border {
   background-color: #1bb16e;
-  display: block;
+  display: none;
   height: 0.25rem;
   position: absolute;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   z-index: 10;
+}
+@media (min-width: 800px) {
 }
