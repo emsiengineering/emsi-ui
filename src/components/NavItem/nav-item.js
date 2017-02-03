@@ -7,7 +7,6 @@ import cx from 'classnames';
 type Props = {
   /** position the active class on the bottom or top of the text */
   styles: Object,
-
   tabIndex: number
 }
 /**
