@@ -15,7 +15,7 @@ function loadStories() {
   require('../stories/modal');
   require('../stories/input');
   require('../stories/textarea');
-  require('../stories/content-wrap')
+  require('../stories/content-wrap');
   require('../stories/header');
   // require as many stories as you need.
 }

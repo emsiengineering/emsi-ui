@@ -20,7 +20,11 @@ type Props = {
   rootElementId?: string|void,
   focusElementId?: string|void,
   /** If true, the modal will receive a role of alertdialog, instead of its default dialog */
-  alert?: boolean|void
+  alert?: boolean|void,
+  /** If true render a button to click on to open Modal */
+  button?: boolean|void,
+  /** If true render the modal on props */
+  isOpen?: boolean|void
 }
 
 class Modal extends React.Component<void, Props, void> {
@@ -40,7 +44,7 @@ class Modal extends React.Component<void, Props, void> {
   }
 
   render() {
-    const { children, rootElementId, onExit, title, focusElementId, underlayClickExits, alert } = this.props;
+    const { children, rootElementId, onExit, title, focusElementId, underlayClickExits, alert, button, isOpen } = this.props;
 
     const extras = {
       focusDialog: !focusElementId
@@ -59,14 +63,13 @@ class Modal extends React.Component<void, Props, void> {
       appear: styles['modal-enter'],
       appearActive: styles['modal-enter-active']
     };
-
     return (
       <div>
-        <Button type='primary' onClick={this.handleActive} active={this.state.active}>{title}</Button>
+        {button && <Button type='primary' onClick={this.handleActive} active={this.state.active}>{title}</Button>}
         <AriaModal
           {...extras}
           underlayClickExits={underlayClickExits}
-          mounted={this.state.active}
+          mounted={isOpen ? isOpen : this.state.active}
           titleText={title}
           onEnter={this.handleEnter}
           onExit={this.handleExit}

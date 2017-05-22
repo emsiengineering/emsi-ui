@@ -4,6 +4,9 @@ import { storiesOf, action } from '@kadira/storybook';
 import Modal from '../src/components/Modal';
 
 storiesOf('Modal', module)
-  .add('active', () => (
-      <Modal title='Test'>Text</Modal>
+  .add('activates with button', () => (
+      <Modal title='Test' button>Text</Modal>
+  ))
+  .add('activates on mount', () => (
+      <Modal title='Test' isOpen>Text</Modal>
   ));
