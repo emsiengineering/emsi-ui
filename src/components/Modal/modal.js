@@ -36,7 +36,7 @@ class Modal extends React.Component<void, Props, void> {
     super(props);
 
     const state: { active: boolean, entered: boolean } = {
-      active: false,
+      active: props.isOpen ? props.isOpen : false,
       entered: true
     };
 
@@ -53,7 +53,7 @@ class Modal extends React.Component<void, Props, void> {
     let underlayClass: string = styles['modal-underlay'];
 
     if (this.state.entered)
-      underlayClass += ' entered';
+      underlayClass += ` ${styles.entered}`;
 
     const transitionNames = {
       enter: styles['modal-enter'],
@@ -69,7 +69,7 @@ class Modal extends React.Component<void, Props, void> {
         <AriaModal
           {...extras}
           underlayClickExits={underlayClickExits}
-          mounted={isOpen ? isOpen : this.state.active}
+          mounted={this.state.active}
           titleText={title}
           onEnter={this.handleEnter}
           onExit={this.handleExit}
