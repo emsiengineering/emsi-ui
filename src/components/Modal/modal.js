@@ -36,7 +36,7 @@ class Modal extends React.Component<void, Props, void> {
     super(props);
 
     const state: { active: boolean, entered: boolean } = {
-      active: props.isOpen ? props.isOpen : false,
+      active: false,
       entered: true
     };
 
@@ -44,7 +44,7 @@ class Modal extends React.Component<void, Props, void> {
   }
 
   render() {
-    const { children, rootElementId, onExit, title, focusElementId, underlayClickExits, alert, button, isOpen } = this.props;
+    const { children, rootElementId, onExit, title, focusElementId, underlayClickExits, alert, button, isOpen, closeModal } = this.props;
 
     const extras = {
       focusDialog: !focusElementId
@@ -69,10 +69,10 @@ class Modal extends React.Component<void, Props, void> {
         <AriaModal
           {...extras}
           underlayClickExits={underlayClickExits}
-          mounted={this.state.active}
+          mounted={isOpen ? isOpen : this.state.active}
           titleText={title}
           onEnter={this.handleEnter}
-          onExit={this.handleExit}
+          onExit={isOpen ? closeModal : this.handleExit}
           applicationNode={document.getElementById(rootElementId)}
           underlayClass={underlayClass}
           underlayColor={false}
@@ -88,7 +88,7 @@ class Modal extends React.Component<void, Props, void> {
           >
            { this.state.entered &&
              <div styleName='modal' key='animationItem'>
-              <Icon name='close' styleName='modal-close-icon' onClick={this.handleExit}/>
+              <Icon name='close' styleName='modal-close-icon' onClick={isOpen ? closeModal : this.handleExit}/>
               {children}
             </div> }
           </CSSTransitionGroup>
