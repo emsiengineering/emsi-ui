@@ -1,6 +1,5 @@
 .modal-underlay {
   background-color: transparent;
-  -webkit-transition: all 0.15s linear;
   transition: all 0.15s linear;
 }
 .modal-underlay.entered {
@@ -38,7 +37,6 @@
   position: absolute;
   right: 1rem;
   top: 1rem;
-  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 .modal-close-icon:hover {
@@ -52,7 +50,6 @@
 }
 .modal-enter.modal-enter-active {
   opacity: 1;
-  -webkit-transition: all 0.15s ease-out;
   transition: all 0.15s ease-out;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -64,7 +61,6 @@
 }
 .modal-leave.modal-leave-active {
   opacity: 0.01;
-  -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
   -webkit-transform: scale(0);
           transform: scale(0);
