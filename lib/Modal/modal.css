@@ -1,14 +1,26 @@
 .modal-underlay {
-  background-color: transparent;
-  -webkit-transition: all 0.15s linear;
-  transition: all 0.15s linear;
+  -webkit-transition: all 0.3s linear;
+  background-color: rgba(0,0,0,0);
+  transition: all 0.3s linear;
 }
-.modal-underlay.entered {
+.modal-underlay.has-entered {
   background-color: rgba(0,0,0,0.5);
+}
+.modal-animated {
+  -webkit-transform: scale(1.1) translateY(-10px);
+  -webkit-transition: all 0.3s linear;
+  opacity: 0.3;
+  transform: scale(1.1) translateY(-10px);
+  transition: all 0.3s linear;
+}
+.modal-animated.has-entered {
+  -webkit-transform: scale(1) translateY(0);
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 .modal {
   background-color: #fff;
-  border-radius: 0;
+  border-radius: 4px;
   box-shadow: rgba(0,0,0,0.2) 0 1rem 1rem;
   left: 0;
   margin: 0;
@@ -44,28 +56,4 @@
 .modal-close-icon:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
-}
-.modal-enter {
-  opacity: 0.01;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-}
-.modal-enter.modal-enter-active {
-  opacity: 1;
-  -webkit-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-.modal-leave {
-  opacity: 1;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-.modal-leave.modal-leave-active {
-  opacity: 0.01;
-  -webkit-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  -webkit-transform: scale(0);
-          transform: scale(0);
 }

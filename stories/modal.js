@@ -8,5 +8,5 @@ storiesOf('Modal', module)
       <Modal title='Test' button>Text</Modal>
   ))
   .add('activates on mount', () => (
-      <Modal title='Test' isOpen>Text</Modal>
+      <Modal title='Test' isOpen closeModal={() => true}>Text</Modal>
   ));

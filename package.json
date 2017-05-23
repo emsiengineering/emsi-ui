@@ -28,6 +28,7 @@
     "react-aria-tabpanel": "git://github.com/emsiengineering/react-aria-tabpanel",
     "react-dom": "^15.2.1",
     "react-measure": "^1.4.2",
+    "styled-components": "^1.4.6",
     "what-input": "^4.0.3"
   },
   "devDependencies": {

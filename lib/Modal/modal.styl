@@ -1,15 +1,28 @@
 @import 'variables.styl'
 
 .modal-underlay
-  background-color: transparent
-  transition: all 0.15s linear
+  -webkit-transition: all 0.3s linear
+  background-color: rgba(0, 0, 0, 0)
+  transition: all 0.3s linear
 
-  &.entered 
-    background-color: alpha(black 50%)
+.modal-underlay.has-entered
+  background-color: rgba(0, 0, 0, 0.5)
+
+.modal-animated
+  -webkit-transform: scale(1.1) translateY(-10px)
+  -webkit-transition: all 0.3s linear
+  opacity: 0.3
+  transform: scale(1.1) translateY(-10px)
+  transition: all 0.3s linear
+
+.modal-animated.has-entered
+  -webkit-transform: scale(1) translateY(0)
+  opacity: 1
+  transform: scale(1) translateY(0)
 
 .modal
   background-color: white
-  border-radius: 0
+  border-radius: 4px
   box-shadow: alpha(black 20%) 0 1rem 1rem
   left: 0
   margin: 0
@@ -42,21 +55,3 @@
 
   &:hover
     transform: scale(1.2)
-
-.modal-enter
-  opacity: 0.01
-  transform: scale(0)
-
-.modal-enter.modal-enter-active
-  opacity: 1
-  transition: all .15s ease-out
-  transform: scale(1)
-
-.modal-leave
-  opacity: 1
-  transform: scale(1)
-
-.modal-leave.modal-leave-active
-  opacity: 0.01
-  transition: all .15s ease-in-out
-  transform: scale(0)
