@@ -10,9 +10,9 @@ type Props = {
   /** A string to use as the modal's accessible title */
   title: string,
   /** A function to handle close of the modal outside the component */
-  closeModal: Function,
+  closeModal?: Function,
   /** A function to handle open of the modal outside the component */
-  openModal: Function,
+  openModal?: Function,
   /** Display the content inside the modal */
   children: any,
   /** Click outsid the modal to close it, default true */
@@ -30,7 +30,8 @@ type Props = {
 
 class Modal extends React.Component<void, Props, void> {
   static defaultProps = {
-    onExit: function noop() {}
+    closeModal: function noop() {},
+    openModal: function noop() {}
   };
 
   constructor(props: Props) {
@@ -73,7 +74,7 @@ class Modal extends React.Component<void, Props, void> {
     return (
       <div>
         {button &&
-          <Button type='primary' onClick={this.handleActive}>
+          <Button type="primary" onClick={this.handleActive}>
             {title}
           </Button>}
         <AriaModal
@@ -86,14 +87,18 @@ class Modal extends React.Component<void, Props, void> {
           applicationNode={document.getElementById(rootElementId)}
           underlayClass={underlayClass}
           underlayColor={false}
+          initialFocus="#close-modal"
           alert={alert}
-          className={styles.modal}
         >
           <div styleName={dialogContentClass}>
-            <Icon
-              name='close'
-              styleName='modal-close-icon'
-              onClick={isOpen ? closeModal : this.handleExit}/>
+            <button
+              id="close-modal"
+              aria-label="Close Dialog Box"
+              onClick={isOpen ? closeModal : this.handleExit}
+              styleName="modal-close-icon"
+            >
+              <Icon name="close" />
+            </button>
             {children}
           </div>
         </AriaModal>
