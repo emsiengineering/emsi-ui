@@ -1,17 +1,17 @@
 .modal-underlay {
   background-color: rgba(0,0,0,0);
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
 }
 .modal-underlay.has-entered {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
 }
 .modal-animated {
   opacity: 0.3;
   -webkit-transform: scale(1.1) translateY(-10px);
           transform: scale(1.1) translateY(-10px);
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
 }
 .modal-animated.has-entered {
   opacity: 1;
@@ -47,14 +47,14 @@
 }
 .modal-close-icon {
   border: 0;
+  color: #fff;
   background: transparent;
   padding: 0;
-  color: #7f7f7f;
   cursor: pointer;
   font-size: 2.5rem;
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  right: -3rem;
+  top: -2.5rem;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
