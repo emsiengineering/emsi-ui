@@ -2,19 +2,17 @@
 
 .modal-underlay
   background-color: rgba(0, 0, 0, 0)
-  transition: all 0.1s linear
+  transition: all 0.3s linear
 
   &.has-entered
     background-color: rgba(0, 0, 0, 0.7)
 
 .modal-animated
   opacity: 0.3
-  transform: scale(1.1) translateY(-10px)
-  transition: all 0.1s linear
+  transition: opacity 0.3s linear
 
   &.has-entered
     opacity: 1
-    transform: scale(1) translateY(0)
 
 .modal-card
   background-color: white
@@ -25,7 +23,6 @@
   left: 0
   margin: 0
   margin-bottom: 1rem
-  padding: 2rem
   position: absolute
   right: 0
   top: 0
@@ -37,7 +34,6 @@
     left: 0
     margin: 0 auto
     max-width: $viewport[medium]
-    padding: 2rem
     right: 0
     top: 6rem
     width: 80%
@@ -52,7 +48,7 @@
   position: absolute
   right: -3rem
   top: -2.5rem
-  transition: all 0.2s ease-in-out
+  transition: all 0.3s ease-in-out
 
   &:hover
     transform: scale(1.2)
