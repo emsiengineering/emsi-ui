@@ -69,7 +69,7 @@ class Modal extends React.Component<void, Props, void> {
       <div>
         <Button
           type="primary"
-          styleName={buttonClass}
+          className={buttonClass}
           onClick={this.handleActive}
         >
           {buttonChild}
