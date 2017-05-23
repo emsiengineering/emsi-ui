@@ -1,29 +1,27 @@
 @import 'variables.styl'
 
 .modal-underlay
-  -webkit-transition: all 0.3s linear
   background-color: rgba(0, 0, 0, 0)
   transition: all 0.3s linear
 
-.modal-underlay.has-entered
-  background-color: rgba(0, 0, 0, 0.5)
+  &.has-entered
+    background-color: rgba(0, 0, 0, 0.5)
 
 .modal-animated
-  -webkit-transform: scale(1.1) translateY(-10px)
-  -webkit-transition: all 0.3s linear
   opacity: 0.3
   transform: scale(1.1) translateY(-10px)
   transition: all 0.3s linear
 
-.modal-animated.has-entered
-  -webkit-transform: scale(1) translateY(0)
-  opacity: 1
-  transform: scale(1) translateY(0)
+  &.has-entered
+    opacity: 1
+    transform: scale(1) translateY(0)
+
+.modal-card
+  background-color: white
+  box-shadow: alpha(black 20%) 0 1rem 1rem
 
 .modal
-  background-color: white
   border-radius: 4px
-  box-shadow: alpha(black 20%) 0 1rem 1rem
   left: 0
   margin: 0
   margin-bottom: 1rem

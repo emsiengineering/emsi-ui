@@ -9,10 +9,6 @@ import Icon from '../Icon';
 type Props = {
   /** A string to use as the modal's accessible title */
   title: string,
-  /** A function to handle close of the modal outside the component */
-  closeModal?: Function,
-  /** A function to handle open of the modal outside the component */
-  openModal?: Function,
   /** Display the content inside the modal */
   children: any,
   /** Click outsid the modal to close it, default true */
@@ -22,24 +18,21 @@ type Props = {
   focusElementId?: string | void,
   /** If true, the modal will receive a role of alertdialog, instead of its default dialog */
   alert?: boolean | void,
-  /** If true render a button to click on to open Modal */
-  button?: boolean | void,
-  /** If true render the modal on props */
-  isOpen?: boolean | void
+  /** pass in string or another component to click on */
+  buttonChild?: any,
+  /** if the modal should be a card with white background and box-shadow */
+  isCard?: boolean | void,
+  /** style the button */
+  buttonClass?: any
 };
 
 class Modal extends React.Component<void, Props, void> {
-  static defaultProps = {
-    closeModal: function noop() {},
-    openModal: function noop() {}
-  };
-
   constructor(props: Props) {
     super(props);
 
     const state: { active: boolean, entered: boolean } = {
       active: false,
-      entered: true
+      entered: false
     };
 
     this.state = state;
@@ -53,10 +46,9 @@ class Modal extends React.Component<void, Props, void> {
       focusElementId,
       underlayClickExits,
       alert,
-      button,
-      isOpen,
-      closeModal,
-      openModal
+      buttonChild,
+      isCard,
+      buttonClass
     } = this.props;
 
     const extras = {
@@ -71,19 +63,24 @@ class Modal extends React.Component<void, Props, void> {
       underlayClass += ` ${styles['has-entered']}`;
     }
 
+    if (isCard) dialogContentClass += ' modal-card';
+
     return (
       <div>
-        {button &&
-          <Button type="primary" onClick={this.handleActive}>
-            {title}
-          </Button>}
+        <Button
+          type="primary"
+          styleName={buttonClass}
+          onClick={this.handleActive}
+        >
+          {buttonChild}
+        </Button>
         <AriaModal
           {...extras}
-          underlayClickExits={underlayClickExits}
-          mounted={isOpen ? isOpen : this.state.active}
           titleText={title}
-          onEnter={isOpen ? openModal : this.handleEnter}
-          onExit={isOpen ? closeModal : this.handleExit}
+          underlayClickExits={underlayClickExits}
+          mounted={this.state.active}
+          onEnter={this.handleEnter}
+          onExit={this.handleExit}
           applicationNode={document.getElementById(rootElementId)}
           underlayClass={underlayClass}
           underlayColor={false}
@@ -94,7 +91,7 @@ class Modal extends React.Component<void, Props, void> {
             <button
               id="close-modal"
               aria-label="Close Dialog Box"
-              onClick={isOpen ? closeModal : this.handleExit}
+              onClick={this.handleExit}
               styleName="modal-close-icon"
             >
               <Icon name="close" />
