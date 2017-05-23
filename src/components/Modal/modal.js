@@ -64,10 +64,10 @@ class Modal extends React.Component<void, Props, void> {
     };
 
     let underlayClass: string = styles['modal-underlay'];
-    let dialogContentClass: string = `${styles.modal} ${styles['modal-animated']}`;
+    let dialogContentClass: string = 'modal modal-animated';
 
     if (this.state.entered) {
-      dialogContentClass += ` ${styles['has-entered']}`;
+      dialogContentClass += ' has-entered';
       underlayClass += ` ${styles['has-entered']}`;
     }
 
