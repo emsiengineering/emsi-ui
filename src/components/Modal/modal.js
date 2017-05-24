@@ -57,13 +57,16 @@ class Modal extends React.Component<void, Props, void> {
 
     let underlayClass: string = styles['modal-underlay'];
     let dialogContentClass: string = 'modal modal-animated';
-
+    let closeIconClass: string = 'modal-close-icon';
     if (this.state.entered) {
       dialogContentClass += ' has-entered';
       underlayClass += ` ${styles['has-entered']}`;
     }
 
-    if (isCard) dialogContentClass += ' modal-card';
+    if (isCard) {
+      closeIconClass += ' has-card';
+      dialogContentClass += ' modal-card';
+    }
 
     return (
       <div>
@@ -92,7 +95,7 @@ class Modal extends React.Component<void, Props, void> {
               id="close-modal"
               aria-label="Close Dialog Box"
               onClick={this.handleExit}
-              styleName="modal-close-icon"
+              styleName={closeIconClass}
             >
               <Icon name="close" />
             </button>

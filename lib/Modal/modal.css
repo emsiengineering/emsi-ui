@@ -40,6 +40,9 @@
   }
 }
 .modal-close-icon {
+  right: 1rem;
+  z-index: 1;
+  top: 0.5rem;
   border: 0;
   color: #fff;
   background: transparent;
@@ -47,12 +50,13 @@
   cursor: pointer;
   font-size: 2.5rem;
   position: absolute;
-  right: -3rem;
-  top: -2.5rem;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 .modal-close-icon:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+.modal-close-icon.has-card {
+  color: #000;
 }
