@@ -53,13 +53,10 @@
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-@media screen and (min-width: 1024px) {
-  .modal-close-icon {
-    right: -3rem;
-    top: -2.5rem;
-  }
-}
 .modal-close-icon:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+.modal-close-icon.has-card {
+  color: #000;
 }
