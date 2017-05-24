@@ -1,20 +1,28 @@
 @import 'variables.styl'
 
 .modal-underlay
-  background-color: transparent
-  transition: all 0.15s linear
+  background-color: rgba(0, 0, 0, 0)
+  transition: all 0.3s linear
 
-  &.entered 
-    background-color: alpha(black 50%)
+  &.has-entered
+    background-color: rgba(0, 0, 0, 0.7)
+
+.modal-animated
+  opacity: 0.3
+  transition: opacity 0.3s linear
+
+  &.has-entered
+    opacity: 1
+
+.modal-card
+  background-color: white
+  box-shadow: alpha(black 20%) 0 1rem 1rem
 
 .modal
-  background-color: white
-  border-radius: 0
-  box-shadow: alpha(black 20%) 0 1rem 1rem
+  border-radius: 4px
   left: 0
   margin: 0
   margin-bottom: 1rem
-  padding: 2rem
   position: absolute
   right: 0
   top: 0
@@ -26,37 +34,21 @@
     left: 0
     margin: 0 auto
     max-width: $viewport[medium]
-    padding: 2rem
     right: 0
     top: 6rem
     width: 80%
 
 .modal-close-icon
-  color: $gray2
+  border: 0
+  color: #ffffff
+  background: transparent
+  padding: 0
   cursor: pointer
   font-size: 2.5rem
   position: absolute
-  right: 1rem
-  top: 1rem
-  transition: all 0.2s ease-in-out
+  right: -3rem
+  top: -2.5rem
+  transition: all 0.3s ease-in-out
 
   &:hover
     transform: scale(1.2)
-
-.modal-enter
-  opacity: 0.01
-  transform: scale(0)
-
-.modal-enter.modal-enter-active
-  opacity: 1
-  transition: all .15s ease-out
-  transform: scale(1)
-
-.modal-leave
-  opacity: 1
-  transform: scale(1)
-
-.modal-leave.modal-leave-active
-  opacity: 0.01
-  transition: all .15s ease-in-out
-  transform: scale(0)
