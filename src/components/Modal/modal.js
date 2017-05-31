@@ -107,7 +107,7 @@ class Modal extends React.Component<void, Props, void> {
             <button
               id="close-modal"
               aria-label="Close Dialog Box"
-              onClick={this.handleExit}
+              onClick={closeModal ? closeModal : this.handleExit}
               styleName={closeIconClass}
             >
               <Icon name="close" />
