@@ -85,7 +85,7 @@ class Modal extends React.Component<void, Props, void> {
         <Button
           type="primary"
           className={buttonClass}
-          onClick={this.handleActive}
+          onClick={openModal ? openModal : this.handleActive}
           {...buttonProps}
         >
           {buttonChild}
