@@ -79,7 +79,6 @@
         //
         // React
         //
-        "jsx-quotes": [2, "prefer-single"],
         "react/jsx-curly-spacing": [1, "never"],
         "react/jsx-max-props-per-line": [1, {"maximum": 6}],
         "react/jsx-boolean-value": 1,
