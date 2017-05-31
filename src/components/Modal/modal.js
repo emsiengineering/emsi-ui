@@ -23,7 +23,11 @@ type Props = {
   /** if the modal should be a card with white background and box-shadow */
   isCard?: boolean | void,
   /** style the button */
-  buttonClass?: any
+  buttonClass?: any,
+  /** props to pass to the button like data-theme*/
+  buttonProps?: any,
+  /** function to handle closing the modal outside the modal */
+  closeModal?: any
 };
 
 class Modal extends React.Component<void, Props, void> {
@@ -48,7 +52,9 @@ class Modal extends React.Component<void, Props, void> {
       alert,
       buttonChild,
       isCard,
-      buttonClass
+      buttonClass,
+      buttonProps,
+      closeModal
     } = this.props;
 
     const extras = {
@@ -74,6 +80,7 @@ class Modal extends React.Component<void, Props, void> {
           type="primary"
           className={buttonClass}
           onClick={this.handleActive}
+          {...buttonProps}
         >
           {buttonChild}
         </Button>
@@ -83,7 +90,7 @@ class Modal extends React.Component<void, Props, void> {
           underlayClickExits={underlayClickExits}
           mounted={this.state.active}
           onEnter={this.handleEnter}
-          onExit={this.handleExit}
+          onExit={closeModal ? closeModal : this.handleExit}
           applicationNode={document.getElementById(rootElementId)}
           underlayClass={underlayClass}
           underlayColor={false}
