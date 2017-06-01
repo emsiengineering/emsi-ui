@@ -22,8 +22,16 @@ type Props = {
   buttonChild?: any,
   /** if the modal should be a card with white background and box-shadow */
   isCard?: boolean | void,
+  /** open the modal if true from outside the modal */
+  mounted?: boolean | void,
   /** style the button */
-  buttonClass?: any
+  buttonClass?: any,
+  /** props to pass to the button like data-theme*/
+  buttonProps?: any,
+  /** function to handle closing the modal outside the modal */
+  closeModal?: any,
+  /** function to handle opening the modal outside the modal */
+  openModal?: any
 };
 
 class Modal extends React.Component<void, Props, void> {
@@ -48,7 +56,11 @@ class Modal extends React.Component<void, Props, void> {
       alert,
       buttonChild,
       isCard,
-      buttonClass
+      buttonClass,
+      buttonProps,
+      closeModal,
+      openModal,
+      mounted
     } = this.props;
 
     const extras = {
@@ -58,7 +70,8 @@ class Modal extends React.Component<void, Props, void> {
     let underlayClass: string = styles['modal-underlay'];
     let dialogContentClass: string = 'modal modal-animated';
     let closeIconClass: string = 'modal-close-icon';
-    if (this.state.entered) {
+
+    if (mounted || this.state.entered) {
       dialogContentClass += ' has-entered';
       underlayClass += ` ${styles['has-entered']}`;
     }
@@ -73,7 +86,8 @@ class Modal extends React.Component<void, Props, void> {
         <Button
           type="primary"
           className={buttonClass}
-          onClick={this.handleActive}
+          onClick={openModal ? openModal : this.handleActive}
+          {...buttonProps}
         >
           {buttonChild}
         </Button>
@@ -81,9 +95,9 @@ class Modal extends React.Component<void, Props, void> {
           {...extras}
           titleText={title}
           underlayClickExits={underlayClickExits}
-          mounted={this.state.active}
-          onEnter={this.handleEnter}
-          onExit={this.handleExit}
+          mounted={mounted ? mounted : this.state.active}
+          onEnter={openModal ? openModal : this.handleEnter}
+          onExit={closeModal ? closeModal : this.handleExit}
           applicationNode={document.getElementById(rootElementId)}
           underlayClass={underlayClass}
           underlayColor={false}
@@ -94,7 +108,7 @@ class Modal extends React.Component<void, Props, void> {
             <button
               id="close-modal"
               aria-label="Close Dialog Box"
-              onClick={this.handleExit}
+              onClick={closeModal ? closeModal : this.handleExit}
               styleName={closeIconClass}
             >
               <Icon name="close" />
