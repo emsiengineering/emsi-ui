@@ -103,6 +103,7 @@ class Modal extends React.Component<void, Props, void> {
           underlayColor={false}
           initialFocus="#close-modal"
           alert={alert}
+          focusTrapPaused
         >
           <div styleName={dialogContentClass}>
             <button
