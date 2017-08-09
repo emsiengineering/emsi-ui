@@ -1,6 +1,5 @@
 .modal-underlay {
   background-color: rgba(0,0,0,0);
-  -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
 .modal-underlay.has-entered {
@@ -8,7 +7,6 @@
 }
 .modal-animated {
   opacity: 0.3;
-  -webkit-transition: opacity 0.3s linear;
   transition: opacity 0.3s linear;
 }
 .modal-animated.has-entered {
@@ -30,12 +28,14 @@
 }
 @media only screen and (min-width: 64em) {
   .modal {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     border-radius: 3px;
     left: 0;
     margin: 0 auto;
     max-width: 64em;
     right: 0;
-    top: 22rem;
     width: 80%;
   }
 }
@@ -50,7 +50,6 @@
   cursor: pointer;
   font-size: 2.5rem;
   position: absolute;
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 .modal-close-icon:hover {
