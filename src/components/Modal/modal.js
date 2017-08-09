@@ -1,7 +1,7 @@
 import AriaModal from 'react-aria-modal';
 import CSSModules from 'react-css-modules';
 import React from 'react';
-import FocusTrap from 'focus-trap-react';
+import FocusTrap from 'react-focus-trap';
 import styles from './modal.styl';
 import Button from '../Button';
 import Icon from '../Icon';
@@ -103,6 +103,7 @@ class Modal extends React.Component<void, Props, void> {
           underlayColor={false}
           initialFocus="#close-modal"
           alert={alert}
+          focusTrapPaused
         >
           <FocusTrap>
             <div styleName={dialogContentClass}>
