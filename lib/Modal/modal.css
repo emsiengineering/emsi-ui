@@ -30,12 +30,14 @@
 }
 @media only screen and (min-width: 64em) {
   .modal {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     border-radius: 3px;
     left: 0;
     margin: 0 auto;
     max-width: 64em;
     right: 0;
-    top: 22rem;
     width: 80%;
   }
 }
