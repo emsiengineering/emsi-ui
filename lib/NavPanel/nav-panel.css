@@ -6,7 +6,6 @@
   -webkit-overflow-scrolling: touch;
   color: rgba(0,0,0,0.75);
   overflow-x: scroll;
-  position: relative;
   white-space: nowrap;
   width: 100%;
 }
