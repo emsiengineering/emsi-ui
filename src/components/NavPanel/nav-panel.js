@@ -11,18 +11,18 @@ type Props = {
   /** adds the active class, when true */
   top: boolean,
   /** position the active class on the bottom or top of the text */
-  styles: Object|void,
+  styles: Object | void,
 
   offset: string,
 
-  offsetDirection: 'left'|'right'
-}
+  offsetDirection: 'left' | 'right'
+};
 
 class NavPanel extends React.Component<void, Props, void> {
   static defaultProps = {
     top: false,
     offset: 300
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -74,8 +74,8 @@ class NavPanel extends React.Component<void, Props, void> {
 
     return (
       <span
-        styleName='nav-panel-border'
-        data-theme='nav-panel-border'
+        styleName="nav-panel-border"
+        data-theme="nav-panel-border"
         style={{
           left: offset + 'px',
           width: width + 'px'
@@ -95,34 +95,32 @@ class NavPanel extends React.Component<void, Props, void> {
       className
     );
 
-    const menu = React.Children.toArray(this.props.children).map((child, index) => {
-
-      const clone = React.cloneElement(
-        child,
-        {
+    const menu = React.Children
+      .toArray(this.props.children)
+      .map((child, index) => {
+        const clone = React.cloneElement(child, {
           ...child.props,
-          onMouseEnter: () => this.handleEnter(index),
-          onMouseLeave: () => this.handleLeave(index)
-        }
-      );
+          onMouseEnter: () => !child.props.NavIgnore && this.handleEnter(index),
+          onMouseLeave: () => !child.props.NavIgnore && this.handleLeave(index)
+        });
 
-      return (
-        <Measure
-          key={`navitem-${index}`}
-          accurate
-          onMeasure={dimensions => {
-            let childWidths = this.state.widths;
-            childWidths[index] = dimensions.width;
+        return (
+          <Measure
+            key={`navitem-${index}`}
+            accurate
+            onMeasure={dimensions => {
+              let childWidths = this.state.widths;
+              childWidths[index] = dimensions.width;
 
-            this.setState({
-              widths: childWidths
-            });
-          }}
-        >
-          {clone}
-        </Measure>
-      );
-    });
+              this.setState({
+                widths: childWidths
+              });
+            }}
+          >
+            {clone}
+          </Measure>
+        );
+      });
 
     return (
       <ul styleName={styleName} {...other}>
