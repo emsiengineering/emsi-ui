@@ -1,6 +1,6 @@
 {
   "name": "emsi-ui",
-  "version": "1.7.9",
+  "version": "1.8.0",
   "description": "UI components for use within Emsi",
   "main": "./public/bundle.js",
   "scripts": {
