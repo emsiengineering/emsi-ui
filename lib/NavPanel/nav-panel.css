@@ -15,6 +15,7 @@
   }
 }
 .nav-panel.top > .nav-panel-border {
+  position: absolute;
   top: 0;
 }
 .nav-panel:not(top) > .nav-panel-border {
