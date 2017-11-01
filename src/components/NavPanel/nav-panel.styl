@@ -10,7 +10,6 @@
 	overflow-x: scroll
 	white-space: nowrap
 	width: 100%
-	position: absolute
 
 	+media(medium)
 		overflow-x: hidden
@@ -18,10 +17,12 @@
 	&.top
 		& > .nav-panel-border
 			top: 0
+			position: absolute
 
 	&:not(top)
 		& > .nav-panel-border
 			bottom: 0
+			position: absolute
 
 .nav-panel-border
 	background-color: $accent-color

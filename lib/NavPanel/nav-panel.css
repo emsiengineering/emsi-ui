@@ -8,7 +8,6 @@
   overflow-x: scroll;
   white-space: nowrap;
   width: 100%;
-  position: absolute;
 }
 @media only screen and (min-width: 64em) {
   .nav-panel {
@@ -17,9 +16,11 @@
 }
 .nav-panel.top > .nav-panel-border {
   top: 0;
+  position: absolute;
 }
 .nav-panel:not(top) > .nav-panel-border {
   bottom: 0;
+  position: absolute;
 }
 .nav-panel-border {
   background-color: #1bb16e;
