@@ -15,7 +15,7 @@
   }
 }
 .nav-panel.top > .nav-panel-border {
-  top: -10rem;
+  top: 0;
 }
 .nav-panel:not(top) > .nav-panel-border {
   bottom: 0;
