@@ -8,6 +8,7 @@
   overflow-x: scroll;
   white-space: nowrap;
   width: 100%;
+  position: absolute;
 }
 @media only screen and (min-width: 64em) {
   .nav-panel {
@@ -15,7 +16,6 @@
   }
 }
 .nav-panel.top > .nav-panel-border {
-  position: absolute;
   top: 0;
 }
 .nav-panel:not(top) > .nav-panel-border {
