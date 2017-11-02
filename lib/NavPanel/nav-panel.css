@@ -2,6 +2,7 @@
   background-color: #203a45;
 }
 .nav-panel {
+  position: relative;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
   color: rgba(0,0,0,0.75);
