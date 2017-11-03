@@ -2,11 +2,11 @@
   background-color: #203a45;
 }
 .nav-panel {
+  position: relative;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
   color: rgba(0,0,0,0.75);
   overflow-x: scroll;
-  position: relative;
   white-space: nowrap;
   width: 100%;
 }
@@ -17,16 +17,17 @@
 }
 .nav-panel.top > .nav-panel-border {
   top: 0;
+  position: absolute;
 }
 .nav-panel:not(top) > .nav-panel-border {
   bottom: 0;
+  position: absolute;
 }
 .nav-panel-border {
   background-color: #1bb16e;
   display: none;
   height: 0.25rem;
-  position: absolute;
-  -webkit-transition: all 0.2s ease;
+  position: relative;
   transition: all 0.2s ease;
   z-index: 10;
 }

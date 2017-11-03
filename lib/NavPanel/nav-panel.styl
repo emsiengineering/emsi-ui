@@ -4,11 +4,11 @@
 	background-color: $tab-panel-background
 
 .nav-panel
+	position:relative
 	-ms-overflow-style: -ms-autohiding-scrollbar
 	-webkit-overflow-scrolling: touch
 	color: alpha(black 75%)
 	overflow-x: scroll
-	position: relative
 	white-space: nowrap
 	width: 100%
 
@@ -18,16 +18,18 @@
 	&.top
 		& > .nav-panel-border
 			top: 0
+			position: absolute
 
 	&:not(top)
 		& > .nav-panel-border
 			bottom: 0
+			position: absolute
 
 .nav-panel-border
 	background-color: $accent-color
 	display: none
 	height: 0.25rem
-	position: absolute
+	position: relative
 	transition: all 0.2s ease
 	z-index: 10
 
