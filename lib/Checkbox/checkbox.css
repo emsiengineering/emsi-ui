@@ -36,6 +36,7 @@ html[data-whatinput="mouse"].checkbox:focus {
   position: absolute;
   left: 0;
   top: 0.85rem;
+  -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
 .checkbox > span {
