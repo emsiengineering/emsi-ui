@@ -22,8 +22,7 @@ html[data-whatinput="mouse"].checkbox:focus {
   position: relative;
   margin: 0;
   padding: 0.5rem 0 0.5rem 2rem;
-  -webkit-transform-origin: 0 50%;
-          transform-origin: 0 50%;
+  transform-origin: 0 50%;
 }
 .checkbox.small {
   width: 2rem;
@@ -36,7 +35,6 @@ html[data-whatinput="mouse"].checkbox:focus {
   position: absolute;
   left: 0;
   top: 0.85rem;
-  -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
 .checkbox > span {
