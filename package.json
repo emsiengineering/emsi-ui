@@ -1,6 +1,6 @@
 {
   "name": "emsi-ui",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "UI components for use within Emsi",
   "main": "./public/bundle.js",
   "scripts": {
@@ -64,7 +64,7 @@
     "stylint-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^4.29.6",
+    "webpack-dev-server": "^3.3.1"
   }
 }
